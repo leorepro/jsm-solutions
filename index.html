@@ -3,23 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Opsgenie 遷移指南 ｜ 平穩轉換至 Jira Service Management</title>
-  <meta name="description" content="Opsgenie 將於 2027/4/5 終止支援。鈦坦科技協助你平穩遷移至 Jira Service Management 或 Compass，零停機、自動同步、完整告警與 on-call 能力。" />
-  <meta name="theme-color" content="#0052CC" />
+  <title>Opsgenie 遷移指南 ｜ 平穩轉換至 Jira Service Management（Service Collection）</title>
+  <meta name="description" content="Opsgenie 將於 2027/4/5 終止支援。鈦坦科技（Atlassian 黃金級合作夥伴）協助你平穩遷移至 Jira Service Management（Service Collection）或 Compass，零停機、自動同步、完整告警與 on-call 能力。" />
+  <meta name="theme-color" content="#1868DB" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Opsgenie 遷移指南 ｜ 平穩轉換至 Jira Service Management" />
-  <meta property="og:description" content="Opsgenie 即將終止支援。鈦坦科技協助你平穩遷移至 Jira Service Management 或 Compass。" />
+  <meta property="og:title" content="Opsgenie 遷移指南 ｜ 平穩轉換至 Jira Service Management（Service Collection）" />
+  <meta property="og:description" content="Opsgenie 即將終止支援。鈦坦科技協助你平穩遷移至 Jira Service Management（Service Collection）或 Compass。" />
   <meta property="og:url" content="https://jsm.solutions" />
   <meta property="og:site_name" content="JSM.solutions" />
 
   <link rel="canonical" href="https://jsm.solutions/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230052CC'/%3E%3Cpath d='M30 68 L50 28 L70 68 Z' fill='%23fff'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231868DB'/%3E%3Cpath d='M30 68 L50 28 L70 68 Z' fill='%23fff'/%3E%3C/svg%3E" />
+
+  <!-- Google Analytics (GA4) -->
+  <!-- TODO: 將下方的 G-XXXXXXXXXX 換成你的 GA4 評估 ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 <body>
   <!-- ===================== Nav ===================== -->
@@ -27,19 +37,19 @@
     <div class="container nav__inner">
       <a class="brand" href="#top" aria-label="JSM.solutions 首頁">
         <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 100 100" width="28" height="28"><rect width="100" height="100" rx="24" fill="#0052CC"/><path d="M28 70 L50 26 L72 70 Z" fill="#fff"/></svg>
+          <svg viewBox="0 0 100 100" width="28" height="28"><rect width="100" height="100" rx="24" fill="#1868DB"/><path d="M28 70 L50 26 L72 70 Z" fill="#fff"/></svg>
         </span>
         <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
       </a>
       <nav class="nav__links" aria-label="主要導覽">
         <a href="#why">為什麼遷移</a>
+        <a href="#collection">Service Collection</a>
         <a href="#paths">遷移路徑</a>
         <a href="#compare">功能比較</a>
         <a href="#steps">遷移流程</a>
-        <a href="#timeline">重要時程</a>
         <a href="#faq">常見問題</a>
       </nav>
-      <a href="#contact" class="btn btn--primary nav__cta">預約遷移諮詢</a>
+      <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary nav__cta">聯絡我們</a>
       <button class="nav__toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -53,10 +63,10 @@
       <div class="container hero__inner">
         <div class="hero__copy reveal">
           <span class="eyebrow">停售 2025/6/4 · 終止支援 2027/4/5</span>
-          <h1 class="hero__title">從 Opsgenie 平穩升級到 <span class="grad">JSM</span></h1>
+          <h1 class="hero__title">從 Opsgenie 升級到 <span class="grad">Jira Service Management</span><span class="hero__sc">（Atlassian Service Collection）</span></h1>
           <p class="hero__lead">
-            Opsgenie 即將終止支援。鈦坦科技以 Atlassian 合作夥伴身分，
-            協助你零停機遷移到 Jira Service Management 或 Compass。
+            Opsgenie 即將終止支援。鈦坦科技以 Atlassian 黃金級合作夥伴身分，
+            協助你零停機遷移到 Jira Service Management（Service Collection）或 Compass。
           </p>
           <div class="hero__actions">
             <a href="#contact" class="btn btn--primary btn--lg">開始規劃遷移</a>
@@ -70,32 +80,40 @@
         </div>
 
         <div class="hero__visual reveal" aria-hidden="true">
-          <div class="flow-card">
-            <div class="flow-node flow-node--from">
-              <div class="flow-node__icon og">⚙</div>
-              <div>
-                <div class="flow-node__name">Opsgenie</div>
-                <div class="flow-node__desc">Alerts, On-call, Incidents</div>
-              </div>
+          <!-- Atlassian 風格「分岔旅程」：Opsgenie 一個來源，分岔到兩條遷移路徑 -->
+          <div class="journey">
+            <span class="blob blob--yellow"></span>
+            <span class="blob blob--teal"></span>
+            <span class="blob blob--magenta"></span>
+
+            <div class="journey__source">
+              <span class="jnode__icon og">⚙</span>
+              <span class="jnode__text">
+                <span class="jnode__name">Opsgenie</span>
+                <span class="jnode__desc">Alerts · On-call · Incidents</span>
+              </span>
             </div>
-            <div class="flow-arrow">
-              <svg viewBox="0 0 120 40" preserveAspectRatio="none"><path d="M0 20 H100" /><path class="head" d="M92 12 L108 20 L92 28" /></svg>
-            </div>
-            <div class="flow-targets">
-              <div class="flow-node flow-node--jsm">
-                <div class="flow-node__icon jsm">⚡</div>
-                <div>
-                  <div class="flow-node__name">Jira Service Management</div>
-                  <div class="flow-node__desc">完整 ITSM、AI Ops</div>
-                </div>
+
+            <svg class="journey__branch" viewBox="0 0 360 70" fill="none" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M180 4 V26 Q180 40 150 40 H92 Q62 40 62 56 V66" class="branch-line" />
+              <path d="M180 4 V26 Q180 40 210 40 H268 Q298 40 298 56 V66" class="branch-line" />
+              <circle cx="62" cy="68" r="3.5" class="branch-dot" />
+              <circle cx="298" cy="68" r="3.5" class="branch-dot" />
+            </svg>
+
+            <div class="journey__targets">
+              <div class="jcard jcard--jsm">
+                <span class="jcard__opt">Option 1</span>
                 <span class="badge badge--rec">推薦</span>
+                <span class="jnode__icon jsm">⚡</span>
+                <span class="jcard__name">Jira Service Management</span>
+                <span class="jcard__desc">Service Collection · ITSM</span>
               </div>
-              <div class="flow-node flow-node--compass">
-                <div class="flow-node__icon compass">◆</div>
-                <div>
-                  <div class="flow-node__name">Compass</div>
-                  <div class="flow-node__desc">Alerts, On-call, 開發者平台</div>
-                </div>
+              <div class="jcard jcard--compass">
+                <span class="jcard__opt">Option 2</span>
+                <span class="jnode__icon compass">◆</span>
+                <span class="jcard__name">Compass</span>
+                <span class="jcard__desc">開發者平台</span>
               </div>
             </div>
           </div>
@@ -141,15 +159,75 @@
             <article class="info-card">
               <div class="info-card__icon">🤝</div>
               <h3>合作夥伴全程協助</h3>
-              <p>鈦坦科技以 Atlassian 合作夥伴身分，協助評估方案、規劃時程、處理特殊情況與費用轉換。</p>
+              <p>鈦坦科技以 Atlassian 黃金級合作夥伴身分，協助評估方案、規劃時程、處理特殊情況與費用轉換。</p>
             </article>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ===================== Service Collection ===================== -->
+    <section class="section section--alt" id="collection">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">2025 / 10 / 7 推出</span>
+          <h2>認識 Atlassian Service Collection</h2>
+          <p class="section__sub">Atlassian 將 Jira Service Management、Customer Service Management、Assets 與 Rovo Agents 整合成單一、AI 驅動的服務管理方案。Opsgenie 遷移後的 Jira Service Management，正是 Service Collection 的核心。</p>
+        </div>
+
+        <div class="sc-grid reveal">
+          <article class="sc-card sc-card--jsm">
+            <span class="sc-badge">Opsgenie 遷移目標</span>
+            <span class="sc-tile">⚡</span>
+            <h3>Jira Service Management</h3>
+            <p>核心服務管理，連結 Dev、IT 與業務團隊，提升員工體驗與服務韌性。</p>
+          </article>
+          <article class="sc-card">
+            <span class="sc-tile">🎧</span>
+            <h3>Customer Service Management</h3>
+            <p>全新對外客服 app，以 AI 強化外部顧客支援，串起前線與業務的回饋循環。</p>
+          </article>
+          <article class="sc-card">
+            <span class="sc-tile">🗂️</span>
+            <h3>Assets</h3>
+            <p>彈性資產資料庫，追蹤、管理與視覺化關鍵資產與服務，建立相依關係。</p>
+          </article>
+          <article class="sc-card">
+            <span class="sc-tile">🤖</span>
+            <h3>Rovo Agents</h3>
+            <p>AI 團隊夥伴，協助分流與攔截請求、解決事件並產生知識。</p>
+          </article>
+        </div>
+        <p class="sc-note">以上應用整合販售（不單獨銷售），共用佇列、SLA、表單與報表等服務管理技術，並建構於 Atlassian 平台（Rovo、Teamwork Graph、Automation、Analytics、Security）。</p>
+
+        <div class="sc-compare reveal">
+          <article class="sc-vs sc-vs--in">
+            <div class="sc-vs__head"><span class="sc-tile sc-tile--sm">⚡</span><h4>Jira Service Management</h4></div>
+            <p class="sc-vs__lead">面向「組織內部」的服務（ITSM）</p>
+            <dl>
+              <div><dt>對象</dt><dd>內部 IT 維運與支援團隊</dd></div>
+              <div><dt>使用者</dt><dd>員工</dd></div>
+              <div><dt>能力</dt><dd>請求、事件、變更、問題、資產與設定管理</dd></div>
+              <div><dt>存取</dt><dd>限組織內部</dd></div>
+            </dl>
+          </article>
+          <article class="sc-vs sc-vs--out">
+            <div class="sc-vs__head"><span class="sc-tile sc-tile--sm sc-tile--orange">🎧</span><h4>Customer Service Management</h4></div>
+            <p class="sc-vs__lead">面向「外部顧客」的服務（CSM）</p>
+            <dl>
+              <div><dt>對象</dt><dd>客戶服務團隊</dd></div>
+              <div><dt>使用者</dt><dd>外部顧客</dd></div>
+              <div><dt>能力</dt><dd>顧客脈絡、客服 AI Agent、CRM 整合</dd></div>
+              <div><dt>存取</dt><dd>對外公開</dd></div>
+            </dl>
+          </article>
+        </div>
+        <p class="sc-note sc-note--platform">兩者共用相同的服務管理技術，並同樣建構於 Atlassian 平台之上。</p>
+      </div>
+    </section>
+
     <!-- ===================== Paths ===================== -->
-    <section class="section section--alt" id="paths">
+    <section class="section" id="paths">
       <div class="container">
         <div class="section__head reveal">
           <h2>選擇最適合你團隊的目標平台</h2>
@@ -191,7 +269,7 @@
     </section>
 
     <!-- ===================== Compare ===================== -->
-    <section class="section" id="compare">
+    <section class="section section--alt" id="compare">
       <div class="container">
         <div class="section__head reveal">
           <h2>關鍵功能比較</h2>
@@ -218,7 +296,12 @@
             </tbody>
           </table>
         </div>
-        <p class="compare__note">完整功能差異請參考 Atlassian 官方文件：Feature changes and deprecations in Jira Service Management / Compass。</p>
+        <p class="compare__note">
+          完整功能差異請參考 Atlassian 官方文件：
+          <a href="https://support.atlassian.com/opsgenie/docs/feature-changes-and-deprecations-in-jira-service-management/" target="_blank" rel="noopener">Feature changes and deprecations in JSM</a>
+          ｜
+          <a href="https://support.atlassian.com/opsgenie/docs/what-to-expect-from-opsgenie-migration/" target="_blank" rel="noopener">What to expect from Opsgenie migration</a>
+        </p>
       </div>
     </section>
 
@@ -323,7 +406,7 @@
             <h3>不確定從哪裡開始？</h3>
             <p>讓鈦坦科技協助你評估現況、規劃時程，安心完成遷移。</p>
           </div>
-          <a href="#contact" class="btn btn--primary btn--lg">預約遷移諮詢</a>
+          <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary btn--lg">聯絡我們</a>
         </div>
       </div>
     </section>
@@ -351,7 +434,7 @@
       <div class="container contact__inner reveal">
         <div class="contact__copy">
           <h2>準備好開始你的 Opsgenie 遷移了嗎？</h2>
-          <p>鈦坦科技（Titansoft）為 Atlassian 合作夥伴，提供遷移評估、方案規劃、費用轉換與技術協助。歡迎與我們聯繫，量身規劃你的遷移路徑。</p>
+          <p>鈦坦科技（Titansoft）為 Atlassian 黃金級合作夥伴，提供遷移評估、方案規劃、費用轉換與技術協助。歡迎與我們聯繫，量身規劃你的遷移路徑。</p>
           <ul class="contact__points">
             <li>遷移現況評估與路徑建議</li>
             <li>時程規劃與並行驗證協助</li>
@@ -361,15 +444,15 @@
         </div>
         <div class="contact__card">
           <h3>聯絡鈦坦科技</h3>
-          <a class="contact__line" href="mailto:leo.chiang@titansoft.com.sg">
-            <span class="contact__ic">✉</span>
-            <span><span class="contact__lbl">Email</span>leo.chiang@titansoft.com.sg</span>
+          <a class="contact__line" href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener">
+            <span class="contact__ic">🎫</span>
+            <span><span class="contact__lbl">服務台入口</span>填寫遷移諮詢需求</span>
           </a>
           <a class="contact__line" href="https://www.atlassian.com/migration/assess/opsgenie" target="_blank" rel="noopener">
             <span class="contact__ic">↗</span>
             <span><span class="contact__lbl">Atlassian 官方遷移資源</span>Migrate from Opsgenie</span>
           </a>
-          <a href="mailto:leo.chiang@titansoft.com.sg?subject=Opsgenie%20遷移諮詢" class="btn btn--primary btn--block">寄信預約諮詢</a>
+          <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary btn--block">聯絡我們</a>
         </div>
       </div>
     </section>
@@ -380,18 +463,20 @@
     <div class="container footer__inner">
       <div class="footer__brand">
         <span class="brand">
-          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 100 100" width="24" height="24"><rect width="100" height="100" rx="24" fill="#0052CC"/><path d="M28 70 L50 26 L72 70 Z" fill="#fff"/></svg></span>
+          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 100 100" width="24" height="24"><rect width="100" height="100" rx="24" fill="#1868DB"/><path d="M28 70 L50 26 L72 70 Z" fill="#fff"/></svg></span>
           <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
         </span>
-        <p>由鈦坦科技（Titansoft）製作 · Atlassian 合作夥伴</p>
+        <p>由 <a href="https://rovo.titansoft.com.sg/" target="_blank" rel="noopener">鈦坦科技（Titansoft）</a> 製作 · Atlassian 黃金級合作夥伴</p>
       </div>
       <nav class="footer__nav" aria-label="頁尾導覽">
         <a href="#why">為什麼遷移</a>
+        <a href="#collection">Service Collection</a>
         <a href="#paths">遷移路徑</a>
         <a href="#compare">功能比較</a>
         <a href="#steps">遷移流程</a>
         <a href="#faq">常見問題</a>
         <a href="#contact">聯絡我們</a>
+        <a href="https://rovo.titansoft.com.sg/" target="_blank" rel="noopener">鈦坦科技 Rovo ↗</a>
       </nav>
     </div>
     <div class="footer__bottom">

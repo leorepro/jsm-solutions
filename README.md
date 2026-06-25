@@ -1,6 +1,6 @@
 # JSM.solutions — Opsgenie 遷移指南
 
-協助 Opsgenie 用戶平穩遷移至 **Jira Service Management** 或 **Compass** 的單頁式網站。由鈦坦科技（Titansoft）製作，Atlassian 合作夥伴。
+協助 Opsgenie 用戶平穩遷移至 **Jira Service Management** 或 **Compass** 的單頁式網站。由鈦坦科技（Titansoft）製作，Atlassian 黃金級合作夥伴。
 
 🔗 線上網址：<https://jsm.solutions>
 
@@ -57,4 +57,4 @@ python3 -m http.server 8000
 
 ## 聯絡
 
-leo.chiang@titansoft.com.sg
+sales@titansoft.com.sg
