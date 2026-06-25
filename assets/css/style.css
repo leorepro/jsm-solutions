@@ -213,7 +213,7 @@ summary.lang__btn { list-style: none; }
   padding: .45em 1em; border-radius: 8px; margin-bottom: 22px;
 }
 .hero__title { font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.04; font-weight: 800; letter-spacing: -.035em; color: var(--ink); text-wrap: wrap; }
-.grad { color: var(--blue); text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-style: wavy; text-decoration-thickness: 5px; text-underline-offset: .22em; text-decoration-skip-ink: none; }
+.grad { color: var(--blue); text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-style: wavy; text-decoration-thickness: 5px; text-underline-offset: .04em; text-decoration-skip-ink: none; }
 .hero__sc { display: block; font-size: .4em; font-weight: 700; color: var(--ink-3); margin-top: .5em; letter-spacing: 0; }
 .hero__lead { margin-top: 22px; font-size: 1.14rem; color: var(--ink-2); max-width: 540px; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
