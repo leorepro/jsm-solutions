@@ -160,7 +160,7 @@ code {
   background: var(--yellow); border-radius: 28px; transform: rotate(14deg); opacity: .9;
   box-shadow: -230px -150px 0 -36px var(--teal-soft), -120px 240px 0 -30px var(--purple-soft);
 }
-.hero__inner { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; position: relative; }
+.hero__inner { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: start; position: relative; }
 
 /* ---------- Hero countdown (Opsgenie end-of-support) ---------- */
 .countdown {
