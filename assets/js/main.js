@@ -336,11 +336,11 @@
            '<li>請至 <code>Settings &gt; Migrate Opsgenie</code> 查看推薦目標。</li>' +
            '<li>啟動遷移後，也可開啟臨時試用帳號進行過渡。</li>' +
            '</ul>' +
-           '<p>📌 若要試用 Enterprise 版本，需透過 <a href="https://support.atlassian.com/contact" target="_blank" rel="noopener">support.atlassian.com/contact</a> 提出申請。</p>'
+           '<p>📌 若要試用 Enterprise 版本，歡迎直接<a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener">與鈦坦科技聯繫</a>，由我們協助你提出申請。</p>'
       },
       {
         q: '我是 Jira Service Management Data Center 客戶，該怎麼辦？',
-        a: '<p>Opsgenie 是純雲端服務，<strong>沒有 Data Center 版本</strong>。</p>' +
+        a: '<p>Opsgenie 是雲端服務，<strong>沒有 Data Center 版本</strong>。</p>' +
            '<p>若你目前使用 Jira Service Management Data Center，請於 2027 年 4 月前完成以下其中一種遷移方案：</p>' +
            '<ul>' +
            '<li>先將 JSM Data Center 遷移至 Cloud，再將 Opsgenie 遷移進 Cloud JSM</li>' +
