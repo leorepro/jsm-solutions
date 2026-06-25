@@ -1,0 +1,281 @@
+/* ===================================================================
+   JSM.solutions / interactions
+   =================================================================== */
+(function () {
+  'use strict';
+
+  /* ---------- Year ---------- */
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------- Nav: scrolled state + mobile toggle ---------- */
+  var nav = document.getElementById('nav');
+  var toggle = document.getElementById('navToggle');
+
+  // Use an IntersectionObserver sentinel instead of a scroll listener
+  // (avoids per-frame scroll handlers; see taste-skill motion rules).
+  var sentinel = document.createElement('div');
+  sentinel.setAttribute('aria-hidden', 'true');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:8px;pointer-events:none;';
+  document.body.prepend(sentinel);
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      nav.classList.toggle('is-scrolled', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(sentinel);
+  }
+
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-menu-open');
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('.nav__links a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        nav.classList.remove('is-menu-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* ---------- FAQ data ---------- */
+  var FAQ = {
+    schedule: [
+      {
+        q: 'Opsgenie 發生了什麼事？何時影響用戶？',
+        a: '<p>自 2018 年起，Atlassian 一直致力於將 Opsgenie 的功能整合進平台與各項產品中，幫助 Dev 與 IT 團隊協作更順暢。</p>' +
+           '<ul>' +
+           '<li><strong>✅ 停售日期：<span class="hl">2025/6/4</span> 起</strong>　Opsgenie 將無法再新購（含直購、經銷、升降版本等）。已訂閱者仍可續約，僅限至支援終止前。</li>' +
+           '<li><strong>⛔ 終止支援：<span class="hl">2027/4/5</span> 起</strong>　屆時 Opsgenie 將無法再登入與使用，所有未遷移資料也會被刪除。</li>' +
+           '</ul>' +
+           '<p>這表示所有現有用戶必須於 2027 年 4 月前完成遷移。你有近兩年時間規劃轉換至 Jira Service Management 或 Compass。</p>'
+      },
+      {
+        q: '遷移需要多久？會不會影響使用？',
+        a: '<p>大多數遷移只需要幾分鐘，過程中 <span class="hl">不會有服務中斷或停機</span>。這是因為 Opsgenie 與 Jira Service Management / Compass 共用相同的後端架構。</p>' +
+           '<p>你可以選定一個遷移日期，系統會在該日自動完成資料同步。整個遷移過程快速、穩定，不會影響通知傳送或使用者操作。</p>'
+      },
+      {
+        q: '遷移後，我可以同時使用 Opsgenie 和新平台嗎？',
+        a: '<p>可以。Atlassian 設計了一段最多可達 <span class="hl">120 天的並行使用期</span>。</p>' +
+           '<p>這段期間內，Opsgenie 和 Jira Service Management（或 Compass）會同時運作，讓你有足夠時間完成驗證、測試及使用者訓練。</p>' +
+           '<p>在並行期間任何時候都可以關閉 Opsgenie，但若超過 120 天未手動關閉，系統會自動終止 Opsgenie 的使用。</p>'
+      },
+      {
+        q: '遷移有哪些重要時程需要注意？',
+        a: '<p>請務必留意以下兩個重要日期：</p>' +
+           '<ul>' +
+           '<li><strong>2025/6/4</strong>：Opsgenie 停止新購、升級、降級與新增站點。此日後僅能續約與加購使用者數量。</li>' +
+           '<li><strong>2027/4/5</strong>：Opsgenie 停止支援，無法再登入或存取資料，並刪除所有未遷移的帳號資料。</li>' +
+           '</ul>' +
+           '<p>我們建議在 2025 年底前啟動遷移，留足時間完成驗證與轉換。</p>'
+      }
+    ],
+    tech: [
+      {
+        q: 'Opsgenie 用戶可以選擇遷移到哪裡？',
+        a: '<p>您可以選擇遷移至以下任一平台：</p>' +
+           '<ul>' +
+           '<li><strong>Jira Service Management（JSM）</strong>：具備完整告警與事件管理功能</li>' +
+           '<li><strong>Compass</strong>：提供 alerting 與 on-call 管理功能</li>' +
+           '</ul>' +
+           '<p>請由 <strong>Opsgenie 擁有者（Owner）</strong> 前往 <code>Settings &gt; Migrate Opsgenie</code>，系統將根據使用狀況推薦最適合您的遷移路徑。對大多數用戶來說，遷移流程是高度自動化的。</p>'
+      },
+      {
+        q: 'Opsgenie、Jira Service Management 與 Compass 有什麼差異？',
+        a: '<p>三者皆具備警示與輪值排班，但在事件、變更、問題管理上差異明顯：</p>' +
+           '<ul>' +
+           '<li>警示與輪值排班：Opsgenie ✓ ／ JSM ✓ ／ Compass ✓</li>' +
+           '<li>事件管理 (incident)：Opsgenie ✓ ／ JSM ✓ ／ Compass ✕</li>' +
+           '<li>變更管理 (change)：僅 JSM ✓</li>' +
+           '<li>問題管理 (problem)：僅 JSM ✓</li>' +
+           '</ul>' +
+           '<p>詳細功能比較請參考 Atlassian 官方文件：Feature changes and deprecations in Jira Service Management / Compass。</p>'
+      },
+      {
+        q: '我的 Opsgenie 和 JSM 在不同組織，能遷移嗎？',
+        a: '<p>目前遷移工具僅支援同一組織的遷移。如果 Opsgenie 和 JSM 不在同一個站點，建議告知鈦坦團隊以便聯繫 Atlassian 支援，協助進行帳號搬移。</p>' +
+           '<p>搬移完成後，就可以透過遷移工具完成後續自動遷移設定。</p>'
+      },
+      {
+        q: '我該如何開始遷移？',
+        a: '<p>請由擁有 Opsgenie 擁有者權限的管理員，前往 <code>Settings &gt; Migrate Opsgenie</code>，系統會引導你：</p>' +
+           '<ul>' +
+           '<li>選擇遷移平台（JSM 或 Compass）</li>' +
+           '<li>預覽費用與方案</li>' +
+           '<li>確認帳單與計畫後，選擇執行日期</li>' +
+           '</ul>' +
+           '<p>⚠️ 若您的站台有特殊情況，可能無法立即排定遷移時間，請聯繫我們，將協助與原廠確認。</p>'
+      },
+      {
+        q: '從 Opsgenie 遷移到 JSM 或 Compass 需要多久？',
+        a: '<ul>' +
+           '<li>一旦擁有者啟動遷移，系統會自動同步大部分設定與資料。</li>' +
+           '<li>需先完成以下條件：指定遷移產品與方案、帳單管理員核准新的費用。</li>' +
+           '<li>系統會依您選擇的日期執行資料遷移。</li>' +
+           '</ul>' +
+           '<p>⚠️ 某些情況下仍需手動操作，屆時會提供指引文件協助完成。</p>'
+      },
+      {
+        q: 'JSM 是否能滿足我們的 alerting 與 on-call 功能需求？',
+        a: '<p>Jira Service Management 支援：</p>' +
+           '<ul>' +
+           '<li>從 Email、Webhook、自訂 API 等來源收集告警</li>' +
+           '<li>自動通知（推播、Email、簡訊、語音）並可升級通知</li>' +
+           '<li>詳細稽核紀錄，記錄通知發送與回應時間</li>' +
+           '</ul>' +
+           '<p>這些功能與原先在 Opsgenie 使用的 alerting 與 on-call 能力等效，甚至更完整。</p>'
+      },
+      {
+        q: '我可以自選遷移日期嗎？',
+        a: '<p>可以。</p>' +
+           '<p>當你完成方案確認與費用核准後，系統會讓你指定遷移日期，屆時會自動同步大多數設定與資料。</p>'
+      },
+      {
+        q: '遷移是全自動的嗎？需要我做什麼？',
+        a: '<p>大部分設定與資料會自動搬移，但你仍需由「Opsgenie 擁有者」與「站台管理員」角色：</p>' +
+           '<ul>' +
+           '<li>指定要遷移到的產品與方案</li>' +
+           '<li>請帳務管理員確認費用與帳期</li>' +
+           '<li>設定遷移執行日期</li>' +
+           '</ul>' +
+           '<p>部分特殊設定仍需人工處理，平台會提供說明文件。</p>'
+      },
+      {
+        q: '遷移後有哪些設定需要手動處理？',
+        a: '<p>大多數設定會自動搬移，但以下項目需手動補齊：</p>' +
+           '<ul>' +
+           '<li>某些整合（如非原生整合）</li>' +
+           '<li>通知規則</li>' +
+           '<li>電話與聯絡人資訊</li>' +
+           '</ul>' +
+           '<p>系統會提供清單與進度追蹤，協助你完成設定。</p>'
+      },
+      {
+        q: '我可以在遷移前試用 Jira Service Management 或 Compass 嗎？',
+        a: '<ul>' +
+           '<li>在啟動遷移前，您可先開始試用 Atlassian 推薦的遷移產品。</li>' +
+           '<li>請至 <code>Settings &gt; Migrate Opsgenie</code> 查看推薦目標。</li>' +
+           '<li>啟動遷移後，也可開啟臨時試用帳號進行過渡。</li>' +
+           '</ul>' +
+           '<p>📌 若要試用 Enterprise 版本，需透過 <a href="https://support.atlassian.com/contact" target="_blank" rel="noopener">support.atlassian.com/contact</a> 提出申請。</p>'
+      },
+      {
+        q: '我是 Jira Service Management Data Center 客戶，該怎麼辦？',
+        a: '<p>Opsgenie 是純雲端服務，<strong>沒有 Data Center 版本</strong>。</p>' +
+           '<p>若你目前使用 Jira Service Management Data Center，請於 2027 年 4 月前完成以下其中一種遷移方案：</p>' +
+           '<ul>' +
+           '<li>先將 JSM Data Center 遷移至 Cloud，再將 Opsgenie 遷移進 Cloud JSM</li>' +
+           '<li>將 Opsgenie 遷移至全新 Compass 站台</li>' +
+           '<li>將 Opsgenie 遷移至全新 JSM Cloud 站台</li>' +
+           '</ul>' +
+           '<p>你可以在 <code>Settings &gt; Migrate Opsgenie</code> 查看推薦遷移路徑與詳細步驟。</p>'
+      }
+    ],
+    billing: [
+      {
+        q: '遷移後的價格會是多少？',
+        a: '<p>你可以在 <code>Settings &gt; Migrate Opsgenie</code> 中：</p>' +
+           '<ul>' +
+           '<li>查看推薦平台與對應方案的費用</li>' +
+           '<li>比較不同版本功能差異</li>' +
+           '<li>依據需求選擇最適合的方案</li>' +
+           '</ul>' +
+           '<p>若因遷移導致費用上升，部分用戶可享限時優惠。</p>'
+      },
+      {
+        q: '遷移後我的原始合約怎麼辦？',
+        a: '<ul>' +
+           '<li>合約會持續有效直到訂閱結束或 2027/4/5</li>' +
+           '<li>自 2025/6/4 起，無法升降級、改版或新增站點</li>' +
+           '<li>仍可購買額外席次直到終止支援為止</li>' +
+           '</ul>'
+      },
+      {
+        q: '如果我在訂閱期內遷移，剩餘費用會怎麼處理？',
+        a: '<ul>' +
+           '<li>若 <strong>Opsgenie 與目標產品不在同一站台</strong>，並且剩餘訂閱天數 &gt; 30 天：<br>→ 系統會自動將剩餘時間轉為新產品的使用期限</li>' +
+           '<li>若 <strong>目標產品與 Opsgenie 在同一站台</strong>：<br>→ 鈦坦科技會協助聯繫 Atlassian 支援或業務代表討論退費事宜</li>' +
+           '</ul>'
+      }
+    ]
+  };
+
+  /* ---------- Render FAQ ---------- */
+  var list = document.getElementById('faqList');
+  var tabs = document.querySelectorAll('.faq-tab');
+
+  function render(cat) {
+    if (!list) return;
+    var items = FAQ[cat] || [];
+    list.innerHTML = items.map(function (item, i) {
+      return '' +
+        '<div class="faq-item">' +
+          '<button class="faq-q" aria-expanded="false">' +
+            '<span class="faq-q__no">Q' + (i + 1) + '</span>' +
+            '<span class="faq-q__text">' + item.q + '</span>' +
+            '<span class="faq-q__ic" aria-hidden="true"></span>' +
+          '</button>' +
+          '<div class="faq-a"><div class="faq-a__inner">' + item.a + '</div></div>' +
+        '</div>';
+    }).join('');
+    bindAccordion();
+  }
+
+  function bindAccordion() {
+    list.querySelectorAll('.faq-item').forEach(function (item) {
+      var btn = item.querySelector('.faq-q');
+      var ans = item.querySelector('.faq-a');
+      btn.addEventListener('click', function () {
+        var open = item.classList.contains('is-open');
+        // close siblings (one-open accordion)
+        list.querySelectorAll('.faq-item.is-open').forEach(function (o) {
+          if (o !== item) {
+            o.classList.remove('is-open');
+            o.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+            o.querySelector('.faq-a').style.maxHeight = null;
+          }
+        });
+        if (open) {
+          item.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+          ans.style.maxHeight = null;
+        } else {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+          ans.style.maxHeight = ans.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+      render(tab.getAttribute('data-cat'));
+    });
+  });
+
+  // initial
+  render('schedule');
+})();
