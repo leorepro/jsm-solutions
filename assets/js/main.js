@@ -244,17 +244,20 @@
            '<li><strong>Jira Service Management（JSM）</strong>：具備完整告警與事件管理功能</li>' +
            '<li><strong>Compass</strong>：提供 alerting 與 on-call 管理功能</li>' +
            '</ul>' +
-           '<p>請由 <strong>Opsgenie 擁有者（Owner）</strong> 前往 <code>Settings &gt; Migrate Opsgenie</code>，系統將根據使用狀況推薦最適合您的遷移路徑。對大多數用戶來說，遷移流程是高度自動化的。</p>'
+           '<p>系統會由 <strong>Opsgenie 擁有者（Owner）</strong> 根據實際使用狀況推薦最適合的遷移路徑，對大多數用戶而言，整個流程是高度自動化的。（操作位置與步驟見下方「我該如何開始遷移？」）</p>'
       },
       {
         q: 'Opsgenie、Jira Service Management 與 Compass 有什麼差異？',
         a: '<p>三者皆具備警示與輪值排班，但在事件、變更、問題管理上差異明顯：</p>' +
-           '<ul>' +
-           '<li>警示與輪值排班：Opsgenie ✓ ／ JSM ✓ ／ Compass ✓</li>' +
-           '<li>事件管理 (incident)：Opsgenie ✓ ／ JSM ✓ ／ Compass ✕</li>' +
-           '<li>變更管理 (change)：僅 JSM ✓</li>' +
-           '<li>問題管理 (problem)：僅 JSM ✓</li>' +
-           '</ul>' +
+           '<div class="faq-table-wrap"><table class="faq-table">' +
+             '<thead><tr><th>功能</th><th>Opsgenie</th><th>JSM</th><th>Compass</th></tr></thead>' +
+             '<tbody>' +
+               '<tr><td>警示與輪值排班</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>' +
+               '<tr><td>事件管理 (incident)</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">✕</td></tr>' +
+               '<tr><td>變更管理 (change)</td><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>' +
+               '<tr><td>問題管理 (problem)</td><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>' +
+             '</tbody>' +
+           '</table></div>' +
            '<p>詳細功能比較請參考 Atlassian 官方文件：Feature changes and deprecations in Jira Service Management / Compass。</p>'
       },
       {

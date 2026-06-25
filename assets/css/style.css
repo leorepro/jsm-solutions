@@ -358,6 +358,15 @@ code {
   .ind-panel { padding: 24px 20px; box-shadow: 5px 6px 0 rgba(23,43,77,.9); }
 }
 
+/* ---------- FAQ inline comparison table ---------- */
+.faq-table-wrap { overflow-x: auto; margin: 14px 0 16px; -webkit-overflow-scrolling: touch; }
+.faq-table { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 380px; }
+.faq-table th, .faq-table td { padding: 9px 12px; border: 1px solid var(--line); text-align: center; }
+.faq-table thead th { background: var(--bg-grey-2); color: var(--ink); font-weight: 700; }
+.faq-table tbody td:first-child, .faq-table thead th:first-child { text-align: left; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.faq-table .yes { color: var(--green-700); font-weight: 800; }
+.faq-table .no { color: var(--ink-4); font-weight: 800; }
+
 /* ---------- Section base ---------- */
 .section { padding: 100px 0; position: relative; }
 .section--alt { background: var(--bg-grey); }
