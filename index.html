@@ -409,6 +409,26 @@
       </div>
     </section>
 
+    <!-- ===================== Industries ===================== -->
+    <section class="section section--alt" id="industries">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">依產業應用</span>
+          <h2>不同產業，JSM 怎麼用？</h2>
+          <p class="section__sub">選擇你的產業，看看 JSM 對應的「適用產品內容」與實際「應用場景」。內容整理自 Atlassian 官方各產業頁面。</p>
+        </div>
+
+        <div class="ind-tabs reveal" role="tablist" aria-label="產業分類">
+          <button class="ind-tab is-active" role="tab" aria-selected="true" data-ind="tech">💻 科技與電信</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="finance">🏦 金融服務</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="retail">🛒 零售與電商</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="manufacturing">🏭 製造業</button>
+        </div>
+
+        <div class="ind-panel reveal" id="indPanel"></div>
+      </div>
+    </section>
+
     <!-- ===================== Feature showcase ===================== -->
     <section class="section" id="features">
       <div class="container">
@@ -582,6 +602,13 @@
             </ul>
           </div>
         </div>
+        <div class="cd-banner reveal">
+          <span class="cd-banner__ic" aria-hidden="true">⏳</span>
+          <p class="cd-banner__text">距離 Opsgenie 終止支援（2027 年 4 月 5 日）還剩</p>
+          <span class="cd-banner__num" id="countdownDays2">—</span>
+          <span class="cd-banner__unit">天</span>
+        </div>
+
         <div class="cta-band reveal">
           <div>
             <h3>不確定從哪裡開始？</h3>
@@ -597,7 +624,6 @@
       <div class="container">
         <div class="section__head reveal">
           <h2>常見問題</h2>
-          <p class="section__sub">依主題瀏覽 18 個最常被問到的遷移問題。</p>
         </div>
 
         <div class="faq-tabs reveal" role="tablist" aria-label="FAQ 分類">

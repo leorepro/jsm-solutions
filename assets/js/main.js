@@ -9,24 +9,151 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---------- Countdown to Opsgenie end of support (2027-04-05) ---------- */
-  var cdNum = document.getElementById('countdownDays');
-  if (cdNum) {
+  (function () {
     var target = new Date(2027, 3, 5); // 月份 0-indexed：3 = 4 月
     var now = new Date();
     var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     var days = Math.ceil((target - today) / 86400000);
+    var text = days > 0 ? days.toLocaleString('zh-Hant') : '0';
 
-    if (days > 0) {
-      cdNum.textContent = days.toLocaleString('zh-Hant');
-    } else {
-      // 已過終止支援日：改為提示文字
-      cdNum.style.display = 'none';
+    // 可能有多處顯示倒數天數（Hero、時間軸下方）
+    ['countdownDays', 'countdownDays2'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = text;
+    });
+
+    if (days <= 0) {
+      // 已過終止支援日：Hero 倒數改為提示文字
+      var cdNum = document.getElementById('countdownDays');
+      if (cdNum) cdNum.style.display = 'none';
       var unit = document.getElementById('countdownUnit');
       if (unit) unit.style.display = 'none';
       var label = document.getElementById('countdownLabel');
       if (label) label.textContent = 'Opsgenie 已終止支援';
     }
+  })();
+
+  /* ---------- Industries (tabbed) ---------- */
+  var INDUSTRIES = {
+    tech: {
+      name: '科技與電信業', en: 'Technology & Telecom',
+      intro: '科技與電信業身處競爭激烈、變化飛快的市場，「速度」就是致勝關鍵。團隊得在維運複雜基礎設施的同時，提供卓越客戶服務——任何一次中斷或回應延遲，都可能直接衝擊客戶體驗與營收。',
+      products: [
+        'AI 驅動的工作流程、自動化規則與 SLA，減少人工、加快回應',
+        '事件管理結合 AI 摘要，快速理解事件並啟動回應',
+        '變更管理帶入研發脈絡，有信心地部署、降低上線風險',
+        '集中式資產與組態管理，掌握複雜基礎設施全貌',
+        '永遠在線的 AI 虛擬服務專員，自動處理密碼重設等常見請求'
+      ],
+      scenarios: [
+        '網路／服務中斷時觸發事件流程，AI 摘要快速掌握、依 SLA 排序復原',
+        '打造可客製的服務台與「消除重複任務」的價值流',
+        '把變更與事件對應到正確的設備與組態，安心高頻發布',
+        '全通路客服自動化，常見請求免人工處理'
+      ],
+      stat: 'Twitter 客服 email 量降低 80%（email 支援佔比 95%→15%）',
+      clients: 'Twitter、Canva、Nextiva、Liberty Latin America'
+    },
+    finance: {
+      name: '金融服務業', en: 'Financial Services',
+      intro: '金融服務業在高度監管環境下處理大量敏感客戶資料與交易，任何服務中斷或資料外洩都可能造成法規裁罰與信任損失。如何在符合法規稽核的同時維持高可用性與效率，是核心的服務管理挑戰。',
+      products: [
+        '變更與組態管理結合稽核可視化，為每次變更留下可追溯軌跡',
+        '具備 EBA、BaFin 等金融法規合規認證，可自訂工作流程與 SLA',
+        '資產管理文件化、追蹤擁有權並降低成本',
+        'SLA 結合 AI 分流的優先佇列，確保關鍵金融請求即時處理',
+        'AI 自動化重複流程，強化溝通清晰度與利害關係人對齊'
+      ],
+      scenarios: [
+        '以全通路與 AI 虛擬專員集中接收原本散落 email 的合規請求',
+        '統一管理金融交易相關的請求、事件與變更',
+        '客服、理財顧問與合規團隊在同一平台協作',
+        '建置易自訂的自助服務入口，內外部使用者自助提交與追蹤'
+      ],
+      stat: '全球 50,000+ 企業採用 Jira Service Management',
+      clients: 'National Bank of Canada、EQ Bank、Kushki、Clip'
+    },
+    retail: {
+      name: '零售與電商', en: 'Retail & E-commerce',
+      intro: '零售與電商面對旺季尖峰流量、線上加門市的全通路客服一致性，以及顧客資料保護等多重挑戰。JSM 以 AI 驅動的服務體驗，協助團隊在規模化的同時提升滿意度、加速問題解決。',
+      products: [
+        '跨線上與門市的全通路 AI 虛擬服務專員支援',
+        '資產與庫存管理，追蹤庫存與設備生命週期',
+        'AI 自動化工作流程，自動生成請求類型、規則與專案設定',
+        'SLA 結合 AI 智慧分流的優先佇列',
+        '具 AIOps 能力的事件管理，加速營運排障'
+      ],
+      scenarios: [
+        '跨通路（網站、App、門市）統一客服，AI 結合知識庫自動回覆',
+        '密碼重設等高頻請求自動處理，釋放人力',
+        '即時掌握庫存、銷售與顧客行為數據，加速決策',
+        '雙 11／黑五尖峰以 AIOps 快速偵測並解決系統故障',
+        '門市 POS／終端設備故障的派工與生命週期管理'
+      ],
+      stat: 'The Very Group 上線以來平均滿意度 4.9 / 5',
+      clients: 'The Very Group（Gartner ITSM 領導者、Forrester ESM 領導者）'
+    },
+    manufacturing: {
+      name: '製造業', en: 'Manufacturing',
+      intro: '製造業面對產線停機的高昂成本、設備預防性維護需求，以及跨團隊的庫存與資產管理。企業需要一套互通的系統來標準化作業，並串接 R&D、支援與維運團隊。',
+      products: [
+        '資產管理，追蹤資產／產品／服務的擁有權與生命週期',
+        '事件回應（AIOps），串接 R&D、支援與維運團隊',
+        '組態管理，提供基礎設施與服務相依關係的可視性',
+        '全通路 AI 虛擬服務專員的請求管理',
+        'AI 自動化結合 AI 分流優先佇列，確保 SLA 達成'
+      ],
+      scenarios: [
+        '透過預防性維護，避免設備故障與產線停機',
+        '追蹤並管理資產、產品或服務的庫存',
+        '以留言、@提及與檔案共享進行跨團隊協作',
+        '在同一系統管理請求（request）、事件（incident）與變更（change）',
+        '產線設備故障的事件回應，定位相依資產、協調跨團隊復原'
+      ],
+      stat: '超過 50,000 家企業使用 Jira Service Management',
+      clients: 'QAD、Lucid Motors、Saint-Gobain'
+    }
+  };
+
+  var indPanel = document.getElementById('indPanel');
+  var indTabs = document.querySelectorAll('.ind-tab');
+
+  function renderIndustry(key) {
+    if (!indPanel) return;
+    var d = INDUSTRIES[key];
+    if (!d) return;
+    indPanel.innerHTML = '' +
+      '<p class="ind-intro">' + d.intro + '</p>' +
+      '<div class="ind-cols">' +
+        '<div class="ind-col">' +
+          '<h3><span class="ind-col__ic">🧩</span>適用產品內容</h3>' +
+          '<ul class="ind-list ind-list--prod">' +
+            d.products.map(function (p) { return '<li>' + p + '</li>'; }).join('') +
+          '</ul>' +
+        '</div>' +
+        '<div class="ind-col">' +
+          '<h3><span class="ind-col__ic">🎯</span>應用場景</h3>' +
+          '<ul class="ind-list ind-list--use">' +
+            d.scenarios.map(function (s) { return '<li>' + s + '</li>'; }).join('') +
+          '</ul>' +
+        '</div>' +
+      '</div>' +
+      '<div class="ind-proof">' +
+        '<span class="ind-proof__stat">' + d.stat + '</span>' +
+        '<span class="ind-proof__clients"><strong>代表客戶：</strong>' + d.clients + '</span>' +
+      '</div>';
   }
+
+  indTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      indTabs.forEach(function (t) { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+      renderIndustry(tab.getAttribute('data-ind'));
+    });
+  });
+
+  renderIndustry('tech');
 
   /* ---------- Nav: scrolled state + mobile toggle ---------- */
   var nav = document.getElementById('nav');
