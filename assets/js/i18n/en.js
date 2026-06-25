@@ -247,3 +247,4 @@ window.I18N_DATA['en'] = {
     ]
   }
 };
+window.I18N_DATA['en'].ui = { indProducts: 'Applicable Capabilities', indScenarios: 'Use Cases', indClients: 'Key customers: ' };

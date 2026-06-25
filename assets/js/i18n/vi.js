@@ -247,3 +247,4 @@ window.I18N_DATA['vi'] = {
     ]
   }
 };
+window.I18N_DATA['vi'].ui = { indProducts: 'Tính năng phù hợp', indScenarios: 'Tình huống ứng dụng', indClients: 'Khách hàng tiêu biểu: ' };

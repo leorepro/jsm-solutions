@@ -772,15 +772,19 @@ summary.lang__btn { list-style: none; }
   .contact__inner { grid-template-columns: 1fr; gap: 32px; }
 }
 
-@media (max-width: 760px) {
-  :root { --radius-lg: 16px; --radius-xl: 22px; }
+@media (max-width: 1100px) {
+  /* 多國語系：較長的導覽標籤在中等寬度會擠壓換行，提早收進漢堡選單（對所有語言都安全） */
   .nav__links, .nav__cta { display: none; }
   .nav__toggle { display: flex; }
   .nav.is-menu-open .nav__links {
     display: flex; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0;
     background: #fff; padding: 12px 20px 20px; gap: 2px; border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
   }
-  .nav.is-menu-open .nav__links a { padding: .85em .6em; font-size: 1rem; }
+  .nav.is-menu-open .nav__links a { padding: .85em .6em; font-size: 1rem; text-align: left; white-space: normal; }
+}
+
+@media (max-width: 760px) {
+  :root { --radius-lg: 16px; --radius-xl: 22px; }
 
   .hero { padding: calc(var(--nav-h) + 36px) 0 72px; }
   .hero__bg { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6vw), 0 100%); }

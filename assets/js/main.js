@@ -121,6 +121,10 @@
   };
   var INDUSTRIES = (LANG !== 'zh-Hant' && I18N[LANG] && I18N[LANG].industries) || ZH_INDUSTRIES;
 
+  // 介面標籤（依語言；中文為預設，其他語言由各 i18n/<lang>.js 的 ui 物件提供）
+  var ZH_UI = { indProducts: '適用產品內容', indScenarios: '應用場景', indClients: '代表客戶：' };
+  var UI = (LANG !== 'zh-Hant' && I18N[LANG] && I18N[LANG].ui) || ZH_UI;
+
   var indPanel = document.getElementById('indPanel');
   var indTabs = document.querySelectorAll('.ind-tab');
 
@@ -132,13 +136,13 @@
       '<p class="ind-intro">' + d.intro + '</p>' +
       '<div class="ind-cols">' +
         '<div class="ind-col">' +
-          '<h3><span class="ind-col__ic">🧩</span>適用產品內容</h3>' +
+          '<h3><span class="ind-col__ic">🧩</span>' + UI.indProducts + '</h3>' +
           '<ul class="ind-list ind-list--prod">' +
             d.products.map(function (p) { return '<li>' + p + '</li>'; }).join('') +
           '</ul>' +
         '</div>' +
         '<div class="ind-col">' +
-          '<h3><span class="ind-col__ic">🎯</span>應用場景</h3>' +
+          '<h3><span class="ind-col__ic">🎯</span>' + UI.indScenarios + '</h3>' +
           '<ul class="ind-list ind-list--use">' +
             d.scenarios.map(function (s) { return '<li>' + s + '</li>'; }).join('') +
           '</ul>' +
@@ -146,7 +150,7 @@
       '</div>' +
       '<div class="ind-proof">' +
         '<span class="ind-proof__stat">' + d.stat + '</span>' +
-        '<span class="ind-proof__clients"><strong>代表客戶：</strong>' + d.clients + '</span>' +
+        '<span class="ind-proof__clients"><strong>' + UI.indClients + '</strong>' + d.clients + '</span>' +
       '</div>';
   }
 

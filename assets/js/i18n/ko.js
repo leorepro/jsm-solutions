@@ -247,3 +247,4 @@ window.I18N_DATA['ko'] = {
     ]
   }
 };
+window.I18N_DATA['ko'].ui = { indProducts: '적용 제품 내용', indScenarios: '활용 시나리오', indClients: '대표 고객: ' };

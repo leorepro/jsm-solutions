@@ -247,3 +247,4 @@ window.I18N_DATA['ja'] = {
     ]
   }
 };
+window.I18N_DATA['ja'].ui = { indProducts: '対応する製品・機能', indScenarios: '活用シーン', indClients: '主な導入企業：' };
