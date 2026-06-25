@@ -19,7 +19,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231868DB'/%3E%3Cpath d='M30 68 L50 28 L70 68 Z' fill='%23fff'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="./assets/img/logos/jsm.svg" />
+  <link rel="apple-touch-icon" href="./assets/img/logos/jsm.svg" />
 
   <!-- Google Analytics (GA4) -->
   <!-- TODO: 將下方的 G-XXXXXXXXXX 換成你的 GA4 評估 ID -->
@@ -37,7 +38,7 @@
     <div class="container nav__inner">
       <a class="brand" href="#top" aria-label="JSM.solutions 首頁">
         <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 100 100" width="28" height="28"><rect width="100" height="100" rx="24" fill="#1868DB"/><path d="M28 70 L50 26 L72 70 Z" fill="#fff"/></svg>
+          <img src="./assets/img/logos/jsm.svg" width="28" height="28" alt="" />
         </span>
         <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
       </a>
@@ -111,7 +112,7 @@
               </div>
               <div class="jcard jcard--compass">
                 <span class="jcard__opt">Option 2</span>
-                <span class="jnode__icon compass">◆</span>
+                <img class="jnode__logo" src="./assets/img/logos/compass.svg" alt="Compass" />
                 <span class="jcard__name">Compass</span>
                 <span class="jcard__desc">開發者平台</span>
               </div>
@@ -128,7 +129,7 @@
         <div class="strip__sep" aria-hidden="true"></div>
         <div class="strip__item"><strong>2027 年 4 月 5 日</strong> 終止支援：無法登入，未遷移資料將被刪除</div>
         <div class="strip__sep" aria-hidden="true"></div>
-        <div class="strip__item">建議 <strong>2025 年內</strong> 啟動，留足驗證時間</div>
+        <div class="strip__item"><strong>應立即啟動檢驗</strong>，把握剩餘遷移時程</div>
       </div>
     </section>
 
@@ -193,7 +194,7 @@
             <p>彈性資產資料庫，追蹤、管理與視覺化關鍵資產與服務，建立相依關係。</p>
           </article>
           <article class="sc-card">
-            <span class="sc-tile">🤖</span>
+            <img class="sc-logo" src="./assets/img/logos/rovo.svg" alt="Rovo Agents" />
             <h3>Rovo Agents</h3>
             <p>AI 團隊夥伴，協助分流與攔截請求、解決事件並產生知識。</p>
           </article>
@@ -253,7 +254,7 @@
           <article class="path-card path-card--compass reveal">
             <div class="path-card__top">
               <span class="path-card__opt">Option 2</span>
-              <div class="path-card__logo"><span class="path-card__icon compass">◆</span> Compass</div>
+              <div class="path-card__logo"><img class="path-card__logo-ico" src="./assets/img/logos/compass.svg" alt="Compass" /> Compass</div>
             </div>
             <p class="path-card__tag">Alerts + On-call + 全面的內部開發者平台</p>
             <ul class="ticks">
@@ -283,7 +284,7 @@
                 <th scope="col" class="compare__feat">功能類別</th>
                 <th scope="col"><span class="th-pill"><img class="th-logo" src="./assets/img/logos/opsgenie.svg" alt="" /> Opsgenie</span></th>
                 <th scope="col"><span class="th-pill"><img class="th-logo" src="./assets/img/logos/jsm.svg" alt="" /> Jira Service Management</span></th>
-                <th scope="col"><span class="th-pill"><span class="th-pill__mark">◆</span> Compass</span></th>
+                <th scope="col"><span class="th-pill"><img class="th-logo" src="./assets/img/logos/compass.svg" alt="" /> Compass</span></th>
               </tr>
             </thead>
             <tbody>
@@ -384,54 +385,63 @@
         <ol class="steps">
           <li class="step reveal">
             <div class="step__num">01</div>
-            <h3>選擇你的方案</h3>
+            <h3>選擇新方案</h3>
             <ul>
-              <li>查看站台推薦的遷移路徑</li>
-              <li>試用推薦的目標產品</li>
-              <li>為團隊決定遷移路徑</li>
+              <li>Opsgenie 內建遷移引導工具依現有使用狀況推薦合適的 JSM 方案</li>
+              <li>確認目標產品</li>
+              <li>排定遷移日期</li>
             </ul>
           </li>
           <li class="step reveal">
             <div class="step__num">02</div>
             <h3>準備遷移</h3>
             <ul>
-              <li>取得帳務管理員（或合作夥伴）核准</li>
-              <li>準備使用者、團隊管理員與 Opsgenie 管理員</li>
-              <li>選定遷移日期並排程</li>
+              <li>遷移日期送交 billing admin 核准</li>
+              <li>期間先準備團隊的轉換</li>
+              <li>通知相關人員帳號／權限切換</li>
             </ul>
           </li>
           <li class="step reveal">
             <div class="step__num">03</div>
-            <h3>自動資料遷移</h3>
+            <h3>資料自動搬移</h3>
             <ul>
-              <li>資料自動同步至你選擇的產品</li>
-              <li>資料以「複製」方式遷移，原 Opsgenie 維持不變</li>
-              <li>兩個站台可並行運作</li>
+              <li>Atlassian 於選定日期自動搬移資料與配置</li>
+              <li>過程無停機時間</li>
+              <li>可繼續使用 Opsgenie 不受影響</li>
             </ul>
           </li>
           <li class="step reveal">
             <div class="step__num">04</div>
-            <h3>完成設定並啟用</h3>
+            <h3>完成遷移</h3>
             <ul>
-              <li>透過 Migration Hub 完成新產品設定</li>
-              <li>引導使用者完成各自的設定</li>
-              <li>驗證完成後，關閉 Opsgenie</li>
+              <li>Atlassian 提供 in-product 引導完成 JSM 內最後設定</li>
+              <li>確認 alerting／on-call 流程正常</li>
+              <li>驗證後正式關閉 Opsgenie</li>
             </ul>
           </li>
         </ol>
 
+        <div class="parallel-note reveal">
+          <span class="parallel-note__num">120<span>天</span></span>
+          <div>
+            <h4>遷移後最多 120 天並行使用 Opsgenie 與 JSM</h4>
+            <p>用來驗證所有設定是否正確運作、讓團隊逐步適應新系統，並在確認 alerting／on-call 流程正常後，再正式關閉 Opsgenie。</p>
+          </div>
+        </div>
+
         <div class="migrated reveal">
           <div class="migrated__col">
-            <h4>會自動遷移的資料</h4>
+            <h4>透過自動化工具搬移（原廠負責）</h4>
             <div class="chips">
-              <span>Alerts 告警</span><span>On-call 排班</span><span>團隊與設定</span>
-              <span>使用者角色與權限</span><span>通知規則</span><span>Services</span>
+              <span>Teams 與值班排程</span><span>Escalation 升級策略</span><span>Alert routing 告警路由規則</span>
+              <span>Notification 通知策略</span><span>Integrations 整合</span>
             </div>
           </div>
           <div class="migrated__col">
-            <h4>大部分自動遷移的設定</h4>
+            <h4>需客戶確認與配合</h4>
             <div class="chips">
-              <span>整合 Integrations</span><span>聯絡方式</span><span>聊天工具</span><span>OG 動作與事件規則</span>
+              <span>指定 billing admin 核准遷移日期</span><span>驗證 Integrations / Webhooks 等外部連接</span>
+              <span>120 天內進行 UAT 驗收</span><span>通知團隊帳號／權限切換</span>
             </div>
           </div>
         </div>
@@ -531,7 +541,7 @@
     <div class="container footer__inner">
       <div class="footer__brand">
         <span class="brand">
-          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 100 100" width="24" height="24"><rect width="100" height="100" rx="24" fill="#1868DB"/><path d="M28 70 L50 26 L72 70 Z" fill="#fff"/></svg></span>
+          <span class="brand__mark" aria-hidden="true"><img src="./assets/img/logos/jsm.svg" width="24" height="24" alt="" /></span>
           <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
         </span>
         <p>由 <a href="https://rovo.titansoft.com.sg/" target="_blank" rel="noopener">鈦坦科技（Titansoft）</a> 製作 · Atlassian 黃金級合作夥伴</p>

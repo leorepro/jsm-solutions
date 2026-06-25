@@ -66,7 +66,7 @@
            '<li><strong>✅ 停售日期：<span class="hl">2025 年 6 月 4 日</span> 起</strong>　Opsgenie 將無法再新購（含直購、經銷、升降版本等）。已訂閱者仍可續約，僅限至支援終止前。</li>' +
            '<li><strong>⛔ 終止支援：<span class="hl">2027 年 4 月 5 日</span> 起</strong>　屆時 Opsgenie 將無法再登入與使用，所有未遷移資料也會被刪除。</li>' +
            '</ul>' +
-           '<p>這表示所有現有用戶必須於 2027 年 4 月前完成遷移。你有近兩年時間規劃轉換至 Jira Service Management 或 Compass。</p>'
+           '<p>這表示所有現有用戶必須於 2027 年 4 月前完成遷移。距離終止支援已不到一年半，<span class="hl">應立即啟動檢驗與規劃</span>，轉換至 Jira Service Management 或 Compass。</p>'
       },
       {
         q: '遷移需要多久？會不會影響使用？',
@@ -86,7 +86,7 @@
            '<li><strong>2025 年 6 月 4 日</strong>：Opsgenie 停止新購、升級、降級與新增站點。此日後僅能續約與加購使用者數量。</li>' +
            '<li><strong>2027 年 4 月 5 日</strong>：Opsgenie 停止支援，無法再登入或存取資料，並刪除所有未遷移的帳號資料。</li>' +
            '</ul>' +
-           '<p>我們建議在 2025 年底前啟動遷移，留足時間完成驗證與轉換。</p>'
+           '<p>現已進入倒數階段，<span class="hl">應立即啟動遷移檢驗</span>，留足時間完成驗證與轉換。</p>'
       }
     ],
     tech: [
@@ -211,10 +211,12 @@
       },
       {
         q: '如果我在訂閱期內遷移，剩餘費用會怎麼處理？',
-        a: '<ul>' +
+        a: '<p><strong>年約客戶：</strong></p>' +
+           '<ul>' +
            '<li>若 <strong>Opsgenie 與目標產品不在同一站台</strong>，並且剩餘訂閱天數 &gt; 30 天：<br>→ 系統會自動將剩餘時間轉為新產品的使用期限</li>' +
            '<li>若 <strong>目標產品與 Opsgenie 在同一站台</strong>：<br>→ 鈦坦科技會協助聯繫 Atlassian 支援或業務代表討論退費事宜</li>' +
-           '</ul>'
+           '</ul>' +
+           '<p><strong>月付客戶：</strong>按月計費，<span class="hl">不存在「剩餘月份退款」的問題</span>。你可以隨時取消 Opsgenie，取消後會在當月結算週期結束時停止收費。</p>'
       }
     ]
   };
