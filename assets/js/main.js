@@ -464,4 +464,22 @@
       if (e.key === 'Escape' && box.classList.contains('is-open')) close();
     });
   })();
+
+  /* ---------- Plans：點擊欄位標題切換重點比較的版本 ---------- */
+  (function () {
+    var table = document.querySelector('.plans-table');
+    var cols = document.querySelectorAll('.plans-table .plans-col');
+    if (!table || !cols.length) return;
+    function select(plan) {
+      table.classList.remove('sel-0', 'sel-1', 'sel-2');
+      table.classList.add('sel-' + plan);
+      cols.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-plan') === plan ? 'true' : 'false'); });
+    }
+    cols.forEach(function (c) {
+      c.addEventListener('click', function () { select(c.getAttribute('data-plan')); });
+      c.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(c.getAttribute('data-plan')); }
+      });
+    });
+  })();
 })();

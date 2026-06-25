@@ -379,8 +379,22 @@ code {
 .plans-table tbody th[scope="row"], .plans-table__feat { text-align: left; font-weight: 600; color: var(--ink); white-space: nowrap; }
 .plans-table tbody tr:nth-child(even) td, .plans-table tbody tr:nth-child(even) th { background: var(--bg-grey-2); }
 .plans-table td.muted { color: var(--ink-4); }
-.plans-table .is-rec { background: var(--blue-soft) !important; color: var(--ink); font-weight: 600; box-shadow: inset 2px 0 0 var(--blue), inset -2px 0 0 var(--blue); }
-.plans-table thead th.is-rec { background: var(--blue-700); color: #fff; box-shadow: none; }
+/* 選中方案欄高亮（由上方切換鈕控制） */
+.plans-table.sel-0 tbody td:nth-child(2),
+.plans-table.sel-1 tbody td:nth-child(3),
+.plans-table.sel-2 tbody td:nth-child(4) {
+  background: var(--blue-soft) !important; color: var(--ink); font-weight: 600;
+  box-shadow: inset 2px 0 0 var(--blue), inset -2px 0 0 var(--blue);
+}
+.plans-table.sel-0 thead th:nth-child(2),
+.plans-table.sel-1 thead th:nth-child(3),
+.plans-table.sel-2 thead th:nth-child(4) { background: var(--blue-700); color: #fff; }
+
+.plans-switch { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 22px; }
+.plans-switch__btn { font-family: inherit; font-size: .96rem; font-weight: 700; color: var(--ink-2); background: #fff; border: 2px solid var(--line); border-radius: 10px; padding: .58em 1.3em; cursor: pointer; min-height: 46px; transition: border-color .15s ease, color .15s ease, background .15s ease; }
+.plans-switch__btn:hover { border-color: var(--blue); color: var(--blue-700); }
+.plans-switch__btn.is-active { background: var(--navy); border-color: var(--navy); color: #fff; }
+.plans-switch__btn .plans-rec { margin-left: 6px; }
 .plans-rec { display: inline-block; font-size: .62rem; font-weight: 800; background: var(--yellow); color: var(--ink); padding: .15em .5em; border-radius: 5px; margin-left: 4px; vertical-align: middle; }
 .plans-table .ck, .plans-table .cr { display: inline-block; width: 23px; height: 23px; border-radius: 50%; }
 .plans-table .ck { background: var(--green-700) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5 12 10 17 19 7'/%3E%3C/svg%3E") center/13px no-repeat; }
@@ -406,9 +420,11 @@ code {
 .appbadge__ic svg { width: 100%; height: 100%; display: block; }
 .appbadge__txt { display: flex; flex-direction: column; line-height: 1.12; text-align: left; }
 .appbadge__txt small { font-size: .6rem; font-weight: 500; letter-spacing: .02em; }
-.appbadge__txt strong { font-size: 1.06rem; font-weight: 600; letter-spacing: -.01em; }
+.appbadge__txt strong { font-size: 1.06rem; font-weight: 600; letter-spacing: -.01em; color: #fff; }
+.appbadge__txt small { color: #fff; }
 
 .mobile__visual { display: flex; justify-content: center; }
+.mobile__shot { width: 100%; max-width: 460px; height: auto; display: block; }
 .phone { width: 290px; background: #0B1F44; border-radius: 40px; padding: 10px; position: relative; box-shadow: 0 30px 60px -22px rgba(9,30,66,.55), 0 0 0 2px rgba(9,30,66,.1); }
 .phone__screen { background: #fff; border-radius: 32px; overflow: hidden; min-height: 520px; }
 .phone__status { display: flex; justify-content: space-between; align-items: center; padding: 12px 22px 4px; font-size: .74rem; font-weight: 700; color: var(--ink); }

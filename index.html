@@ -64,7 +64,7 @@
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy reveal">
-          <span class="eyebrow">停售 2025 年 6 月 4 日 · 終止支援 2027 年 4 月 5 日</span>
+          <span class="eyebrow">Opsgenie 已停售，終止支援時間為 2027 年 4 月 5 日</span>
           <h1 class="hero__title">從 Opsgenie 升級到 <span class="grad">Jira Service Management</span><span class="hero__sc">（Atlassian Service Collection）</span></h1>
           <p class="hero__lead">
             Opsgenie 即將終止支援。鈦坦科技以 Atlassian 黃金級合作夥伴身分，
@@ -90,7 +90,6 @@
           </div>
           <!-- Atlassian 風格「分岔旅程」：Opsgenie 一個來源，分岔到兩條遷移路徑 -->
           <div class="journey" aria-hidden="true">
-            <span class="blob blob--yellow"></span>
             <span class="blob blob--teal"></span>
             <span class="blob blob--magenta"></span>
 
@@ -554,34 +553,35 @@
           </div>
         </div>
 
+        <p class="plans-hint reveal">👆 點擊欄位標題（Standard／Premium／Enterprise）即可切換重點比較的版本</p>
         <div class="plans-table-wrap reveal">
-          <table class="plans-table">
+          <table class="plans-table sel-1">
             <thead>
               <tr>
                 <th class="plans-table__feat">功能項目</th>
-                <th>Standard<br><small>標準版</small></th>
-                <th class="is-rec">Premium <span class="plans-rec">推薦</span></th>
-                <th>Enterprise</th>
+                <th class="plans-col" data-plan="0" role="button" tabindex="0" aria-label="重點比較 Standard 標準版">Standard<br><small>標準版</small></th>
+                <th class="plans-col" data-plan="1" role="button" tabindex="0" aria-label="重點比較 Premium">Premium <span class="plans-rec">推薦</span></th>
+                <th class="plans-col" data-plan="2" role="button" tabindex="0" aria-label="重點比較 Enterprise">Enterprise</th>
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">客服支援</th><td>區域辦公時間</td><td class="is-rec">24/7（重大問題 &lt;1 小時回應）</td><td>24/7 ＋ 專屬資深支援團隊</td></tr>
-              <tr><th scope="row">正常運行時間 SLA</th><td class="muted">—</td><td class="is-rec">99.9%</td><td>99.95%</td></tr>
-              <tr><th scope="row">儲存空間</th><td>250 GB</td><td class="is-rec">無限制</td><td>無限制</td></tr>
-              <tr><th scope="row">重大事件數／月</th><td>100</td><td class="is-rec">無限制</td><td>無限制</td></tr>
-              <tr><th scope="row">事後檢討報告（PIR）</th><td>5</td><td class="is-rec">無限制</td><td>無限制</td></tr>
-              <tr><th scope="row">事件建立方式</th><td>僅手動</td><td class="is-rec">手動／自動／API／範本</td><td>手動／自動／API／範本</td></tr>
-              <tr><th scope="row">警示語音通知</th><td><span class="cr"></span></td><td class="is-rec"><span class="ck"></span></td><td><span class="ck"></span></td></tr>
-              <tr><th scope="row">進階變更管理（CI/CD 部署門檻）</th><td><span class="cr"></span></td><td class="is-rec"><span class="ck"></span></td><td><span class="ck"></span></td></tr>
-              <tr><th scope="row">問題管理佇列</th><td><span class="cr"></span></td><td class="is-rec"><span class="ck"></span></td><td><span class="ck"></span></td></tr>
-              <tr><th scope="row">AIOps（告警分組／相似偵測）</th><td><span class="cr"></span></td><td class="is-rec"><span class="ck"></span></td><td><span class="ck"></span></td></tr>
-              <tr><th scope="row">AI 事件建立／AI PIR／Slack 時間軸</th><td><span class="cr"></span></td><td class="is-rec"><span class="ck"></span></td><td><span class="ck"></span></td></tr>
-              <tr><th scope="row">自動化規則上限</th><td>1,000／agent</td><td class="is-rec">1,000／agent</td><td>無限制</td></tr>
-              <tr><th scope="row">資料駐留（Data residency）</th><td><span class="ck"></span></td><td class="is-rec"><span class="ck"></span></td><td><span class="ck"></span></td></tr>
-              <tr><th scope="row">發布軌道（Release tracks）</th><td><span class="ck"></span></td><td class="is-rec"><span class="ck"></span></td><td><span class="ck"></span></td></tr>
-              <tr><th scope="row">沙箱（Sandbox）</th><td><span class="ck"></span></td><td class="is-rec"><span class="ck"></span></td><td><span class="ck"></span></td></tr>
-              <tr><th scope="row">IP 允許清單</th><td><span class="ck"></span></td><td class="is-rec"><span class="ck"></span></td><td><span class="ck"></span></td></tr>
-              <tr><th scope="row">SSO／SCIM／AD 同步</th><td>需加購 Atlassian Guard</td><td class="is-rec">需加購 Atlassian Guard</td><td>內含</td></tr>
+              <tr><th scope="row">客服支援</th><td>區域辦公時間</td><td>24/7（重大問題 &lt;1 小時回應）</td><td>24/7 ＋ 專屬資深支援團隊</td></tr>
+              <tr><th scope="row">正常運行時間 SLA</th><td class="muted">—</td><td>99.9%</td><td>99.95%</td></tr>
+              <tr><th scope="row">儲存空間</th><td>250 GB</td><td>無限制</td><td>無限制</td></tr>
+              <tr><th scope="row">重大事件數／月</th><td>100</td><td>無限制</td><td>無限制</td></tr>
+              <tr><th scope="row">事後檢討報告（PIR）</th><td>5</td><td>無限制</td><td>無限制</td></tr>
+              <tr><th scope="row">事件建立方式</th><td>僅手動</td><td>手動／自動／API／範本</td><td>手動／自動／API／範本</td></tr>
+              <tr><th scope="row">警示語音通知</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">進階變更管理（CI/CD 部署門檻）</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">問題管理佇列</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">AIOps（告警分組／相似偵測）</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">AI 事件建立／AI PIR／Slack 時間軸</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">自動化規則上限</th><td>1,000／agent</td><td>1,000／agent</td><td>無限制</td></tr>
+              <tr><th scope="row">資料駐留（Data residency）</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">發布軌道（Release tracks）</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">沙箱（Sandbox）</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">IP 允許清單</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">SSO／SCIM／AD 同步</th><td>需加購 Atlassian Guard</td><td>需加購 Atlassian Guard</td><td>內含</td></tr>
             </tbody>
           </table>
         </div>
@@ -617,25 +617,8 @@
           </div>
         </div>
 
-        <div class="mobile__visual" aria-hidden="true">
-          <div class="phone">
-            <div class="phone__screen">
-              <div class="phone__status"><span>9:41</span><span class="phone__status-ic">●●● ▮</span></div>
-              <div class="phone__head">
-                <span class="phone__back">‹</span>
-                <span class="phone__title">IT 服務台<br><small>全部開啟中 ▾</small></span>
-                <span class="phone__more">⋯</span>
-              </div>
-              <ul class="phone__list">
-                <li class="ticket"><span class="ticket__ico ticket__ico--a">🖥️</span><span class="ticket__body"><span class="ticket__t">新進人員 MacBook 設定</span><span class="ticket__meta">KEY-123 <em class="pill pill--blue">等待支援</em></span></span></li>
-                <li class="ticket"><span class="ticket__ico ticket__ico--b">📈</span><span class="ticket__body"><span class="ticket__t">貸款系統升級</span><span class="ticket__meta">KEY-122 <em class="pill pill--yellow">等待客戶</em></span></span></li>
-                <li class="ticket"><span class="ticket__ico ticket__ico--c">⚠️</span><span class="ticket__body"><span class="ticket__t">帳務網站無法連線</span><span class="ticket__meta">KEY-121 <em class="pill pill--blue">等待支援</em></span></span></li>
-                <li class="ticket"><span class="ticket__ico ticket__ico--a">✉️</span><span class="ticket__body"><span class="ticket__t">無法寄送 Email</span><span class="ticket__meta">KEY-120 <em class="pill pill--blue">等待支援</em></span></span></li>
-                <li class="ticket"><span class="ticket__ico ticket__ico--c">💥</span><span class="ticket__body"><span class="ticket__t">帳務頁面藍白當機</span><span class="ticket__meta">KEY-119 <em class="pill pill--blue">等待支援</em></span></span></li>
-                <li class="ticket"><span class="ticket__ico ticket__ico--b">🔄</span><span class="ticket__body"><span class="ticket__t">電腦無法重新開機</span><span class="ticket__meta">KEY-118 <em class="pill pill--yellow">等待客戶</em></span></span></li>
-              </ul>
-            </div>
-          </div>
+        <div class="mobile__visual">
+          <img class="mobile__shot" src="./assets/img/jsm-mobile-app.png" alt="Jira Service Management 行動 App：通知中心與 IT 服務台工單列表畫面" loading="lazy" />
         </div>
       </div>
     </section>
