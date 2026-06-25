@@ -8,6 +8,26 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---------- Countdown to Opsgenie end of support (2027-04-05) ---------- */
+  var cdNum = document.getElementById('countdownDays');
+  if (cdNum) {
+    var target = new Date(2027, 3, 5); // 月份 0-indexed：3 = 4 月
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = Math.ceil((target - today) / 86400000);
+
+    if (days > 0) {
+      cdNum.textContent = days.toLocaleString('zh-Hant');
+    } else {
+      // 已過終止支援日：改為提示文字
+      cdNum.style.display = 'none';
+      var unit = document.getElementById('countdownUnit');
+      if (unit) unit.style.display = 'none';
+      var label = document.getElementById('countdownLabel');
+      if (label) label.textContent = 'Opsgenie 已終止支援';
+    }
+  }
+
   /* ---------- Nav: scrolled state + mobile toggle ---------- */
   var nav = document.getElementById('nav');
   var toggle = document.getElementById('navToggle');

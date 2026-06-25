@@ -160,6 +160,21 @@ code {
 }
 .hero__inner { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; position: relative; }
 
+/* ---------- Hero countdown (Opsgenie end-of-support) ---------- */
+.countdown {
+  display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px;
+  background: #fff; border: 2px solid var(--ink); border-radius: 12px;
+  padding: 11px 18px; margin-bottom: 16px;
+  box-shadow: 4px 4px 0 var(--yellow);
+}
+.countdown__ic { align-self: center; font-size: 1.05rem; line-height: 1; }
+.countdown__label { font-size: .92rem; font-weight: 700; color: var(--ink); }
+.countdown__num {
+  font-size: 1.85rem; font-weight: 800; color: var(--red);
+  letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums;
+}
+.countdown__unit { font-size: .95rem; font-weight: 800; color: var(--red); }
+
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: .82rem; font-weight: 700; letter-spacing: .01em;
@@ -167,7 +182,7 @@ code {
   padding: .45em 1em; border-radius: 8px; margin-bottom: 22px;
 }
 .hero__title { font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.04; font-weight: 800; letter-spacing: -.035em; color: var(--ink); }
-.grad { color: var(--blue); text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-style: wavy; text-decoration-thickness: 3px; text-underline-offset: .2em; text-decoration-skip-ink: none; }
+.grad { color: var(--blue); text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-style: wavy; text-decoration-thickness: 5px; text-underline-offset: .22em; text-decoration-skip-ink: none; }
 .hero__sc { display: block; font-size: .4em; font-weight: 700; color: var(--ink-3); margin-top: .5em; letter-spacing: 0; }
 .hero__lead { margin-top: 22px; font-size: 1.14rem; color: var(--ink-2); max-width: 540px; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
