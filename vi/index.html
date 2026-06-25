@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hướng dẫn di chuyển Opsgenie ｜ Chuyển đổi êm ái sang Jira Service Management (Service Collection)</title>
+  <meta name="description" content="Opsgenie sẽ kết thúc hỗ trợ vào 5 tháng 4, 2027. Titansoft (đối tác Gold của Atlassian) hỗ trợ bạn di chuyển êm ái sang Jira Service Management (Service Collection) hoặc Compass, không gián đoạn, đồng bộ tự động, đầy đủ năng lực cảnh báo và on-call." />
+  <meta name="theme-color" content="#1868DB" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hướng dẫn di chuyển Opsgenie ｜ Chuyển đổi êm ái sang Jira Service Management (Service Collection)" />
+  <meta property="og:description" content="Opsgenie sắp kết thúc hỗ trợ. Titansoft hỗ trợ bạn di chuyển êm ái sang Jira Service Management (Service Collection) hoặc Compass." />
+  <meta property="og:url" content="https://jsm.solutions/vi/" />
+  <meta property="og:site_name" content="JSM.solutions" />
+
+  <link rel="canonical" href="https://jsm.solutions/vi/" />
+  <!-- 多國語系 hreflang -->
+  <link rel="alternate" hreflang="zh-Hant" href="https://jsm.solutions/" />
+  <link rel="alternate" hreflang="en" href="https://jsm.solutions/en/" />
+  <link rel="alternate" hreflang="ja" href="https://jsm.solutions/ja/" />
+  <link rel="alternate" hreflang="ko" href="https://jsm.solutions/ko/" />
+  <link rel="alternate" hreflang="vi" href="https://jsm.solutions/vi/" />
+  <link rel="alternate" hreflang="x-default" href="https://jsm.solutions/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logos/jsm.svg" />
+  <link rel="apple-touch-icon" href="../assets/img/logos/jsm.svg" />
+
+  <!-- Google Analytics (GA4) -->
+  <!-- TODO: 將下方的 G-XXXXXXXXXX 換成你的 GA4 評估 ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <!-- ===================== Nav ===================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="Trang chủ JSM.solutions">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="../assets/img/logos/jsm.svg" width="28" height="28" alt="" />
+        </span>
+        <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
+      </a>
+      <nav class="nav__links" aria-label="Điều hướng chính">
+        <a href="#why">Vì sao di chuyển</a>
+        <a href="#solutions">Giải quyết gì</a>
+        <a href="#industries">Ngành áp dụng</a>
+        <a href="#paths">Đường dẫn di chuyển</a>
+        <a href="#plans">Khác biệt phiên bản</a>
+        <a href="#steps">Quy trình di chuyển</a>
+        <a href="#faq">Câu hỏi thường gặp</a>
+      </nav>
+      <details class="lang">
+        <summary class="lang__btn" aria-label="切換語言 / Change language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+          <span>Tiếng Việt</span>
+        </summary>
+        <ul class="lang__menu">
+          <li><a href="/">繁體中文</a></li>
+          <li><a href="/en/">English</a></li>
+          <li><a href="/ja/">日本語</a></li>
+          <li><a href="/ko/">한국어</a></li>
+          <li><a href="/vi/" class="is-current">Tiếng Việt</a></li>
+        </ul>
+      </details>
+      <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary nav__cta">Liên hệ chúng tôi</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== Hero ===================== -->
+  <main id="top">
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy reveal">
+          <span class="eyebrow">Opsgenie đã ngừng bán, thời điểm kết thúc hỗ trợ là 5 tháng 4, 2027</span>
+          <h1 class="hero__title">Nâng cấp từ Opsgenie lên<br><span class="grad">Jira Service Management</span><span class="hero__sc">(Atlassian Service Collection)</span></h1>
+          <p class="hero__lead">
+            Opsgenie sắp kết thúc hỗ trợ. Titansoft với tư cách đối tác Gold của Atlassian,
+            hỗ trợ bạn di chuyển không gián đoạn sang Jira Service Management (Service Collection) hoặc Compass.
+          </p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary btn--lg">Bắt đầu lập kế hoạch di chuyển</a>
+            <a href="#steps" class="btn btn--ghost btn--lg">Tìm hiểu quy trình 4 bước →</a>
+          </div>
+          <div class="hero__stats">
+            <div class="stat"><span class="stat__num">0</span><span class="stat__label">Gián đoạn dịch vụ</span></div>
+            <div class="stat"><span class="stat__num">120<span class="stat__unit">ngày</span></span><span class="stat__label">Giai đoạn dùng song song</span></div>
+            <div class="stat"><span class="stat__num">4</span><span class="stat__label">Bước hoàn tất di chuyển</span></div>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="countdown" id="countdown" role="timer" aria-live="polite" aria-label="Đếm ngược kết thúc hỗ trợ Opsgenie">
+            <span class="countdown__ic" aria-hidden="true">⏳</span>
+            <span class="countdown__label" id="countdownLabel">Còn lại đến khi Opsgenie kết thúc hỗ trợ</span>
+            <span class="countdown__num" id="countdownDays">—</span>
+            <span class="countdown__unit" id="countdownUnit">ngày</span>
+          </div>
+          <!-- Atlassian 風格「分岔旅程」：Opsgenie 一個來源，分岔到兩條遷移路徑 -->
+          <div class="journey" aria-hidden="true">
+            <span class="blob blob--teal"></span>
+            <span class="blob blob--magenta"></span>
+
+            <div class="journey__source">
+              <img class="jnode__logo" src="../assets/img/logos/opsgenie.svg" alt="Opsgenie" />
+              <span class="jnode__text">
+                <span class="jnode__name">Opsgenie</span>
+                <span class="jnode__desc">Alerts · On-call · Incidents</span>
+              </span>
+            </div>
+
+            <svg class="journey__branch" viewBox="0 0 360 70" fill="none" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M180 4 V26 Q180 40 150 40 H92 Q62 40 62 56 V66" class="branch-line" />
+              <path d="M180 4 V26 Q180 40 210 40 H268 Q298 40 298 56 V66" class="branch-line" />
+              <circle cx="62" cy="68" r="3.5" class="branch-dot" />
+              <circle cx="298" cy="68" r="3.5" class="branch-dot" />
+            </svg>
+
+            <div class="journey__targets">
+              <div class="jcard jcard--jsm">
+                <span class="jcard__opt">Option 1</span>
+                <span class="badge badge--rec">Khuyến nghị</span>
+                <img class="jnode__logo" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" />
+                <span class="jcard__name">Jira Service Management</span>
+                <span class="jcard__desc">Service Collection · ITSM</span>
+              </div>
+              <div class="jcard jcard--compass">
+                <span class="jcard__opt">Option 2</span>
+                <img class="jnode__logo" src="../assets/img/logos/compass.svg" alt="Compass" />
+                <span class="jcard__name">Compass</span>
+                <span class="jcard__desc">Nền tảng nhà phát triển</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Trust / urgency strip ===================== -->
+    <section class="strip">
+      <div class="container strip__inner">
+        <div class="strip__item"><strong>4 tháng 6, 2025</strong> ngừng bán: không thể mua mới, nâng/hạ cấp, thêm site</div>
+        <div class="strip__sep" aria-hidden="true"></div>
+        <div class="strip__item"><strong>5 tháng 4, 2027</strong> kết thúc hỗ trợ: không thể đăng nhập, dữ liệu chưa di chuyển sẽ bị xóa</div>
+        <div class="strip__sep" aria-hidden="true"></div>
+        <div class="strip__item"><strong>Nên lập tức khởi động rà soát</strong>, tận dụng thời gian di chuyển còn lại</div>
+      </div>
+    </section>
+
+    <!-- ===================== Why ===================== -->
+    <section class="section" id="why">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Chương tiếp theo của Opsgenie, bắt đầu từ bây giờ</h2>
+          <p class="section__sub">
+            Kể từ năm 2018, Atlassian liên tục tích hợp các năng lực của Opsgenie vào nền tảng và các sản phẩm,
+            giúp các đội ngũ Dev và IT cộng tác mượt mà hơn. Giờ đây bạn có hai đường dẫn di chuyển rõ ràng.
+          </p>
+        </div>
+
+        <div class="why reveal">
+          <article class="why__lead">
+            <div class="info-card__icon info-card__icon--on-accent">🔔</div>
+            <h3>Vì sao bắt buộc phải di chuyển ngay?</h3>
+            <p>Sau khi Opsgenie ngừng hỗ trợ sẽ không thể đăng nhập, mọi dữ liệu chưa di chuyển đều sẽ bị xóa. Càng khởi động sớm, bạn càng có thể ung dung hoàn tất kiểm chứng, đào tạo và lập kế hoạch chi phí, tránh gián đoạn vận hành và mất mát dữ liệu.</p>
+            <a href="#timeline" class="why__link">Xem các mốc thời gian quan trọng →</a>
+          </article>
+          <div class="why__col">
+            <article class="info-card">
+              <div class="info-card__icon">⏱️</div>
+              <h3>Gần như không gián đoạn</h3>
+              <p>Hầu hết các cuộc di chuyển chỉ mất vài phút. Opsgenie và JSM／Compass dùng chung kiến trúc backend, quá trình không ảnh hưởng đến việc gửi thông báo hay thao tác hằng ngày.</p>
+            </article>
+            <article class="info-card">
+              <div class="info-card__icon">🤝</div>
+              <h3>Đối tác hỗ trợ toàn trình</h3>
+              <p>Titansoft với tư cách đối tác Gold của Atlassian, hỗ trợ đánh giá phương án, lập kế hoạch thời gian, xử lý các tình huống đặc biệt và chuyển đổi chi phí.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Service Collection ===================== -->
+    <section class="section section--alt" id="collection">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Ra mắt 7 tháng 10, 2025</span>
+          <h2>Tìm hiểu Atlassian Service Collection</h2>
+          <p class="section__sub">Atlassian tích hợp Jira Service Management, Customer Service Management, Assets và Rovo Agents thành một giải pháp quản lý dịch vụ duy nhất, được hỗ trợ bởi AI. Jira Service Management sau khi di chuyển từ Opsgenie chính là lõi của Service Collection.</p>
+        </div>
+
+        <div class="sc-hero reveal">
+          <img class="sc-hero__img" src="../assets/img/service-collection.png" alt="Atlassian Service Collection: tích hợp Jira Service Management, Assets, Customer Service Management và Rovo Agents" loading="lazy" />
+        </div>
+
+        <div class="sc-grid reveal">
+          <article class="sc-card sc-card--jsm">
+            <span class="sc-badge">Đích di chuyển Opsgenie</span>
+            <img class="sc-logo" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" />
+            <h3>Jira Service Management</h3>
+            <p>Quản lý dịch vụ cốt lõi, kết nối các đội ngũ Dev, IT và nghiệp vụ, nâng cao trải nghiệm nhân viên và độ bền dịch vụ.</p>
+          </article>
+          <article class="sc-card">
+            <img class="sc-logo" src="../assets/img/logos/csm.svg" alt="Customer Service Management" />
+            <h3>Customer Service Management</h3>
+            <p>App dịch vụ khách hàng đối ngoại hoàn toàn mới, dùng AI tăng cường hỗ trợ khách hàng bên ngoài, kết nối vòng phản hồi giữa tuyến đầu và nghiệp vụ.</p>
+          </article>
+          <article class="sc-card">
+            <img class="sc-logo" src="../assets/img/logos/assets.svg" alt="Assets" />
+            <h3>Assets</h3>
+            <p>Cơ sở dữ liệu tài sản linh hoạt, theo dõi, quản lý và trực quan hóa các tài sản và dịch vụ trọng yếu, thiết lập quan hệ phụ thuộc.</p>
+          </article>
+          <article class="sc-card">
+            <img class="sc-logo" src="../assets/img/logos/rovo.svg" alt="Rovo Agents" />
+            <h3>Rovo Agents</h3>
+            <p>Đồng đội AI, hỗ trợ phân loại và chặn yêu cầu, giải quyết sự cố và tạo ra tri thức.</p>
+          </article>
+        </div>
+        <p class="sc-note">Các ứng dụng trên được bán tích hợp (không bán riêng lẻ), dùng chung các công nghệ quản lý dịch vụ như hàng đợi, SLA, biểu mẫu và báo cáo, và được xây dựng trên nền tảng Atlassian (Rovo, Teamwork Graph, Automation, Analytics, Security).</p>
+
+        <div class="sc-compare reveal">
+          <article class="sc-vs sc-vs--in">
+            <div class="sc-vs__head"><img class="sc-logo sc-logo--sm" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" /><h4>Jira Service Management</h4></div>
+            <p class="sc-vs__lead">Dịch vụ hướng "nội bộ tổ chức" (ITSM)</p>
+            <dl>
+              <div><dt>Đối tượng</dt><dd>Đội ngũ vận hành và hỗ trợ IT nội bộ</dd></div>
+              <div><dt>Người dùng</dt><dd>Nhân viên</dd></div>
+              <div><dt>Năng lực</dt><dd>Quản lý yêu cầu, sự cố, thay đổi, vấn đề, tài sản và cấu hình</dd></div>
+              <div><dt>Truy cập</dt><dd>Giới hạn trong nội bộ tổ chức</dd></div>
+            </dl>
+          </article>
+          <article class="sc-vs sc-vs--out">
+            <div class="sc-vs__head"><img class="sc-logo sc-logo--sm" src="../assets/img/logos/csm.svg" alt="Customer Service Management" /><h4>Customer Service Management</h4></div>
+            <p class="sc-vs__lead">Dịch vụ hướng "khách hàng bên ngoài" (CSM)</p>
+            <dl>
+              <div><dt>Đối tượng</dt><dd>Đội ngũ dịch vụ khách hàng</dd></div>
+              <div><dt>Người dùng</dt><dd>Khách hàng bên ngoài</dd></div>
+              <div><dt>Năng lực</dt><dd>Bối cảnh khách hàng, AI Agent dịch vụ khách hàng, tích hợp CRM</dd></div>
+              <div><dt>Truy cập</dt><dd>Công khai ra bên ngoài</dd></div>
+            </dl>
+          </article>
+        </div>
+        <p class="sc-note sc-note--platform">Cả hai dùng chung công nghệ quản lý dịch vụ giống nhau, và đều được xây dựng trên nền tảng Atlassian.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Paths ===================== -->
+    <section class="section" id="paths">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Chọn nền tảng đích phù hợp nhất cho đội ngũ của bạn</h2>
+          <p class="section__sub">Với tư cách chủ sở hữu Opsgenie (Owner), truy cập <code>Settings &gt; Migrate Opsgenie</code>, hệ thống sẽ dựa trên tình hình sử dụng để đề xuất đường dẫn di chuyển phù hợp nhất.</p>
+        </div>
+
+        <div class="paths">
+          <article class="path-card path-card--jsm reveal">
+            <div class="path-card__top">
+              <span class="path-card__opt">Option 1 · Khuyến nghị</span>
+              <div class="path-card__logo"><img class="path-card__logo-ico" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" /> Jira Service Management</div>
+            </div>
+            <p class="path-card__tag">Alerts + On-call + Incidents + giải pháp ITSM đầu-cuối</p>
+            <ul class="ticks">
+              <li>Giữ lại các tính năng quản lý sự cố cốt lõi mà đội ngũ dựa vào mỗi ngày, tích hợp trong một nền tảng duy nhất</li>
+              <li>SLA độ khả dụng 99.9% và hỗ trợ theo khu vực, ổn định đáng tin cậy</li>
+              <li>Có năng lực AI Ops và ITSM được hỗ trợ bởi AI</li>
+              <li>Có thể cộng thêm phí vào gói hiện có, tránh chi phí đăng ký phát sinh</li>
+            </ul>
+            <div class="path-card__foot">Phù hợp nhất: đội ngũ cần quản lý dịch vụ IT đầy đủ (sự cố / thay đổi / vấn đề)</div>
+          </article>
+
+          <article class="path-card path-card--compass reveal">
+            <div class="path-card__top">
+              <span class="path-card__opt">Option 2</span>
+              <div class="path-card__logo"><img class="path-card__logo-ico" src="../assets/img/logos/compass.svg" alt="Compass" /> Compass</div>
+            </div>
+            <p class="path-card__tag">Alerts + On-call + nền tảng nhà phát triển nội bộ toàn diện</p>
+            <ul class="ticks">
+              <li>Cung cấp quản lý alerting và lịch trực on-call</li>
+              <li>Nền tảng nội bộ lấy trải nghiệm nhà phát triển làm trung tâm</li>
+              <li>Phù hợp với đội ngũ kỹ thuật lấy danh mục dịch vụ phần mềm làm trung tâm</li>
+              <li>Nhẹ, tập trung vào quy trình DevOps</li>
+            </ul>
+            <div class="path-card__foot">Phù hợp nhất: đội ngũ kỹ thuật lấy nhà phát triển làm trung tâm, không cần ITSM đầy đủ</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Compare ===================== -->
+    <section class="section section--alt" id="compare">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>So sánh tính năng then chốt</h2>
+          <p class="section__sub">Đều có cảnh báo và on-call, nhưng khác biệt rõ rệt về quản lý sự cố, thay đổi, vấn đề và năng lực AI.</p>
+        </div>
+
+        <div class="table-wrap reveal">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th scope="col" class="compare__feat">Nhóm tính năng</th>
+                <th scope="col"><span class="th-pill"><img class="th-logo" src="../assets/img/logos/opsgenie.svg" alt="" /> Opsgenie</span></th>
+                <th scope="col"><span class="th-pill"><img class="th-logo" src="../assets/img/logos/jsm.svg" alt="" /> Jira Service Management</span></th>
+                <th scope="col"><span class="th-pill"><img class="th-logo" src="../assets/img/logos/compass.svg" alt="" /> Compass</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Cảnh báo và lịch trực luân phiên (Alerting &amp; on-call)</th><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><th scope="row">Quản lý sự cố (Incident)</th><td class="yes">✓</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">Quản lý thay đổi (Change)</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">Quản lý vấn đề (Problem)</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">AI Ops</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">ITSM được hỗ trợ bởi AI</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="compare__note">
+          Để biết khác biệt tính năng đầy đủ, vui lòng tham khảo tài liệu chính thức của Atlassian:
+          <a href="https://support.atlassian.com/opsgenie/docs/feature-changes-and-deprecations-in-jira-service-management/" target="_blank" rel="noopener">Feature changes and deprecations in JSM</a>
+          ｜
+          <a href="https://support.atlassian.com/opsgenie/docs/what-to-expect-from-opsgenie-migration/" target="_blank" rel="noopener">What to expect from Opsgenie migration</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== Solutions / ITSM practices ===================== -->
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Thực hành ITIL / ITSM đầy đủ</span>
+          <h2>Mua JSM, giúp bạn giải quyết những vấn đề gì?</h2>
+          <p class="section__sub">Jira Service Management không chỉ tiếp nhận năng lực cảnh báo và trực ban của Opsgenie, mà còn tích hợp các thực hành ITIL／ITSM đầy đủ trên cùng một nền tảng. Dưới đây là những nỗi đau khách hàng tương ứng với từng thực hành quản lý dịch vụ, cùng giải pháp của JSM.</p>
+        </div>
+
+        <div class="sol-grid">
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🎫</span><div class="sol-card__title"><h3>Quản lý yêu cầu dịch vụ</h3><span class="sol-card__en">Request Management</span></div></div>
+            <p class="sol-card__pain">Yêu cầu rải rác trong email và tin nhắn riêng, các yêu cầu nhỏ lặp lại làm ngợp IT, nhân viên cũng không tra được tiến độ của mình.</p>
+            <ul class="sol-ticks">
+              <li>Một cổng duy nhất tập trung mọi yêu cầu, tự động phân loại vào hàng đợi (Queues)</li>
+              <li>Biểu mẫu và loại yêu cầu thu thập thông tin có cấu trúc</li>
+              <li>SLA tự động theo dõi thời hạn, chủ động cảnh báo trước khi quá hạn</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🚨</span><div class="sol-card__title"><h3>Quản lý sự cố</h3><span class="sol-card__en">Incident Management</span></div></div>
+            <p class="sol-card__pain">Cảnh báo rải rác ở các công cụ giám sát, không biết "hiện ai phụ trách", mỗi sự cố như làm lại từ đầu.</p>
+            <ul class="sol-ticks">
+              <li>Tích hợp 200+ dịch vụ giám sát và ứng dụng, đồng bộ cảnh báo tập trung</li>
+              <li>Sự cố lớn một-chạm kéo lập phòng tác chiến, kết nối Slack／Teams để cộng tác</li>
+              <li>Dòng thời gian sự cố ghi nhận đầy đủ, AI hỗ trợ viết báo cáo hậu kiểm (PIR)</li>
+            </ul>
+          </article>
+
+          <article class="sol-card sol-card--accent reveal">
+            <span class="sol-card__badge">Tiếp nhận trọn vẹn từ Opsgenie</span>
+            <div class="sol-card__top"><span class="sol-card__icon">📟</span><div class="sol-card__title"><h3>Cảnh báo và lịch trực ban</h3><span class="sol-card__en">Alerting &amp; On-call</span></div></div>
+            <p class="sol-card__pain">Nhiễu cảnh báo nhấn chìm tín hiệu quan trọng, trực ban xếp lịch thủ công bằng Excel, tuyến đầu không phản hồi cũng không tự động leo thang.</p>
+            <ul class="sol-ticks">
+              <li>Khử trùng lặp và gom nhóm cảnh báo, giảm nhiễu giữ lại tín hiệu hữu ích</li>
+              <li>Lịch trực On-call hỗ trợ luân phiên đa múi giờ và trực thay khi nghỉ phép</li>
+              <li>Chiến lược leo thang (Escalation) tự động đẩy lên cao khi không phản hồi</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🔍</span><div class="sol-card__title"><h3>Quản lý vấn đề</h3><span class="sol-card__en">Problem Management</span></div></div>
+            <p class="sol-card__pain">Cùng loại sự cố lặp đi lặp lại, mỗi lần đều chữa cháy, những sự cố có thể phòng ngừa lại bị bỏ lỡ do thiếu theo dõi.</p>
+            <ul class="sol-ticks">
+              <li>Gom nhiều sự cố về một vấn đề duy nhất, khởi động phân tích nguyên nhân gốc</li>
+              <li>"Lỗi đã biết" ＋ đối sách tạm thời, khi tái diễn rút ngắn đáng kể thời gian ngừng hoạt động</li>
+              <li>Phát hiện vấn đề chủ động, chuẩn bị sẵn đối sách trước khi sự cố xảy ra</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🔀</span><div class="sol-card__title"><h3>Quản lý thay đổi</h3><span class="sol-card__en">Change Management</span></div></div>
+            <p class="sol-card__pain">Quy trình phê duyệt dài dòng làm chậm bàn giao, rủi ro thay đổi khó nắm bắt trước, đứt gãy thông tin giữa phát triển và vận hành.</p>
+            <ul class="sol-ticks">
+              <li>Phân cấp thay đổi tiêu chuẩn／thông thường／khẩn cấp, đi quy trình khác nhau theo rủi ro</li>
+              <li>Lịch thay đổi tránh xung đột, tự động tính mức độ rủi ro</li>
+              <li>Kết nối CI/CD (Bitbucket, Jenkins…) tự động tạo dấu vết kiểm toán</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">📚</span><div class="sol-card__title"><h3>Quản lý tri thức</h3><span class="sol-card__en">Knowledge Management</span></div></div>
+            <p class="sol-card__pain">Cùng một câu hỏi bị hỏi cả chục lần mỗi ngày, tài liệu lỗi thời lại rải rác, tri thức then chốt kẹt trong đầu vài người.</p>
+            <ul class="sol-ticks">
+              <li>Kho tri thức tích hợp được hỗ trợ bởi Confluence</li>
+              <li>AI tự động sinh bản nháp bài viết tri thức từ các ticket phổ biến</li>
+              <li>Tự phân loại (Deflection), tự động hiện các bài viết liên quan khi điền biểu mẫu</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🗂️</span><div class="sol-card__title"><h3>Quản lý tài sản và cấu hình</h3><span class="sol-card__en">Assets &amp; CMDB</span></div></div>
+            <p class="sol-card__pain">Tài sản rải rác trong đủ loại Excel, kiểm kê mãi không khớp, khi xảy ra sự cố không biết ảnh hưởng đến những hệ thống nào.</p>
+            <ul class="sol-ticks">
+              <li>Cơ sở dữ liệu tài sản linh hoạt quản lý tập trung mọi cấu hình (CI)</li>
+              <li>Trực quan hóa quan hệ phụ thuộc, nhanh chóng truy vết sự cố, giảm rủi ro thay đổi</li>
+              <li>Tự động khám phá tài sản mạng, và tự cập nhật từ ticket Jira</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🤖</span><div class="sol-card__title"><h3>Quản lý dịch vụ AI</h3><span class="sol-card__en">Rovo &amp; Virtual Agent</span></div></div>
+            <p class="sol-card__pain">Tuyến đầu bị các yêu cầu lặp lại nhấn chìm, bàn giao ticket dài dòng tốn thời gian, ngoài giờ nửa đêm ngày lễ không ai phản hồi kịp.</p>
+            <ul class="sol-ticks">
+              <li>Virtual service agent 24/7 tự động xử lý các yêu cầu phổ biến như đặt lại mật khẩu</li>
+              <li>AI tóm tắt ticket và dòng thời gian sự cố, nhanh chóng nắm bắt bối cảnh</li>
+              <li>Rovo Agent tự động thực thi đầu-cuối các quy trình như onboarding nhân viên mới</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="sol-note">Sự cố, cảnh báo, trực ban và incident swarming của JSM đều <strong>powered by Opsgenie, và bao trùm mọi gói Cloud</strong>——di chuyển từ Opsgenie sang, những năng lực cốt lõi này không thiếu một thứ nào.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Industries ===================== -->
+    <section class="section section--alt" id="industries">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Ứng dụng theo ngành</span>
+          <h2>Ngành khác nhau, JSM dùng thế nào?</h2>
+          <p class="section__sub">Chọn ngành của bạn, xem "nội dung sản phẩm phù hợp" và "kịch bản ứng dụng" thực tế tương ứng của JSM. Nội dung tổng hợp từ các trang ngành chính thức của Atlassian.</p>
+        </div>
+
+        <div class="ind-tabs reveal" role="tablist" aria-label="Phân loại ngành">
+          <button class="ind-tab is-active" role="tab" aria-selected="true" data-ind="tech">💻 Công nghệ & Viễn thông</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="finance">🏦 Dịch vụ Tài chính</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="retail">🛒 Bán lẻ & Thương mại điện tử</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="manufacturing">🏭 Sản xuất</button>
+        </div>
+
+        <div class="ind-panel reveal" id="indPanel"></div>
+      </div>
+    </section>
+
+    <!-- ===================== Feature showcase ===================== -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Điểm nổi bật tính năng Jira Service Management</h2>
+          <p class="section__sub">Các tính năng tiêu biểu bạn có thể dùng sau khi di chuyển, bao trùm vận hành IT, dịch vụ khách hàng, cộng tác phát triển và trải nghiệm nhân viên. Dưới đây là ảnh chụp thực tế sản phẩm Atlassian.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-alerts.png" alt="Màn hình danh sách cảnh báo Jira Service Management" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">Vận hành IT</span>
+              <h3>Quản lý cảnh báo tập trung</h3>
+              <p>Xem, phân công và xử lý cảnh báo trực tiếp trong JSM, không cần chuyển sang công cụ riêng.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-ai-alert-grouping.png" alt="Màn hình Atlassian Intelligence tự động gom nhóm cảnh báo" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">AI · Vận hành IT</span>
+              <h3>Gom nhóm cảnh báo bằng AI</h3>
+              <p>Atlassian Intelligence tự động gom nhóm các cảnh báo tương tự, giảm nhiễu và sắp xếp thứ tự ưu tiên phản hồi.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-request-views.png" alt="JSM xem yêu cầu dịch vụ theo bảng kanban" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">Dịch vụ khách hàng</span>
+              <h3>Nhiều chế độ xem yêu cầu</h3>
+              <p>Xem yêu cầu của tổ chức theo Queues, Board hoặc Calendar, nắm bắt quan hệ phụ thuộc và lịch trình.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-ai-summary.png" alt="Tóm tắt AI trong ticket JSM" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">AI · Dịch vụ khách hàng</span>
+              <h3>Tóm tắt ticket bằng AI</h3>
+              <p>Một-chạm cô đọng cuộc hội thoại dài dòng thành bản tóm tắt trọng tâm, tăng tốc nhân viên nắm bắt và phản hồi.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-conversational-ticketing.png" alt="Tạo ticket dạng hội thoại từ Slack／Teams" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">Dịch vụ khách hàng</span>
+              <h3>Tạo ticket dạng hội thoại</h3>
+              <p>Chặn các yêu cầu phổ biến trực tiếp từ Slack hoặc Microsoft Teams, tự động tạo và phân công ticket.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-self-service-portal.png" alt="Cổng yêu cầu dịch vụ tự phục vụ JSM" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">Nhà phát triển · Tự phục vụ</span>
+              <h3>Cổng tự phục vụ</h3>
+              <p>Biểu mẫu dựng sẵn và Help Center, để người dùng tự gửi báo cáo bug và yêu cầu dịch vụ.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal feature-card--wide">
+            <div class="feature-card__img"><img src="../assets/img/jsm-help-center.png" alt="Help Center nhân viên có thương hiệu hóa" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">Trải nghiệm nhân viên</span>
+              <h3>Help Center cá nhân hóa</h3>
+              <p>Xây dựng trung tâm dịch vụ nhân viên có thương hiệu, cá nhân hóa cho các đội ngũ như HR, hành chính, nâng cao tỷ lệ tự phục vụ.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Plans (Standard / Premium / Enterprise) ===================== -->
+    <section class="section" id="plans">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Standard · Premium · Enterprise</span>
+          <h2>Chọn phiên bản JSM phù hợp với bạn</h2>
+          <p class="section__sub">Từ bản Standard đến bản Enterprise, nâng cấp dần theo nhu cầu quản trị, tuân thủ và hỗ trợ. Sau khi nâng cấp lên Premium, bạn được hưởng hỗ trợ 24/7, bảo đảm SLA và năng lực ITSM／AIOps nâng cao.</p>
+        </div>
+
+        <div class="plans-hl reveal">
+          <div class="plans-hl__item">
+            <span class="plans-hl__art" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <path d="M30 30 H102 a10 10 0 0 1 10 10 V70 a10 10 0 0 1 -10 10 H66 l-15 15 V80 H30 a10 10 0 0 1 -10 -10 V40 a10 10 0 0 1 10 -10 Z" fill="#1868DB"/>
+                <path d="M12 14 H58 a8 8 0 0 1 8 8 V44 a8 8 0 0 1 -8 8 H38 l-11 11 V52 H12 a8 8 0 0 1 -8 -8 V22 a8 8 0 0 1 8 -8 Z" fill="#FFC716"/>
+                <rect x="14" y="26" width="36" height="3.2" rx="1.6" fill="#172B4D"/>
+                <rect x="14" y="35" width="26" height="3.2" rx="1.6" fill="#172B4D"/>
+                <rect x="46" y="46" width="42" height="3.2" rx="1.6" fill="#fff"/>
+                <rect x="46" y="56" width="32" height="3.2" rx="1.6" fill="#fff"/>
+                <rect x="46" y="66" width="20" height="3.2" rx="1.6" fill="#fff"/>
+              </svg>
+            </span>
+            <strong>Hỗ trợ vấn đề nghiêm trọng 24/7</strong>
+          </div>
+          <div class="plans-hl__item">
+            <span class="plans-hl__art" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <rect x="42" y="22" width="64" height="52" rx="7" fill="#FFC716"/>
+                <rect x="14" y="34" width="36" height="52" rx="6" fill="#1868DB"/>
+                <circle cx="80" cy="44" r="10" fill="#091E42"/>
+                <rect x="76" y="48" width="8" height="15" rx="4" fill="#091E42"/>
+                <circle cx="24" cy="52" r="6.5" fill="#FFE380"/>
+                <rect x="27" y="50.2" width="17" height="3.6" rx="1.8" fill="#FFE380"/>
+                <path d="M50 56 H70" stroke="#091E42" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M66 51 l6 5 -6 5" fill="none" stroke="#091E42" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="68" y="74" width="12" height="10" fill="#0C66E4"/>
+                <rect x="56" y="84" width="36" height="6" rx="3" fill="#0C66E4"/>
+              </svg>
+            </span>
+            <strong>Bảo mật được tăng cường</strong>
+          </div>
+          <div class="plans-hl__item">
+            <span class="plans-hl__art" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <path d="M16 88 A44 44 0 0 1 104 88" fill="none" stroke="#1868DB" stroke-width="13" stroke-linecap="round"/>
+                <path d="M88 54 A44 44 0 0 1 104 88" fill="none" stroke="#C9372C" stroke-width="13" stroke-linecap="round"/>
+                <path d="M60 88 L90 52 L68 82 Z" fill="#FFC716"/>
+                <circle cx="60" cy="88" r="8" fill="#172B4D"/>
+                <rect x="58" y="30" width="4" height="9" rx="2" fill="#091E42"/>
+                <rect x="24" y="44" width="9" height="4" rx="2" fill="#091E42"/>
+                <rect x="87" y="44" width="9" height="4" rx="2" fill="#091E42"/>
+              </svg>
+            </span>
+            <strong>SLA thời gian hoạt động 99.9%</strong>
+          </div>
+        </div>
+
+        <p class="plans-hint reveal">👆 Nhấp vào tiêu đề cột (Standard／Premium／Enterprise) để chuyển phiên bản cần so sánh trọng tâm</p>
+        <div class="plans-table-wrap reveal">
+          <table class="plans-table sel-1">
+            <thead>
+              <tr>
+                <th class="plans-table__feat">Hạng mục tính năng</th>
+                <th class="plans-col" data-plan="0" role="button" tabindex="0" aria-label="So sánh trọng tâm Standard">Standard<br><small>Bản tiêu chuẩn</small></th>
+                <th class="plans-col" data-plan="1" role="button" tabindex="0" aria-label="So sánh trọng tâm Premium">Premium <span class="plans-rec">Khuyến nghị</span></th>
+                <th class="plans-col" data-plan="2" role="button" tabindex="0" aria-label="So sánh trọng tâm Enterprise">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Hỗ trợ khách hàng</th><td>Giờ làm việc theo khu vực</td><td>24/7 (vấn đề nghiêm trọng phản hồi &lt;1 giờ)</td><td>24/7 ＋ đội ngũ hỗ trợ cấp cao chuyên trách</td></tr>
+              <tr><th scope="row">SLA thời gian hoạt động</th><td class="muted">—</td><td>99.9%</td><td>99.95%</td></tr>
+              <tr><th scope="row">Dung lượng lưu trữ</th><td>250 GB</td><td>Không giới hạn</td><td>Không giới hạn</td></tr>
+              <tr><th scope="row">Số sự cố lớn／tháng</th><td>100</td><td>Không giới hạn</td><td>Không giới hạn</td></tr>
+              <tr><th scope="row">Báo cáo hậu kiểm (PIR)</th><td>5</td><td>Không giới hạn</td><td>Không giới hạn</td></tr>
+              <tr><th scope="row">Cách tạo sự cố</th><td>Chỉ thủ công</td><td>Thủ công／tự động／API／mẫu</td><td>Thủ công／tự động／API／mẫu</td></tr>
+              <tr><th scope="row">Thông báo cảnh báo bằng giọng nói</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">Quản lý thay đổi nâng cao (ngưỡng triển khai CI/CD)</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">Hàng đợi quản lý vấn đề</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">AIOps (gom nhóm cảnh báo／phát hiện tương tự)</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">Tạo sự cố bằng AI／AI PIR／dòng thời gian Slack</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">Giới hạn quy tắc tự động hóa</th><td>1,000／agent</td><td>1,000／agent</td><td>Không giới hạn</td></tr>
+              <tr><th scope="row">Lưu trú dữ liệu (Data residency)</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">Kênh phát hành (Release tracks)</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">Hộp cát (Sandbox)</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">Danh sách cho phép IP</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">SSO／SCIM／đồng bộ AD</th><td>Cần mua thêm Atlassian Guard</td><td>Cần mua thêm Atlassian Guard</td><td>Đã bao gồm</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="plans-note">Dữ liệu tổng hợp từ trang Jira Service Management Premium (gồm Admin controls) chính thức của Atlassian; một số giá trị căn cứ theo bảng so sánh gói chính thức, thực tế lấy theo thông báo trên trang chính thức của Atlassian.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Mobile app ===================== -->
+    <section class="section section--alt" id="mobile">
+      <div class="container mobile__inner reveal">
+        <div class="mobile__copy">
+          <span class="kicker">Làm việc di động</span>
+          <h2>Mang ITSM theo bên mình</h2>
+          <p class="mobile__lead">Qua App di động Jira Service Management, dù ở bất cứ đâu bạn cũng có thể gửi, phê duyệt và giải quyết ticket tức thì, để dịch vụ không bị gián đoạn chỉ vì rời khỏi bàn làm việc.</p>
+          <ul class="mobile__ticks">
+            <li>Gửi và cập nhật yêu cầu, trả lời khách hàng mọi lúc</li>
+            <li>Quản lý một-chạm phê duyệt thay đổi và yêu cầu</li>
+            <li>Nhận đẩy cảnh báo, xử lý sự cố ngay lập tức</li>
+          </ul>
+          <div class="app-badges">
+            <a class="appbadge" href="https://apps.apple.com/app/jira-cloud-by-atlassian/id1006972087" target="_blank" rel="noopener" aria-label="Tải về từ App Store">
+              <span class="appbadge__ic" aria-hidden="true">
+                <svg viewBox="0 0 384 512"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C61.4 141.6 10 184.8 10 273.3c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zM262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+              </span>
+              <span class="appbadge__txt"><small>Download on the</small><strong>App Store</strong></span>
+            </a>
+            <a class="appbadge" href="https://play.google.com/store/apps/details?id=com.atlassian.android.jira.core" target="_blank" rel="noopener" aria-label="Tải về từ Google Play">
+              <span class="appbadge__ic" aria-hidden="true">
+                <svg viewBox="0 0 512 512"><path fill="#00C3FF" d="M48 30 296 256 48 482c-9-5-15-15-15-27V57c0-12 6-22 15-27z"/><path fill="#00E676" d="M48 30c4-2 9-2 14 1l309 178-66 66z"/><path fill="#FFD500" d="M371 209l66 38c20 12 20 30 0 42l-66 38-71-79z"/><path fill="#FF3D47" d="M48 482c4 2 9 2 14-1l309-178-66-66z" opacity=".95"/></svg>
+              </span>
+              <span class="appbadge__txt"><small>GET IT ON</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mobile__visual">
+          <img class="mobile__shot" src="../assets/img/jsm-mobile-app.png" alt="App di động Jira Service Management: màn hình trung tâm thông báo và danh sách ticket IT service desk" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Steps ===================== -->
+    <section class="section section--dark" id="steps">
+      <div class="container">
+        <div class="section__head section__head--light reveal">
+          <h2>Bốn bước, hoàn tất di chuyển Opsgenie</h2>
+          <p class="section__sub">Dữ liệu sẽ được "sao chép" sang nền tảng đích, Opsgenie hiện có vẫn giữ nguyên, hai site có thể vận hành song song để bạn yên tâm kiểm chứng.</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <div class="step__num">01</div>
+            <h3>Chọn gói mới</h3>
+            <ul>
+              <li>Công cụ hướng dẫn di chuyển tích hợp sẵn trong Opsgenie dựa trên tình hình sử dụng hiện tại để đề xuất gói JSM phù hợp</li>
+              <li>Xác nhận sản phẩm đích</li>
+              <li>Lên lịch ngày di chuyển</li>
+            </ul>
+          </li>
+          <li class="step reveal">
+            <div class="step__num">02</div>
+            <h3>Chuẩn bị di chuyển</h3>
+            <ul>
+              <li>Trình ngày di chuyển để billing admin phê duyệt</li>
+              <li>Trong thời gian này chuẩn bị trước cho việc chuyển đổi của đội ngũ</li>
+              <li>Thông báo cho các bên liên quan về việc chuyển đổi tài khoản／quyền</li>
+            </ul>
+          </li>
+          <li class="step reveal">
+            <div class="step__num">03</div>
+            <h3>Dữ liệu tự động chuyển dời</h3>
+            <ul>
+              <li>Atlassian tự động chuyển dời dữ liệu và cấu hình vào ngày đã chọn</li>
+              <li>Quá trình không có thời gian ngừng hoạt động</li>
+              <li>Vẫn có thể tiếp tục dùng Opsgenie mà không bị ảnh hưởng</li>
+            </ul>
+          </li>
+          <li class="step reveal">
+            <div class="step__num">04</div>
+            <h3>Hoàn tất di chuyển</h3>
+            <ul>
+              <li>Atlassian cung cấp hướng dẫn in-product để hoàn tất các thiết lập cuối cùng trong JSM</li>
+              <li>Xác nhận quy trình alerting／on-call hoạt động bình thường</li>
+              <li>Sau khi kiểm chứng, chính thức đóng Opsgenie</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="parallel-note reveal">
+          <span class="parallel-note__num">120<span>ngày</span></span>
+          <div>
+            <h4>Sau khi di chuyển, dùng song song Opsgenie và JSM tối đa 120 ngày</h4>
+            <p>Dùng để kiểm chứng mọi thiết lập có vận hành đúng không, để đội ngũ dần thích nghi với hệ thống mới, và sau khi xác nhận quy trình alerting／on-call hoạt động bình thường mới chính thức đóng Opsgenie.</p>
+          </div>
+        </div>
+
+        <div class="migrated reveal">
+          <div class="migrated__col">
+            <h4>Chuyển dời qua công cụ tự động (do nhà cung cấp phụ trách)</h4>
+            <div class="chips">
+              <span>Teams và lịch trực ban</span><span>Chiến lược leo thang Escalation</span><span>Quy tắc định tuyến cảnh báo Alert routing</span>
+              <span>Chiến lược thông báo Notification</span><span>Tích hợp Integrations</span>
+            </div>
+          </div>
+          <div class="migrated__col">
+            <h4>Cần khách hàng xác nhận và phối hợp</h4>
+            <div class="chips">
+              <span>Chỉ định billing admin phê duyệt ngày di chuyển</span><span>Kiểm chứng các kết nối bên ngoài như Integrations / Webhooks</span>
+              <span>Tiến hành nghiệm thu UAT trong 120 ngày</span><span>Thông báo đội ngũ về chuyển đổi tài khoản／quyền</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Timeline ===================== -->
+    <section class="section" id="timeline">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Hai ngày bạn tuyệt đối không được bỏ lỡ</h2>
+          <p class="section__sub">Càng lập kế hoạch sớm, càng có dư dả thời gian hoàn tất kiểm chứng, kiểm thử và đào tạo người dùng.</p>
+        </div>
+
+        <div class="tl reveal">
+          <div class="tl__line" aria-hidden="true"></div>
+          <div class="tl__item tl__item--warn">
+            <div class="tl__dot"></div>
+            <div class="tl__date">4 tháng 6, 2025</div>
+            <h3>End of sale ｜ Ngừng bán</h3>
+            <ul>
+              <li>Không thể mua mới, nâng cấp, hạ cấp hay thêm site</li>
+              <li>Sau ngày này chỉ có thể gia hạn và mua thêm số lượng người dùng</li>
+              <li>Hãy hoàn tất trước các điều chỉnh phiên bản và site cần thiết trong thời gian tới</li>
+            </ul>
+          </div>
+          <div class="tl__item tl__item--danger">
+            <div class="tl__dot"></div>
+            <div class="tl__date">5 tháng 4, 2027</div>
+            <h3>End of support ｜ Kết thúc hỗ trợ</h3>
+            <ul>
+              <li>Opsgenie không thể đăng nhập và sử dụng nữa</li>
+              <li>Mọi dữ liệu chưa di chuyển sẽ bị xóa</li>
+              <li>Hãy chắc chắn hoàn tất di chuyển và tải về dữ liệu cần thiết trước ngày này</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cd-banner reveal">
+          <span class="cd-banner__ic" aria-hidden="true">⏳</span>
+          <p class="cd-banner__text">Còn lại đến khi Opsgenie kết thúc hỗ trợ (5 tháng 4, 2027)</p>
+          <span class="cd-banner__num" id="countdownDays2">—</span>
+          <span class="cd-banner__unit">ngày</span>
+        </div>
+
+        <div class="cta-band reveal">
+          <div>
+            <h3>Không chắc bắt đầu từ đâu?</h3>
+            <p>Hãy để Titansoft hỗ trợ bạn đánh giá hiện trạng, lập kế hoạch thời gian, an tâm hoàn tất di chuyển.</p>
+          </div>
+          <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Liên hệ chúng tôi</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section section--alt" id="faq">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Câu hỏi thường gặp</h2>
+        </div>
+
+        <div class="faq-tabs reveal" role="tablist" aria-label="Phân loại FAQ">
+          <button class="faq-tab is-active" role="tab" aria-selected="true" data-cat="schedule">📅 Lịch trình và các mốc quan trọng</button>
+          <button class="faq-tab" role="tab" aria-selected="false" data-cat="tech">⚙️ Kỹ thuật và quy trình chuyển dời</button>
+          <button class="faq-tab" role="tab" aria-selected="false" data-cat="billing">💰 Hóa đơn và chuyển đổi chi phí</button>
+        </div>
+
+        <div class="faq-list reveal" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- ===================== Contact / CTA ===================== -->
+    <section class="section section--dark contact" id="contact">
+      <div class="container contact__inner reveal">
+        <div class="contact__copy">
+          <h2>Bạn đã sẵn sàng bắt đầu di chuyển Opsgenie chưa?</h2>
+          <p>Titansoft là đối tác Gold của Atlassian, cung cấp đánh giá di chuyển, lập kế hoạch phương án, chuyển đổi chi phí và hỗ trợ kỹ thuật. Hãy liên hệ với chúng tôi để lập kế hoạch đường dẫn di chuyển phù hợp riêng cho bạn.</p>
+          <ul class="contact__points">
+            <li>Đánh giá hiện trạng di chuyển và đề xuất đường dẫn</li>
+            <li>Lập kế hoạch thời gian và hỗ trợ kiểm chứng song song</li>
+            <li>Xử lý các tình huống đặc biệt (xuyên tổ chức / Data Center)</li>
+            <li>Tư vấn chuyển đổi chi phí và hợp đồng</li>
+          </ul>
+        </div>
+        <div class="contact__card">
+          <h3>Liên hệ Titansoft</h3>
+          <a class="contact__line" href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener">
+            <span class="contact__ic">🎫</span>
+            <span><span class="contact__lbl">Cổng service desk</span>Điền nhu cầu tư vấn di chuyển</span>
+          </a>
+          <a class="contact__line" href="https://support.atlassian.com/opsgenie/docs/what-to-expect-from-opsgenie-migration/" target="_blank" rel="noopener">
+            <span class="contact__ic">↗</span>
+            <span><span class="contact__lbl">Tài liệu di chuyển chính thức của Atlassian</span>What to expect from Opsgenie migration</span>
+          </a>
+          <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary btn--block">Liên hệ chúng tôi</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand">
+          <span class="brand__mark" aria-hidden="true"><img src="../assets/img/logos/jsm.svg" width="24" height="24" alt="" /></span>
+          <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
+        </span>
+      </div>
+      <nav class="footer__nav" aria-label="Điều hướng chân trang">
+        <a href="#why">Vì sao di chuyển</a>
+        <a href="#collection">Service Collection</a>
+        <a href="#paths">Đường dẫn di chuyển</a>
+        <a href="#compare">So sánh tính năng</a>
+        <a href="#features">Điểm nổi bật tính năng</a>
+        <a href="#steps">Quy trình di chuyển</a>
+        <a href="#faq">Câu hỏi thường gặp</a>
+        <a href="#contact">Liên hệ chúng tôi</a>
+        <a href="https://rovo.titansoft.com.sg/" target="_blank" rel="noopener">Titansoft Rovo ↗</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <span>© <span id="year"></span> Titansoft.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/i18n/vi.js"></script>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

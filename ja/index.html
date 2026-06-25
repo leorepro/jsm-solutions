@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opsgenie 移行ガイド ｜ Jira Service Management（Service Collection）へのスムーズな移行</title>
+  <meta name="description" content="Opsgenie は 2027年4月5日 にサポートを終了します。Titansoft（Atlassian ゴールドパートナー）が、Jira Service Management（Service Collection）または Compass へのスムーズな移行を支援します。ダウンタイムゼロ、自動同期、完全なアラートと on-call 機能。" />
+  <meta name="theme-color" content="#1868DB" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Opsgenie 移行ガイド ｜ Jira Service Management（Service Collection）へのスムーズな移行" />
+  <meta property="og:description" content="Opsgenie はまもなくサポートを終了します。Titansoft が、Jira Service Management（Service Collection）または Compass へのスムーズな移行を支援します。" />
+  <meta property="og:url" content="https://jsm.solutions/ja/" />
+  <meta property="og:site_name" content="JSM.solutions" />
+
+  <link rel="canonical" href="https://jsm.solutions/ja/" />
+  <!-- 多國語系 hreflang -->
+  <link rel="alternate" hreflang="zh-Hant" href="https://jsm.solutions/" />
+  <link rel="alternate" hreflang="en" href="https://jsm.solutions/en/" />
+  <link rel="alternate" hreflang="ja" href="https://jsm.solutions/ja/" />
+  <link rel="alternate" hreflang="ko" href="https://jsm.solutions/ko/" />
+  <link rel="alternate" hreflang="vi" href="https://jsm.solutions/vi/" />
+  <link rel="alternate" hreflang="x-default" href="https://jsm.solutions/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logos/jsm.svg" />
+  <link rel="apple-touch-icon" href="../assets/img/logos/jsm.svg" />
+
+  <!-- Google Analytics (GA4) -->
+  <!-- TODO: 將下方的 G-XXXXXXXXXX 換成你的 GA4 評估 ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <!-- ===================== Nav ===================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="JSM.solutions ホーム">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="../assets/img/logos/jsm.svg" width="28" height="28" alt="" />
+        </span>
+        <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
+      </a>
+      <nav class="nav__links" aria-label="メインナビゲーション">
+        <a href="#why">移行の理由</a>
+        <a href="#solutions">解決できる課題</a>
+        <a href="#industries">対象業種</a>
+        <a href="#paths">移行パス</a>
+        <a href="#plans">プランの違い</a>
+        <a href="#steps">移行プロセス</a>
+        <a href="#faq">よくある質問</a>
+      </nav>
+      <details class="lang">
+        <summary class="lang__btn" aria-label="切換語言 / Change language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+          <span>日本語</span>
+        </summary>
+        <ul class="lang__menu">
+          <li><a href="/">繁體中文</a></li>
+          <li><a href="/en/">English</a></li>
+          <li><a href="/ja/" class="is-current">日本語</a></li>
+          <li><a href="/ko/">한국어</a></li>
+          <li><a href="/vi/">Tiếng Việt</a></li>
+        </ul>
+      </details>
+      <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary nav__cta">お問い合わせ</a>
+      <button class="nav__toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== Hero ===================== -->
+  <main id="top">
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy reveal">
+          <span class="eyebrow">Opsgenie は販売を終了し、サポート終了は 2027年4月5日 です</span>
+          <h1 class="hero__title">Opsgenie から<br><span class="grad">Jira Service Management</span> へアップグレード<span class="hero__sc">（Atlassian Service Collection）</span></h1>
+          <p class="hero__lead">
+            Opsgenie はまもなくサポートを終了します。Titansoft は Atlassian ゴールドパートナーとして、
+            Jira Service Management（Service Collection）または Compass へのダウンタイムゼロの移行を支援します。
+          </p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary btn--lg">移行の計画を始める</a>
+            <a href="#steps" class="btn btn--ghost btn--lg">4 ステップのプロセスを見る →</a>
+          </div>
+          <div class="hero__stats">
+            <div class="stat"><span class="stat__num">0</span><span class="stat__label">サービス停止</span></div>
+            <div class="stat"><span class="stat__num">120<span class="stat__unit">日</span></span><span class="stat__label">並行利用期間</span></div>
+            <div class="stat"><span class="stat__num">4</span><span class="stat__label">ステップで移行完了</span></div>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="countdown" id="countdown" role="timer" aria-live="polite" aria-label="Opsgenie サポート終了までのカウントダウン">
+            <span class="countdown__ic" aria-hidden="true">⏳</span>
+            <span class="countdown__label" id="countdownLabel">Opsgenie サポート終了まであと</span>
+            <span class="countdown__num" id="countdownDays">—</span>
+            <span class="countdown__unit" id="countdownUnit">日</span>
+          </div>
+          <!-- Atlassian 風格「分岔旅程」：Opsgenie 一個來源，分岔到兩條遷移路徑 -->
+          <div class="journey" aria-hidden="true">
+            <span class="blob blob--teal"></span>
+            <span class="blob blob--magenta"></span>
+
+            <div class="journey__source">
+              <img class="jnode__logo" src="../assets/img/logos/opsgenie.svg" alt="Opsgenie" />
+              <span class="jnode__text">
+                <span class="jnode__name">Opsgenie</span>
+                <span class="jnode__desc">Alerts · On-call · Incidents</span>
+              </span>
+            </div>
+
+            <svg class="journey__branch" viewBox="0 0 360 70" fill="none" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M180 4 V26 Q180 40 150 40 H92 Q62 40 62 56 V66" class="branch-line" />
+              <path d="M180 4 V26 Q180 40 210 40 H268 Q298 40 298 56 V66" class="branch-line" />
+              <circle cx="62" cy="68" r="3.5" class="branch-dot" />
+              <circle cx="298" cy="68" r="3.5" class="branch-dot" />
+            </svg>
+
+            <div class="journey__targets">
+              <div class="jcard jcard--jsm">
+                <span class="jcard__opt">Option 1</span>
+                <span class="badge badge--rec">推奨</span>
+                <img class="jnode__logo" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" />
+                <span class="jcard__name">Jira Service Management</span>
+                <span class="jcard__desc">Service Collection · ITSM</span>
+              </div>
+              <div class="jcard jcard--compass">
+                <span class="jcard__opt">Option 2</span>
+                <img class="jnode__logo" src="../assets/img/logos/compass.svg" alt="Compass" />
+                <span class="jcard__name">Compass</span>
+                <span class="jcard__desc">開発者プラットフォーム</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Trust / urgency strip ===================== -->
+    <section class="strip">
+      <div class="container strip__inner">
+        <div class="strip__item"><strong>2025年6月4日</strong> 販売終了：新規購入、アップ／ダウングレード、サイト追加が不可に</div>
+        <div class="strip__sep" aria-hidden="true"></div>
+        <div class="strip__item"><strong>2027年4月5日</strong> サポート終了：ログイン不可、未移行データは削除されます</div>
+        <div class="strip__sep" aria-hidden="true"></div>
+        <div class="strip__item"><strong>直ちに検証を開始</strong>し、残りの移行スケジュールを確保しましょう</div>
+      </div>
+    </section>
+
+    <!-- ===================== Why ===================== -->
+    <section class="section" id="why">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Opsgenie の次の章は、今から始まります</h2>
+          <p class="section__sub">
+            2018 年以降、Atlassian は Opsgenie の機能をプラットフォームと各製品へ継続的に統合し、
+            Dev チームと IT チームのよりスムーズな協働を支援してきました。今、あなたには明確な 2 つの移行パスがあります。
+          </p>
+        </div>
+
+        <div class="why reveal">
+          <article class="why__lead">
+            <div class="info-card__icon info-card__icon--on-accent">🔔</div>
+            <h3>なぜ今すぐ移行する必要があるのか？</h3>
+            <p>Opsgenie はサポート終了後にログインができなくなり、未移行のデータはすべて削除されます。早く始めるほど、検証、トレーニング、費用計画を余裕を持って完了でき、業務の中断とデータ損失を防げます。</p>
+            <a href="#timeline" class="why__link">重要なスケジュールを見る →</a>
+          </article>
+          <div class="why__col">
+            <article class="info-card">
+              <div class="info-card__icon">⏱️</div>
+              <h3>ほぼゼロのダウンタイム</h3>
+              <p>ほとんどの移行はわずか数分で完了します。Opsgenie と JSM／Compass は同じバックエンド基盤を共有しており、プロセスは通知の送信や日常の操作に影響しません。</p>
+            </article>
+            <article class="info-card">
+              <div class="info-card__icon">🤝</div>
+              <h3>パートナーが全工程を支援</h3>
+              <p>Titansoft は Atlassian ゴールドパートナーとして、ソリューションの評価、スケジュールの計画、特殊なケースの対応、費用の移行を支援します。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Service Collection ===================== -->
+    <section class="section section--alt" id="collection">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">2025年10月7日 提供開始</span>
+          <h2>Atlassian Service Collection のご紹介</h2>
+          <p class="section__sub">Atlassian は Jira Service Management、Customer Service Management、Assets、Rovo Agents を、単一の AI 駆動サービス管理ソリューションに統合しました。Opsgenie 移行後の Jira Service Management こそが、Service Collection の中核です。</p>
+        </div>
+
+        <div class="sc-hero reveal">
+          <img class="sc-hero__img" src="../assets/img/service-collection.png" alt="Atlassian Service Collection：Jira Service Management、Assets、Customer Service Management、Rovo Agents を統合" loading="lazy" />
+        </div>
+
+        <div class="sc-grid reveal">
+          <article class="sc-card sc-card--jsm">
+            <span class="sc-badge">Opsgenie 移行先</span>
+            <img class="sc-logo" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" />
+            <h3>Jira Service Management</h3>
+            <p>中核的なサービス管理。Dev、IT、ビジネスの各チームをつなぎ、従業員体験とサービスのレジリエンスを高めます。</p>
+          </article>
+          <article class="sc-card">
+            <img class="sc-logo" src="../assets/img/logos/csm.svg" alt="Customer Service Management" />
+            <h3>Customer Service Management</h3>
+            <p>まったく新しい対外カスタマーサービスアプリ。AI で外部顧客サポートを強化し、最前線とビジネスのフィードバックループをつなぎます。</p>
+          </article>
+          <article class="sc-card">
+            <img class="sc-logo" src="../assets/img/logos/assets.svg" alt="Assets" />
+            <h3>Assets</h3>
+            <p>柔軟な資産データベース。重要な資産とサービスを追跡、管理、可視化し、依存関係を構築します。</p>
+          </article>
+          <article class="sc-card">
+            <img class="sc-logo" src="../assets/img/logos/rovo.svg" alt="Rovo Agents" />
+            <h3>Rovo Agents</h3>
+            <p>AI チームメイト。リクエストのトリアージと先回り対応、インシデントの解決、ナレッジの生成を支援します。</p>
+          </article>
+        </div>
+        <p class="sc-note">上記のアプリは統合販売（個別販売なし）で、キュー、SLA、フォーム、レポートなどのサービス管理技術を共有し、Atlassian プラットフォーム（Rovo、Teamwork Graph、Automation、Analytics、Security）の上に構築されています。</p>
+
+        <div class="sc-compare reveal">
+          <article class="sc-vs sc-vs--in">
+            <div class="sc-vs__head"><img class="sc-logo sc-logo--sm" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" /><h4>Jira Service Management</h4></div>
+            <p class="sc-vs__lead">「組織の内部」に向けたサービス（ITSM）</p>
+            <dl>
+              <div><dt>対象</dt><dd>社内の IT 運用・サポートチーム</dd></div>
+              <div><dt>ユーザー</dt><dd>従業員</dd></div>
+              <div><dt>機能</dt><dd>リクエスト、インシデント、変更、問題、資産、構成の管理</dd></div>
+              <div><dt>アクセス</dt><dd>組織内部に限定</dd></div>
+            </dl>
+          </article>
+          <article class="sc-vs sc-vs--out">
+            <div class="sc-vs__head"><img class="sc-logo sc-logo--sm" src="../assets/img/logos/csm.svg" alt="Customer Service Management" /><h4>Customer Service Management</h4></div>
+            <p class="sc-vs__lead">「外部顧客」に向けたサービス（CSM）</p>
+            <dl>
+              <div><dt>対象</dt><dd>カスタマーサービスチーム</dd></div>
+              <div><dt>ユーザー</dt><dd>外部顧客</dd></div>
+              <div><dt>機能</dt><dd>顧客コンテキスト、カスタマーサービス AI Agent、CRM 連携</dd></div>
+              <div><dt>アクセス</dt><dd>外部公開</dd></div>
+            </dl>
+          </article>
+        </div>
+        <p class="sc-note sc-note--platform">両者は同じサービス管理技術を共有し、いずれも Atlassian プラットフォームの上に構築されています。</p>
+      </div>
+    </section>
+
+    <!-- ===================== Paths ===================== -->
+    <section class="section" id="paths">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>チームに最適な移行先プラットフォームを選ぶ</h2>
+          <p class="section__sub">Opsgenie のオーナー（Owner）が <code>Settings &gt; Migrate Opsgenie</code> にアクセスすると、利用状況に基づいて最適な移行パスが推奨されます。</p>
+        </div>
+
+        <div class="paths">
+          <article class="path-card path-card--jsm reveal">
+            <div class="path-card__top">
+              <span class="path-card__opt">Option 1 · 推奨</span>
+              <div class="path-card__logo"><img class="path-card__logo-ico" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" /> Jira Service Management</div>
+            </div>
+            <p class="path-card__tag">Alerts + On-call + Incidents + エンドツーエンドの ITSM ソリューション</p>
+            <ul class="ticks">
+              <li>チームが日々頼りにするインシデント管理の中核機能を、単一プラットフォームに統合して維持</li>
+              <li>99.9% 可用性 SLA とリージョンサポートで、安定して信頼できる</li>
+              <li>AI Ops と AI 駆動 ITSM の機能を備える</li>
+              <li>既存プランに追加料金で利用でき、別途のサブスクリプション費用を回避</li>
+            </ul>
+            <div class="path-card__foot">最適：完全な IT サービス管理（インシデント／変更／問題）を必要とするチーム</div>
+          </article>
+
+          <article class="path-card path-card--compass reveal">
+            <div class="path-card__top">
+              <span class="path-card__opt">Option 2</span>
+              <div class="path-card__logo"><img class="path-card__logo-ico" src="../assets/img/logos/compass.svg" alt="Compass" /> Compass</div>
+            </div>
+            <p class="path-card__tag">Alerts + On-call + 包括的な内部開発者プラットフォーム</p>
+            <ul class="ticks">
+              <li>alerting と on-call のスケジュール管理を提供</li>
+              <li>開発者体験を中核とする内部プラットフォーム</li>
+              <li>ソフトウェアサービスカタログを中心とするエンジニアリングチームに最適</li>
+              <li>軽量で、DevOps プロセスに特化</li>
+            </ul>
+            <div class="path-card__foot">最適：開発者中心で、完全な ITSM を必要としないエンジニアリングチーム</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Compare ===================== -->
+    <section class="section section--alt" id="compare">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>主要機能の比較</h2>
+          <p class="section__sub">いずれもアラートと on-call を備えていますが、インシデント、変更、問題管理、AI 機能において違いが明確です。</p>
+        </div>
+
+        <div class="table-wrap reveal">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th scope="col" class="compare__feat">機能カテゴリ</th>
+                <th scope="col"><span class="th-pill"><img class="th-logo" src="../assets/img/logos/opsgenie.svg" alt="" /> Opsgenie</span></th>
+                <th scope="col"><span class="th-pill"><img class="th-logo" src="../assets/img/logos/jsm.svg" alt="" /> Jira Service Management</span></th>
+                <th scope="col"><span class="th-pill"><img class="th-logo" src="../assets/img/logos/compass.svg" alt="" /> Compass</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">アラートと on-call スケジュール (Alerting &amp; on-call)</th><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><th scope="row">インシデント管理 (Incident)</th><td class="yes">✓</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">変更管理 (Change)</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">問題管理 (Problem)</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">AI Ops</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">AI 駆動 ITSM</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="compare__note">
+          完全な機能差については Atlassian 公式ドキュメントをご参照ください：
+          <a href="https://support.atlassian.com/opsgenie/docs/feature-changes-and-deprecations-in-jira-service-management/" target="_blank" rel="noopener">Feature changes and deprecations in JSM</a>
+          ｜
+          <a href="https://support.atlassian.com/opsgenie/docs/what-to-expect-from-opsgenie-migration/" target="_blank" rel="noopener">What to expect from Opsgenie migration</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== Solutions / ITSM practices ===================== -->
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">完全な ITIL / ITSM プラクティス</span>
+          <h2>JSM を導入すると、どんな課題を解決できるのか？</h2>
+          <p class="section__sub">Jira Service Management は Opsgenie のアラートと on-call を引き継ぐだけでなく、完全な ITIL／ITSM プラクティスを同一プラットフォームに統合します。以下は各サービス管理プラクティスに対応する顧客の課題と、JSM の解決策です。</p>
+        </div>
+
+        <div class="sol-grid">
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🎫</span><div class="sol-card__title"><h3>サービスリクエスト管理</h3><span class="sol-card__en">Request Management</span></div></div>
+            <p class="sol-card__pain">申請がメールやダイレクトメッセージに散らばり、小さな繰り返しのリクエストが IT を圧迫し、従業員も自分の進捗を確認できない。</p>
+            <ul class="sol-ticks">
+              <li>単一の窓口にすべてのリクエストを集約し、自動でキュー（Queues）に振り分け</li>
+              <li>フォームとリクエストタイプで申請情報を構造的に収集</li>
+              <li>SLA が期限を自動追跡し、超過前に能動的に警告</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🚨</span><div class="sol-card__title"><h3>インシデント管理</h3><span class="sol-card__en">Incident Management</span></div></div>
+            <p class="sol-card__pain">アラートが各監視ツールに散らばり、「今、誰が担当すべきか」が分からず、インシデントのたびにゼロからやり直しになる。</p>
+            <ul class="sol-ticks">
+              <li>200 以上の監視・アプリケーションサービスを統合し、アラートを集約・同期</li>
+              <li>重大インシデントをワンクリックで戦況室に集約し、Slack／Teams と連携して協働</li>
+              <li>インシデントのタイムラインを完全に記録し、AI が事後レビュー（PIR）の作成を支援</li>
+            </ul>
+          </article>
+
+          <article class="sol-card sol-card--accent reveal">
+            <span class="sol-card__badge">Opsgenie を完全に継承</span>
+            <div class="sol-card__top"><span class="sol-card__icon">📟</span><div class="sol-card__title"><h3>アラートと on-call スケジュール</h3><span class="sol-card__en">Alerting &amp; On-call</span></div></div>
+            <p class="sol-card__pain">アラートのノイズが重要なシグナルを埋もれさせ、当番は手作業の Excel で組まれ、最前線が応答しなくても自動エスカレーションがない。</p>
+            <ul class="sol-ticks">
+              <li>アラートの重複排除とグループ化でノイズを減らし、有効なシグナルを残す</li>
+              <li>On-call スケジュールが複数タイムゾーンの輪番と休暇時の代番に対応</li>
+              <li>エスカレーション戦略（Escalation）で、未応答時に自動で上位へエスカレーション</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🔍</span><div class="sol-card__title"><h3>問題管理</h3><span class="sol-card__en">Problem Management</span></div></div>
+            <p class="sol-card__pain">同種のインシデントが繰り返し発生し、毎回火消しに追われ、予防できたはずの事故が追跡不足で見過ごされる。</p>
+            <ul class="sol-ticks">
+              <li>複数のインシデントを単一の問題にグループ化し、根本原因分析を起動</li>
+              <li>「既知のエラー」＋暫定対策で、再発時のダウンタイムを大幅に短縮</li>
+              <li>能動的な問題検知で、インシデント発生前に対策を準備</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🔀</span><div class="sol-card__title"><h3>変更管理</h3><span class="sol-card__en">Change Management</span></div></div>
+            <p class="sol-card__pain">承認フローが長く納品を遅らせ、変更リスクを事前に把握しづらく、開発と運用の間に情報の断絶がある。</p>
+            <ul class="sol-ticks">
+              <li>標準／通常／緊急の変更を分類し、リスクに応じて異なるフローを実行</li>
+              <li>変更カレンダーで衝突を回避し、リスクレベルを自動算出</li>
+              <li>CI/CD（Bitbucket、Jenkins…）と連携して監査証跡を自動作成</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">📚</span><div class="sol-card__title"><h3>ナレッジ管理</h3><span class="sol-card__en">Knowledge Management</span></div></div>
+            <p class="sol-card__pain">同じ質問が毎日何度も繰り返され、ドキュメントは古く散らばり、重要なナレッジが一部の人の頭の中に留まっている。</p>
+            <ul class="sol-ticks">
+              <li>Confluence を基盤とする組み込みのナレッジベース</li>
+              <li>AI がよくあるチケットからナレッジ記事の草稿を自動生成</li>
+              <li>セルフサービス分流（Deflection）で、入力時に関連記事を自動表示</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🗂️</span><div class="sol-card__title"><h3>資産・構成管理</h3><span class="sol-card__en">Assets &amp; CMDB</span></div></div>
+            <p class="sol-card__pain">資産がさまざまな Excel に散らばり、棚卸しが常に合わず、事故時にどのシステムへ影響するか分からない。</p>
+            <ul class="sol-ticks">
+              <li>柔軟な資産データベースで、すべての構成アイテム（CI）を一元管理</li>
+              <li>依存関係を可視化し、事故の切り分けを高速化、変更リスクを低減</li>
+              <li>ネットワーク資産を自動検出し、Jira チケットから自動更新</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🤖</span><div class="sol-card__title"><h3>AI サービス管理</h3><span class="sol-card__en">Rovo &amp; Virtual Agent</span></div></div>
+            <p class="sol-card__pain">最前線が繰り返しのリクエストに圧倒され、長いチケットの引き継ぎに時間がかかり、夜間や休日に即時対応できる人がいない。</p>
+            <ul class="sol-ticks">
+              <li>バーチャルサービスエージェントが 24/7 でパスワードリセットなど一般的なリクエストを自動処理</li>
+              <li>AI がチケットとインシデントのタイムラインを要約し、コンテキストを素早く把握</li>
+              <li>Rovo Agent が新人オンボーディングなどのプロセスをエンドツーエンドで自動実行</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="sol-note">JSM のインシデント、アラート、on-call、incident swarming はすべて <strong>powered by Opsgenie で、すべてのクラウドプランをカバー</strong>します——Opsgenie から移行しても、これらの中核機能は一つも欠けることがありません。</p>
+      </div>
+    </section>
+
+    <!-- ===================== Industries ===================== -->
+    <section class="section section--alt" id="industries">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">業種別の活用</span>
+          <h2>業種が違えば、JSM はどう使う？</h2>
+          <p class="section__sub">あなたの業種を選んで、JSM に対応する「適用される製品内容」と実際の「活用シーン」をご覧ください。内容は Atlassian 公式の各業種ページから整理しています。</p>
+        </div>
+
+        <div class="ind-tabs reveal" role="tablist" aria-label="業種カテゴリ">
+          <button class="ind-tab is-active" role="tab" aria-selected="true" data-ind="tech">💻 テクノロジー・通信</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="finance">🏦 金融サービス</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="retail">🛒 小売・EC</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="manufacturing">🏭 製造業</button>
+        </div>
+
+        <div class="ind-panel reveal" id="indPanel"></div>
+      </div>
+    </section>
+
+    <!-- ===================== Feature showcase ===================== -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Jira Service Management の機能ハイライト</h2>
+          <p class="section__sub">移行後に使える代表的な機能を、IT 運用、カスタマーサービス、開発協働、従業員体験にわたってご紹介します。以下は Atlassian 製品の実際の画面です。</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-alerts.png" alt="Jira Service Management のアラート一覧画面" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">IT 運用</span>
+              <h3>アラートの集中管理</h3>
+              <p>JSM 内で直接アラートを確認、割り当て、対応でき、独立したツールに切り替える必要がありません。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-ai-alert-grouping.png" alt="Atlassian Intelligence によるアラート自動グループ化画面" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">AI · IT 運用</span>
+              <h3>AI アラートグループ化</h3>
+              <p>Atlassian Intelligence が類似アラートを自動でグループ化し、ノイズを減らして対応の優先順位を決めます。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-request-views.png" alt="JSM のボード表示でサービスリクエストを確認" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">カスタマーサービス</span>
+              <h3>多様なリクエスト表示</h3>
+              <p>Queues、Board、Calendar でリクエストを整理して表示し、依存関係とスケジュールを把握します。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-ai-summary.png" alt="JSM のチケット内 AI 要約" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">AI · カスタマーサービス</span>
+              <h3>AI チケット要約</h3>
+              <p>長い会話をワンクリックで要点に凝縮し、担当者のキャッチアップと応答を加速します。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-conversational-ticketing.png" alt="Slack／Teams の会話からチケットを作成" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">カスタマーサービス</span>
+              <h3>会話型チケット作成</h3>
+              <p>Slack や Microsoft Teams から直接、一般的なリクエストを先回りで受け止め、チケットを自動作成・割り当てします。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-self-service-portal.png" alt="JSM のセルフサービスリクエスト入口" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">開発者 · セルフサービス</span>
+              <h3>セルフサービスポータル</h3>
+              <p>事前構築のフォームと Help Center で、ユーザーが自分でバグ報告やサービスリクエストを提出できます。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal feature-card--wide">
+            <div class="feature-card__img"><img src="../assets/img/jsm-help-center.png" alt="ブランド化された従業員向け Help Center" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">従業員体験</span>
+              <h3>パーソナライズされた Help Center</h3>
+              <p>HR や総務などのチームのために、ブランド化・パーソナライズされた従業員サービスセンターを構築し、セルフサービス率を高めます。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Plans (Standard / Premium / Enterprise) ===================== -->
+    <section class="section" id="plans">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Standard · Premium · Enterprise</span>
+          <h2>あなたに合った JSM プランを選ぶ</h2>
+          <p class="section__sub">Standard から Enterprise まで、ガバナンス、コンプライアンス、サポートのニーズに応じて段階的にアップグレードできます。Premium へアップグレードすると、24/7 サポート、SLA 保証、高度な ITSM／AIOps 機能を利用できます。</p>
+        </div>
+
+        <div class="plans-hl reveal">
+          <div class="plans-hl__item">
+            <span class="plans-hl__art" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <path d="M30 30 H102 a10 10 0 0 1 10 10 V70 a10 10 0 0 1 -10 10 H66 l-15 15 V80 H30 a10 10 0 0 1 -10 -10 V40 a10 10 0 0 1 10 -10 Z" fill="#1868DB"/>
+                <path d="M12 14 H58 a8 8 0 0 1 8 8 V44 a8 8 0 0 1 -8 8 H38 l-11 11 V52 H12 a8 8 0 0 1 -8 -8 V22 a8 8 0 0 1 8 -8 Z" fill="#FFC716"/>
+                <rect x="14" y="26" width="36" height="3.2" rx="1.6" fill="#172B4D"/>
+                <rect x="14" y="35" width="26" height="3.2" rx="1.6" fill="#172B4D"/>
+                <rect x="46" y="46" width="42" height="3.2" rx="1.6" fill="#fff"/>
+                <rect x="46" y="56" width="32" height="3.2" rx="1.6" fill="#fff"/>
+                <rect x="46" y="66" width="20" height="3.2" rx="1.6" fill="#fff"/>
+              </svg>
+            </span>
+            <strong>24/7 重大問題サポート</strong>
+          </div>
+          <div class="plans-hl__item">
+            <span class="plans-hl__art" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <rect x="42" y="22" width="64" height="52" rx="7" fill="#FFC716"/>
+                <rect x="14" y="34" width="36" height="52" rx="6" fill="#1868DB"/>
+                <circle cx="80" cy="44" r="10" fill="#091E42"/>
+                <rect x="76" y="48" width="8" height="15" rx="4" fill="#091E42"/>
+                <circle cx="24" cy="52" r="6.5" fill="#FFE380"/>
+                <rect x="27" y="50.2" width="17" height="3.6" rx="1.8" fill="#FFE380"/>
+                <path d="M50 56 H70" stroke="#091E42" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M66 51 l6 5 -6 5" fill="none" stroke="#091E42" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="68" y="74" width="12" height="10" fill="#0C66E4"/>
+                <rect x="56" y="84" width="36" height="6" rx="3" fill="#0C66E4"/>
+              </svg>
+            </span>
+            <strong>強化されたセキュリティ保護</strong>
+          </div>
+          <div class="plans-hl__item">
+            <span class="plans-hl__art" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <path d="M16 88 A44 44 0 0 1 104 88" fill="none" stroke="#1868DB" stroke-width="13" stroke-linecap="round"/>
+                <path d="M88 54 A44 44 0 0 1 104 88" fill="none" stroke="#C9372C" stroke-width="13" stroke-linecap="round"/>
+                <path d="M60 88 L90 52 L68 82 Z" fill="#FFC716"/>
+                <circle cx="60" cy="88" r="8" fill="#172B4D"/>
+                <rect x="58" y="30" width="4" height="9" rx="2" fill="#091E42"/>
+                <rect x="24" y="44" width="9" height="4" rx="2" fill="#091E42"/>
+                <rect x="87" y="44" width="9" height="4" rx="2" fill="#091E42"/>
+              </svg>
+            </span>
+            <strong>99.9% 稼働率 SLA</strong>
+          </div>
+        </div>
+
+        <p class="plans-hint reveal">👆 列の見出し（Standard／Premium／Enterprise）をクリックすると、重点比較するバージョンを切り替えられます</p>
+        <div class="plans-table-wrap reveal">
+          <table class="plans-table sel-1">
+            <thead>
+              <tr>
+                <th class="plans-table__feat">機能項目</th>
+                <th class="plans-col" data-plan="0" role="button" tabindex="0" aria-label="Standard を重点比較">Standard<br><small>標準版</small></th>
+                <th class="plans-col" data-plan="1" role="button" tabindex="0" aria-label="Premium を重点比較">Premium <span class="plans-rec">推奨</span></th>
+                <th class="plans-col" data-plan="2" role="button" tabindex="0" aria-label="Enterprise を重点比較">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">カスタマーサポート</th><td>リージョンの営業時間</td><td>24/7（重大問題は &lt;1 時間で応答）</td><td>24/7 ＋ 専任のシニアサポートチーム</td></tr>
+              <tr><th scope="row">稼働率 SLA</th><td class="muted">—</td><td>99.9%</td><td>99.95%</td></tr>
+              <tr><th scope="row">ストレージ容量</th><td>250 GB</td><td>無制限</td><td>無制限</td></tr>
+              <tr><th scope="row">重大インシデント数／月</th><td>100</td><td>無制限</td><td>無制限</td></tr>
+              <tr><th scope="row">事後レビューレポート（PIR）</th><td>5</td><td>無制限</td><td>無制限</td></tr>
+              <tr><th scope="row">インシデント作成方法</th><td>手動のみ</td><td>手動／自動／API／テンプレート</td><td>手動／自動／API／テンプレート</td></tr>
+              <tr><th scope="row">アラート音声通知</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">高度な変更管理（CI/CD デプロイゲート）</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">問題管理キュー</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">AIOps（アラートのグループ化／類似検知）</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">AI インシデント作成／AI PIR／Slack タイムライン</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">自動化ルールの上限</th><td>1,000／agent</td><td>1,000／agent</td><td>無制限</td></tr>
+              <tr><th scope="row">データレジデンシー（Data residency）</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">リリーストラック（Release tracks）</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">サンドボックス（Sandbox）</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">IP 許可リスト</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">SSO／SCIM／AD 同期</th><td>Atlassian Guard の追加購入が必要</td><td>Atlassian Guard の追加購入が必要</td><td>標準で含む</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="plans-note">データは Atlassian 公式の Jira Service Management Premium（Admin controls を含む）ページから整理しています。一部の数値は公式のプラン比較表に基づきますが、実際の内容は Atlassian 公式サイトの告知を基準としてください。</p>
+      </div>
+    </section>
+
+    <!-- ===================== Mobile app ===================== -->
+    <section class="section section--alt" id="mobile">
+      <div class="container mobile__inner reveal">
+        <div class="mobile__copy">
+          <span class="kicker">モバイルワーク</span>
+          <h2>ITSM を持ち歩く</h2>
+          <p class="mobile__lead">Jira Service Management モバイルアプリを使えば、どこにいてもリアルタイムにチケットを提出、承認、解決でき、席を離れてもサービスが途切れません。</p>
+          <ul class="mobile__ticks">
+            <li>いつでもリクエストを提出・更新し、顧客に返信</li>
+            <li>管理者がワンクリックで変更とリクエストを承認</li>
+            <li>アラートのプッシュ通知を受け取り、いち早くインシデントに対応</li>
+          </ul>
+          <div class="app-badges">
+            <a class="appbadge" href="https://apps.apple.com/app/jira-cloud-by-atlassian/id1006972087" target="_blank" rel="noopener" aria-label="App Store からダウンロード">
+              <span class="appbadge__ic" aria-hidden="true">
+                <svg viewBox="0 0 384 512"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C61.4 141.6 10 184.8 10 273.3c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zM262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+              </span>
+              <span class="appbadge__txt"><small>Download on the</small><strong>App Store</strong></span>
+            </a>
+            <a class="appbadge" href="https://play.google.com/store/apps/details?id=com.atlassian.android.jira.core" target="_blank" rel="noopener" aria-label="Google Play からダウンロード">
+              <span class="appbadge__ic" aria-hidden="true">
+                <svg viewBox="0 0 512 512"><path fill="#00C3FF" d="M48 30 296 256 48 482c-9-5-15-15-15-27V57c0-12 6-22 15-27z"/><path fill="#00E676" d="M48 30c4-2 9-2 14 1l309 178-66 66z"/><path fill="#FFD500" d="M371 209l66 38c20 12 20 30 0 42l-66 38-71-79z"/><path fill="#FF3D47" d="M48 482c4 2 9 2 14-1l309-178-66-66z" opacity=".95"/></svg>
+              </span>
+              <span class="appbadge__txt"><small>GET IT ON</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mobile__visual">
+          <img class="mobile__shot" src="../assets/img/jsm-mobile-app.png" alt="Jira Service Management モバイルアプリ：通知センターと IT サービスデスクのチケット一覧画面" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Steps ===================== -->
+    <section class="section section--dark" id="steps">
+      <div class="container">
+        <div class="section__head section__head--light reveal">
+          <h2>4 つのステップで Opsgenie の移行を完了</h2>
+          <p class="section__sub">データは移行先プラットフォームに「コピー」され、既存の Opsgenie はそのまま維持されます。両サイトを並行して運用でき、安心して検証できます。</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <div class="step__num">01</div>
+            <h3>新しいプランを選ぶ</h3>
+            <ul>
+              <li>Opsgenie の組み込み移行ガイドツールが、現在の利用状況に応じて適切な JSM プランを推奨</li>
+              <li>移行先製品を確認</li>
+              <li>移行日を設定</li>
+            </ul>
+          </li>
+          <li class="step reveal">
+            <div class="step__num">02</div>
+            <h3>移行を準備する</h3>
+            <ul>
+              <li>移行日を billing admin に承認してもらう</li>
+              <li>期間中にチームの移行準備を進める</li>
+              <li>関係者にアカウント／権限の切り替えを通知</li>
+            </ul>
+          </li>
+          <li class="step reveal">
+            <div class="step__num">03</div>
+            <h3>データを自動移行する</h3>
+            <ul>
+              <li>Atlassian が指定日にデータと構成を自動で移行</li>
+              <li>プロセス中のダウンタイムなし</li>
+              <li>Opsgenie を引き続き影響なく利用可能</li>
+            </ul>
+          </li>
+          <li class="step reveal">
+            <div class="step__num">04</div>
+            <h3>移行を完了する</h3>
+            <ul>
+              <li>Atlassian が in-product ガイドを提供し、JSM 内の最終設定を完了</li>
+              <li>alerting／on-call のフローが正常か確認</li>
+              <li>検証後、正式に Opsgenie を停止</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="parallel-note reveal">
+          <span class="parallel-note__num">120<span>日</span></span>
+          <div>
+            <h4>移行後、最大 120 日間 Opsgenie と JSM を並行利用</h4>
+            <p>すべての設定が正しく動作するかを検証し、チームが新システムに段階的に慣れ、alerting／on-call のフローが正常であることを確認してから、正式に Opsgenie を停止します。</p>
+          </div>
+        </div>
+
+        <div class="migrated reveal">
+          <div class="migrated__col">
+            <h4>自動化ツールで移行（メーカーが担当）</h4>
+            <div class="chips">
+              <span>Teams と当番スケジュール</span><span>Escalation エスカレーション戦略</span><span>Alert routing アラートルーティングルール</span>
+              <span>Notification 通知戦略</span><span>Integrations 連携</span>
+            </div>
+          </div>
+          <div class="migrated__col">
+            <h4>お客様の確認と協力が必要</h4>
+            <div class="chips">
+              <span>billing admin を指定して移行日を承認</span><span>Integrations / Webhooks など外部連携を検証</span>
+              <span>120 日以内に UAT 受け入れ検証を実施</span><span>チームにアカウント／権限の切り替えを通知</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Timeline ===================== -->
+    <section class="section" id="timeline">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>絶対に見逃せない 2 つの日付</h2>
+          <p class="section__sub">早く計画するほど、検証、テスト、ユーザートレーニングを完了する余裕が生まれます。</p>
+        </div>
+
+        <div class="tl reveal">
+          <div class="tl__line" aria-hidden="true"></div>
+          <div class="tl__item tl__item--warn">
+            <div class="tl__dot"></div>
+            <div class="tl__date">2025年6月4日</div>
+            <h3>End of sale ｜ 販売終了</h3>
+            <ul>
+              <li>新規購入、アップグレード、ダウングレード、サイト追加が不可に</li>
+              <li>この日以降は契約更新とユーザー数の追加購入のみ可能</li>
+              <li>直近で必要なバージョンとサイトの調整を先に完了してください</li>
+            </ul>
+          </div>
+          <div class="tl__item tl__item--danger">
+            <div class="tl__dot"></div>
+            <div class="tl__date">2027年4月5日</div>
+            <h3>End of support ｜ サポート終了</h3>
+            <ul>
+              <li>Opsgenie はログインも利用もできなくなります</li>
+              <li>未移行のデータはすべて削除されます</li>
+              <li>この日までに必ず移行を完了し、必要なデータをダウンロードしてください</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cd-banner reveal">
+          <span class="cd-banner__ic" aria-hidden="true">⏳</span>
+          <p class="cd-banner__text">Opsgenie サポート終了（2027年4月5日）まであと</p>
+          <span class="cd-banner__num" id="countdownDays2">—</span>
+          <span class="cd-banner__unit">日</span>
+        </div>
+
+        <div class="cta-band reveal">
+          <div>
+            <h3>どこから始めればよいか分からない？</h3>
+            <p>Titansoft が現状の評価とスケジュールの計画を支援し、安心して移行を完了できるようにします。</p>
+          </div>
+          <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary btn--lg">お問い合わせ</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section section--alt" id="faq">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>よくある質問</h2>
+        </div>
+
+        <div class="faq-tabs reveal" role="tablist" aria-label="FAQ カテゴリ">
+          <button class="faq-tab is-active" role="tab" aria-selected="true" data-cat="schedule">📅 スケジュールと重要な日程</button>
+          <button class="faq-tab" role="tab" aria-selected="false" data-cat="tech">⚙️ 技術と移行プロセス</button>
+          <button class="faq-tab" role="tab" aria-selected="false" data-cat="billing">💰 請求と費用の移行</button>
+        </div>
+
+        <div class="faq-list reveal" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- ===================== Contact / CTA ===================== -->
+    <section class="section section--dark contact" id="contact">
+      <div class="container contact__inner reveal">
+        <div class="contact__copy">
+          <h2>Opsgenie の移行を始める準備はできましたか？</h2>
+          <p>Titansoft は Atlassian ゴールドパートナーとして、移行評価、ソリューション計画、費用の移行、技術支援を提供します。お気軽にお問い合わせください。あなたに合わせた移行パスを設計します。</p>
+          <ul class="contact__points">
+            <li>移行現状の評価とパスの提案</li>
+            <li>スケジュール計画と並行検証の支援</li>
+            <li>特殊なケース（組織をまたぐ / Data Center）の対応</li>
+            <li>費用と契約の移行に関する相談</li>
+          </ul>
+        </div>
+        <div class="contact__card">
+          <h3>Titansoft へのお問い合わせ</h3>
+          <a class="contact__line" href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener">
+            <span class="contact__ic">🎫</span>
+            <span><span class="contact__lbl">サービスデスク入口</span>移行相談のご要望を入力</span>
+          </a>
+          <a class="contact__line" href="https://support.atlassian.com/opsgenie/docs/what-to-expect-from-opsgenie-migration/" target="_blank" rel="noopener">
+            <span class="contact__ic">↗</span>
+            <span><span class="contact__lbl">Atlassian 公式移行ドキュメント</span>What to expect from Opsgenie migration</span>
+          </a>
+          <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary btn--block">お問い合わせ</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand">
+          <span class="brand__mark" aria-hidden="true"><img src="../assets/img/logos/jsm.svg" width="24" height="24" alt="" /></span>
+          <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
+        </span>
+      </div>
+      <nav class="footer__nav" aria-label="フッターナビゲーション">
+        <a href="#why">移行の理由</a>
+        <a href="#collection">Service Collection</a>
+        <a href="#paths">移行パス</a>
+        <a href="#compare">機能比較</a>
+        <a href="#features">機能ハイライト</a>
+        <a href="#steps">移行プロセス</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#contact">お問い合わせ</a>
+        <a href="https://rovo.titansoft.com.sg/" target="_blank" rel="noopener">Titansoft Rovo ↗</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <span>© <span id="year"></span> Titansoft.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/i18n/ja.js"></script>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

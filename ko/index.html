@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opsgenie 마이그레이션 가이드 ｜ Jira Service Management(Service Collection)으로 매끄럽게 전환</title>
+  <meta name="description" content="Opsgenie는 2027년 4월 5일에 지원이 종료됩니다. Titansoft(Atlassian 골드 파트너)가 Jira Service Management(Service Collection) 또는 Compass로의 매끄러운 마이그레이션을 지원합니다. 무중단, 자동 동기화, 완전한 알림 및 on-call 역량." />
+  <meta name="theme-color" content="#1868DB" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Opsgenie 마이그레이션 가이드 ｜ Jira Service Management(Service Collection)으로 매끄럽게 전환" />
+  <meta property="og:description" content="Opsgenie가 곧 지원 종료됩니다. Titansoft가 Jira Service Management(Service Collection) 또는 Compass로의 매끄러운 마이그레이션을 지원합니다." />
+  <meta property="og:url" content="https://jsm.solutions/ko/" />
+  <meta property="og:site_name" content="JSM.solutions" />
+
+  <link rel="canonical" href="https://jsm.solutions/ko/" />
+  <!-- 多國語系 hreflang -->
+  <link rel="alternate" hreflang="zh-Hant" href="https://jsm.solutions/" />
+  <link rel="alternate" hreflang="en" href="https://jsm.solutions/en/" />
+  <link rel="alternate" hreflang="ja" href="https://jsm.solutions/ja/" />
+  <link rel="alternate" hreflang="ko" href="https://jsm.solutions/ko/" />
+  <link rel="alternate" hreflang="vi" href="https://jsm.solutions/vi/" />
+  <link rel="alternate" hreflang="x-default" href="https://jsm.solutions/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logos/jsm.svg" />
+  <link rel="apple-touch-icon" href="../assets/img/logos/jsm.svg" />
+
+  <!-- Google Analytics (GA4) -->
+  <!-- TODO: 將下方的 G-XXXXXXXXXX 換成你的 GA4 評估 ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <!-- ===================== Nav ===================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="JSM.solutions 홈">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="../assets/img/logos/jsm.svg" width="28" height="28" alt="" />
+        </span>
+        <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
+      </a>
+      <nav class="nav__links" aria-label="주요 내비게이션">
+        <a href="#why">마이그레이션 이유</a>
+        <a href="#solutions">해결 과제</a>
+        <a href="#industries">적용 산업</a>
+        <a href="#paths">마이그레이션 경로</a>
+        <a href="#plans">버전 차이</a>
+        <a href="#steps">마이그레이션 절차</a>
+        <a href="#faq">자주 묻는 질문</a>
+      </nav>
+      <details class="lang">
+        <summary class="lang__btn" aria-label="切換語言 / Change language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+          <span>한국어</span>
+        </summary>
+        <ul class="lang__menu">
+          <li><a href="/">繁體中文</a></li>
+          <li><a href="/en/">English</a></li>
+          <li><a href="/ja/">日本語</a></li>
+          <li><a href="/ko/" class="is-current">한국어</a></li>
+          <li><a href="/vi/">Tiếng Việt</a></li>
+        </ul>
+      </details>
+      <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary nav__cta">문의하기</a>
+      <button class="nav__toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== Hero ===================== -->
+  <main id="top">
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy reveal">
+          <span class="eyebrow">Opsgenie는 판매가 종료되었으며, 지원 종료일은 2027년 4월 5일입니다</span>
+          <h1 class="hero__title">Opsgenie에서<br><span class="grad">Jira Service Management</span><span class="hero__sc">(Atlassian Service Collection)</span>으로 업그레이드</h1>
+          <p class="hero__lead">
+            Opsgenie가 곧 지원 종료됩니다. Titansoft는 Atlassian 골드 파트너로서
+            Jira Service Management(Service Collection) 또는 Compass로의 무중단 마이그레이션을 지원합니다.
+          </p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary btn--lg">마이그레이션 계획 시작</a>
+            <a href="#steps" class="btn btn--ghost btn--lg">4단계 절차 알아보기 →</a>
+          </div>
+          <div class="hero__stats">
+            <div class="stat"><span class="stat__num">0</span><span class="stat__label">서비스 중단</span></div>
+            <div class="stat"><span class="stat__num">120<span class="stat__unit">일</span></span><span class="stat__label">병행 사용 기간</span></div>
+            <div class="stat"><span class="stat__num">4</span><span class="stat__label">단계로 마이그레이션 완료</span></div>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="countdown" id="countdown" role="timer" aria-live="polite" aria-label="Opsgenie 지원 종료 카운트다운">
+            <span class="countdown__ic" aria-hidden="true">⏳</span>
+            <span class="countdown__label" id="countdownLabel">Opsgenie 지원 종료까지 남은 기간</span>
+            <span class="countdown__num" id="countdownDays">—</span>
+            <span class="countdown__unit" id="countdownUnit">일</span>
+          </div>
+          <!-- Atlassian 風格「分岔旅程」：Opsgenie 一個來源，分岔到兩條遷移路徑 -->
+          <div class="journey" aria-hidden="true">
+            <span class="blob blob--teal"></span>
+            <span class="blob blob--magenta"></span>
+
+            <div class="journey__source">
+              <img class="jnode__logo" src="../assets/img/logos/opsgenie.svg" alt="Opsgenie" />
+              <span class="jnode__text">
+                <span class="jnode__name">Opsgenie</span>
+                <span class="jnode__desc">Alerts · On-call · Incidents</span>
+              </span>
+            </div>
+
+            <svg class="journey__branch" viewBox="0 0 360 70" fill="none" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M180 4 V26 Q180 40 150 40 H92 Q62 40 62 56 V66" class="branch-line" />
+              <path d="M180 4 V26 Q180 40 210 40 H268 Q298 40 298 56 V66" class="branch-line" />
+              <circle cx="62" cy="68" r="3.5" class="branch-dot" />
+              <circle cx="298" cy="68" r="3.5" class="branch-dot" />
+            </svg>
+
+            <div class="journey__targets">
+              <div class="jcard jcard--jsm">
+                <span class="jcard__opt">Option 1</span>
+                <span class="badge badge--rec">추천</span>
+                <img class="jnode__logo" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" />
+                <span class="jcard__name">Jira Service Management</span>
+                <span class="jcard__desc">Service Collection · ITSM</span>
+              </div>
+              <div class="jcard jcard--compass">
+                <span class="jcard__opt">Option 2</span>
+                <img class="jnode__logo" src="../assets/img/logos/compass.svg" alt="Compass" />
+                <span class="jcard__name">Compass</span>
+                <span class="jcard__desc">개발자 플랫폼</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Trust / urgency strip ===================== -->
+    <section class="strip">
+      <div class="container strip__inner">
+        <div class="strip__item"><strong>2025년 6월 4일</strong> 판매 종료: 신규 구매, 업·다운그레이드, 사이트 추가 불가</div>
+        <div class="strip__sep" aria-hidden="true"></div>
+        <div class="strip__item"><strong>2027년 4월 5일</strong> 지원 종료: 로그인 불가, 마이그레이션되지 않은 데이터는 삭제됨</div>
+        <div class="strip__sep" aria-hidden="true"></div>
+        <div class="strip__item"><strong>지금 즉시 검토에 착수</strong>하여 남은 마이그레이션 기간을 확보하세요</div>
+      </div>
+    </section>
+
+    <!-- ===================== Why ===================== -->
+    <section class="section" id="why">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Opsgenie의 다음 장, 지금부터 시작하세요</h2>
+          <p class="section__sub">
+            2018년부터 Atlassian은 Opsgenie의 역량을 플랫폼과 각 제품에 지속적으로 통합하여
+            개발 팀과 IT 팀의 협업을 더욱 원활하게 해 왔습니다. 이제 여러분에게는 두 가지 명확한 마이그레이션 경로가 있습니다.
+          </p>
+        </div>
+
+        <div class="why reveal">
+          <article class="why__lead">
+            <div class="info-card__icon info-card__icon--on-accent">🔔</div>
+            <h3>왜 지금 반드시 마이그레이션해야 하나요?</h3>
+            <p>Opsgenie 지원이 종료되면 더 이상 로그인할 수 없으며, 마이그레이션되지 않은 모든 데이터가 삭제됩니다. 빨리 착수할수록 검증, 교육, 비용 계획을 여유 있게 완료하고 운영 중단과 데이터 손실을 피할 수 있습니다.</p>
+            <a href="#timeline" class="why__link">핵심 일정 보기 →</a>
+          </article>
+          <div class="why__col">
+            <article class="info-card">
+              <div class="info-card__icon">⏱️</div>
+              <h3>거의 무중단</h3>
+              <p>대부분의 마이그레이션은 단 몇 분이면 충분합니다. Opsgenie와 JSM／Compass는 동일한 백엔드 아키텍처를 공유하므로, 과정 중 알림 전송이나 일상 작업에 영향을 주지 않습니다.</p>
+            </article>
+            <article class="info-card">
+              <div class="info-card__icon">🤝</div>
+              <h3>파트너의 전 과정 지원</h3>
+              <p>Titansoft는 Atlassian 골드 파트너로서 방안 평가, 일정 계획, 특수 상황 처리, 비용 전환을 지원합니다.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Service Collection ===================== -->
+    <section class="section section--alt" id="collection">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">2025년 10월 7일 출시</span>
+          <h2>Atlassian Service Collection 소개</h2>
+          <p class="section__sub">Atlassian은 Jira Service Management, Customer Service Management, Assets, Rovo Agents를 단일하고 AI 기반의 서비스 관리 솔루션으로 통합했습니다. Opsgenie 마이그레이션 후의 Jira Service Management가 바로 Service Collection의 핵심입니다.</p>
+        </div>
+
+        <div class="sc-hero reveal">
+          <img class="sc-hero__img" src="../assets/img/service-collection.png" alt="Atlassian Service Collection: Jira Service Management, Assets, Customer Service Management, Rovo Agents의 통합" loading="lazy" />
+        </div>
+
+        <div class="sc-grid reveal">
+          <article class="sc-card sc-card--jsm">
+            <span class="sc-badge">Opsgenie 마이그레이션 대상</span>
+            <img class="sc-logo" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" />
+            <h3>Jira Service Management</h3>
+            <p>핵심 서비스 관리로 개발, IT, 비즈니스 팀을 연결하여 직원 경험과 서비스 회복력을 높입니다.</p>
+          </article>
+          <article class="sc-card">
+            <img class="sc-logo" src="../assets/img/logos/csm.svg" alt="Customer Service Management" />
+            <h3>Customer Service Management</h3>
+            <p>완전히 새로운 대외 고객 서비스 앱으로, AI로 외부 고객 지원을 강화하고 일선과 비즈니스의 피드백 루프를 연결합니다.</p>
+          </article>
+          <article class="sc-card">
+            <img class="sc-logo" src="../assets/img/logos/assets.svg" alt="Assets" />
+            <h3>Assets</h3>
+            <p>유연한 자산 데이터베이스로 핵심 자산과 서비스를 추적·관리·시각화하고 종속 관계를 구축합니다.</p>
+          </article>
+          <article class="sc-card">
+            <img class="sc-logo" src="../assets/img/logos/rovo.svg" alt="Rovo Agents" />
+            <h3>Rovo Agents</h3>
+            <p>AI 팀 파트너로서 요청 분류와 차단, 인시던트 해결, 지식 생성을 지원합니다.</p>
+          </article>
+        </div>
+        <p class="sc-note">위 애플리케이션들은 통합 판매되며(개별 판매 불가), 큐, SLA, 양식, 보고서 등 서비스 관리 기술을 공유하고 Atlassian 플랫폼(Rovo, Teamwork Graph, Automation, Analytics, Security) 위에 구축됩니다.</p>
+
+        <div class="sc-compare reveal">
+          <article class="sc-vs sc-vs--in">
+            <div class="sc-vs__head"><img class="sc-logo sc-logo--sm" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" /><h4>Jira Service Management</h4></div>
+            <p class="sc-vs__lead">"조직 내부"를 대상으로 하는 서비스(ITSM)</p>
+            <dl>
+              <div><dt>대상</dt><dd>내부 IT 운영 및 지원 팀</dd></div>
+              <div><dt>사용자</dt><dd>직원</dd></div>
+              <div><dt>역량</dt><dd>요청, 인시던트, 변경, 문제, 자산 및 구성 관리</dd></div>
+              <div><dt>접근</dt><dd>조직 내부 전용</dd></div>
+            </dl>
+          </article>
+          <article class="sc-vs sc-vs--out">
+            <div class="sc-vs__head"><img class="sc-logo sc-logo--sm" src="../assets/img/logos/csm.svg" alt="Customer Service Management" /><h4>Customer Service Management</h4></div>
+            <p class="sc-vs__lead">"외부 고객"을 대상으로 하는 서비스(CSM)</p>
+            <dl>
+              <div><dt>대상</dt><dd>고객 서비스 팀</dd></div>
+              <div><dt>사용자</dt><dd>외부 고객</dd></div>
+              <div><dt>역량</dt><dd>고객 컨텍스트, 고객 서비스 AI Agent, CRM 통합</dd></div>
+              <div><dt>접근</dt><dd>외부 공개</dd></div>
+            </dl>
+          </article>
+        </div>
+        <p class="sc-note sc-note--platform">두 제품은 동일한 서비스 관리 기술을 공유하며, 마찬가지로 Atlassian 플랫폼 위에 구축됩니다.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Paths ===================== -->
+    <section class="section" id="paths">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>팀에 가장 적합한 대상 플랫폼을 선택하세요</h2>
+          <p class="section__sub">Opsgenie 소유자(Owner)가 <code>Settings &gt; Migrate Opsgenie</code>로 이동하면, 시스템이 사용 현황에 따라 가장 적합한 마이그레이션 경로를 추천합니다.</p>
+        </div>
+
+        <div class="paths">
+          <article class="path-card path-card--jsm reveal">
+            <div class="path-card__top">
+              <span class="path-card__opt">Option 1 · 추천</span>
+              <div class="path-card__logo"><img class="path-card__logo-ico" src="../assets/img/logos/jsm.svg" alt="Jira Service Management" /> Jira Service Management</div>
+            </div>
+            <p class="path-card__tag">Alerts + On-call + Incidents + 엔드투엔드 ITSM 솔루션</p>
+            <ul class="ticks">
+              <li>팀이 매일 의존하는 인시던트 관리 핵심 기능을 단일 플랫폼에 통합</li>
+              <li>99.9% 가용성 SLA와 지역 지원으로 안정적이고 신뢰할 수 있음</li>
+              <li>AI Ops와 AI 기반 ITSM 역량을 갖춤</li>
+              <li>기존 플랜에 추가 요금으로 적용 가능하여 별도 구독 비용을 피함</li>
+            </ul>
+            <div class="path-card__foot">가장 적합한 대상: 완전한 IT 서비스 관리(인시던트 / 변경 / 문제)가 필요한 팀</div>
+          </article>
+
+          <article class="path-card path-card--compass reveal">
+            <div class="path-card__top">
+              <span class="path-card__opt">Option 2</span>
+              <div class="path-card__logo"><img class="path-card__logo-ico" src="../assets/img/logos/compass.svg" alt="Compass" /> Compass</div>
+            </div>
+            <p class="path-card__tag">Alerts + On-call + 포괄적인 내부 개발자 플랫폼</p>
+            <ul class="ticks">
+              <li>alerting과 on-call 교대 근무 관리를 제공</li>
+              <li>개발자 경험을 핵심으로 하는 내부 플랫폼</li>
+              <li>소프트웨어 서비스 카탈로그를 중심으로 하는 엔지니어링 팀에 적합</li>
+              <li>경량이며 DevOps 프로세스에 집중</li>
+            </ul>
+            <div class="path-card__foot">가장 적합한 대상: 개발자 중심이며 완전한 ITSM이 필요 없는 엔지니어링 팀</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Compare ===================== -->
+    <section class="section section--alt" id="compare">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>핵심 기능 비교</h2>
+          <p class="section__sub">동일하게 경고와 on-call을 갖추고 있지만, 인시던트·변경·문제 관리와 AI 역량에서는 차이가 뚜렷합니다.</p>
+        </div>
+
+        <div class="table-wrap reveal">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th scope="col" class="compare__feat">기능 카테고리</th>
+                <th scope="col"><span class="th-pill"><img class="th-logo" src="../assets/img/logos/opsgenie.svg" alt="" /> Opsgenie</span></th>
+                <th scope="col"><span class="th-pill"><img class="th-logo" src="../assets/img/logos/jsm.svg" alt="" /> Jira Service Management</span></th>
+                <th scope="col"><span class="th-pill"><img class="th-logo" src="../assets/img/logos/compass.svg" alt="" /> Compass</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">경고 및 교대 근무 일정 (Alerting &amp; on-call)</th><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><th scope="row">인시던트 관리 (Incident)</th><td class="yes">✓</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">변경 관리 (Change)</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">문제 관리 (Problem)</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">AI Ops</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+              <tr><th scope="row">AI 기반 ITSM</th><td class="no">✕</td><td class="yes">✓</td><td class="no">✕</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="compare__note">
+          전체 기능 차이는 Atlassian 공식 문서를 참조하세요:
+          <a href="https://support.atlassian.com/opsgenie/docs/feature-changes-and-deprecations-in-jira-service-management/" target="_blank" rel="noopener">Feature changes and deprecations in JSM</a>
+          ｜
+          <a href="https://support.atlassian.com/opsgenie/docs/what-to-expect-from-opsgenie-migration/" target="_blank" rel="noopener">What to expect from Opsgenie migration</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== Solutions / ITSM practices ===================== -->
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">완전한 ITIL / ITSM 실천</span>
+          <h2>JSM을 도입하면 어떤 문제를 해결할 수 있나요?</h2>
+          <p class="section__sub">Jira Service Management는 Opsgenie의 경고와 on-call을 이어받을 뿐 아니라, 완전한 ITIL／ITSM 실천을 하나의 플랫폼에 통합합니다. 아래는 각 서비스 관리 실천에 대응하는 고객의 고충과 JSM의 해법입니다.</p>
+        </div>
+
+        <div class="sol-grid">
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🎫</span><div class="sol-card__title"><h3>서비스 요청 관리</h3><span class="sol-card__en">Request Management</span></div></div>
+            <p class="sol-card__pain">요청이 email과 개인 메시지에 흩어지고, 반복되는 소소한 요청이 IT를 뒤덮으며, 직원은 자신의 진행 상황도 확인하지 못합니다.</p>
+            <ul class="sol-ticks">
+              <li>단일 입구로 모든 요청을 집중하고 자동으로 큐(Queues)로 분류</li>
+              <li>양식과 요청 유형으로 신청 정보를 구조적으로 수집</li>
+              <li>SLA가 기한을 자동 추적하여 초과 전 선제적으로 경고</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🚨</span><div class="sol-card__title"><h3>인시던트 관리</h3><span class="sol-card__en">Incident Management</span></div></div>
+            <p class="sol-card__pain">경고가 여러 모니터링 도구에 흩어지고, "지금 누가 담당인지" 알 수 없으며, 사건마다 처음부터 다시 하는 것 같습니다.</p>
+            <ul class="sol-ticks">
+              <li>200개 이상의 모니터링 및 애플리케이션 서비스를 통합하여 경고를 집중 동기화</li>
+              <li>중대 사건 발생 시 원클릭으로 워룸을 열고 Slack／Teams 협업과 연결</li>
+              <li>인시던트 타임라인을 완전히 기록하고 AI가 사후 검토(PIR) 작성을 지원</li>
+            </ul>
+          </article>
+
+          <article class="sol-card sol-card--accent reveal">
+            <span class="sol-card__badge">Opsgenie 완전 승계</span>
+            <div class="sol-card__top"><span class="sol-card__icon">📟</span><div class="sol-card__title"><h3>경고 및 on-call 교대 근무</h3><span class="sol-card__en">Alerting &amp; On-call</span></div></div>
+            <p class="sol-card__pain">경고 노이즈가 중요한 신호를 뒤덮고, 당직은 수작업 Excel로 편성하며, 일선이 응답하지 않아도 자동 에스컬레이션이 없습니다.</p>
+            <ul class="sol-ticks">
+              <li>경고 중복 제거와 그룹화로 노이즈를 줄이고 유효한 신호를 보존</li>
+              <li>On-call 교대 근무가 다중 시간대 순환과 휴가 대체 근무를 지원</li>
+              <li>에스컬레이션 전략(Escalation)으로 미응답 시 자동으로 상위에 에스컬레이션</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🔍</span><div class="sol-card__title"><h3>문제 관리</h3><span class="sol-card__en">Problem Management</span></div></div>
+            <p class="sol-card__pain">같은 유형의 사건이 반복되고 매번 불 끄기에 급급하며, 예방 가능한 사고가 추적 부재로 인해 놓쳐집니다.</p>
+            <ul class="sol-ticks">
+              <li>여러 인시던트를 단일 문제로 묶어 근본 원인 분석을 시작</li>
+              <li>"알려진 오류" + 임시 대책으로, 재발 시 다운타임을 대폭 단축</li>
+              <li>능동적 문제 탐지로 사건 발생 전에 대책을 미리 준비</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🔀</span><div class="sol-card__title"><h3>변경 관리</h3><span class="sol-card__en">Change Management</span></div></div>
+            <p class="sol-card__pain">승인 절차가 길어 납기를 지연시키고, 변경 리스크를 사전에 파악하기 어려우며, 개발과 운영 사이에 정보 단절이 있습니다.</p>
+            <ul class="sol-ticks">
+              <li>표준／일반／긴급 변경 등급으로 나눠 리스크에 따라 다른 절차를 진행</li>
+              <li>변경 일정표로 충돌을 방지하고 리스크 등급을 자동 산출</li>
+              <li>CI/CD(Bitbucket, Jenkins…)와 연동하여 감사 추적 기록을 자동 생성</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">📚</span><div class="sol-card__title"><h3>지식 관리</h3><span class="sol-card__en">Knowledge Management</span></div></div>
+            <p class="sol-card__pain">같은 질문이 매일 수십 번 반복되고, 문서는 낡고 흩어져 있으며, 핵심 지식이 소수의 머릿속에만 갇혀 있습니다.</p>
+            <ul class="sol-ticks">
+              <li>Confluence로 구동되는 내장 지식 베이스</li>
+              <li>AI가 자주 들어오는 티켓에서 지식 문서 초안을 자동 생성</li>
+              <li>셀프서비스 분류(Deflection)로, 양식 작성 시 관련 문서를 자동으로 표시</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🗂️</span><div class="sol-card__title"><h3>자산 및 구성 관리</h3><span class="sol-card__en">Assets &amp; CMDB</span></div></div>
+            <p class="sol-card__pain">자산이 온갖 Excel에 흩어져 있고, 재고 조사가 늘 맞지 않으며, 사고 발생 시 어떤 시스템이 영향을 받는지 알 수 없습니다.</p>
+            <ul class="sol-ticks">
+              <li>유연한 자산 데이터베이스로 모든 구성 항목(CI)을 집중 관리</li>
+              <li>종속 관계를 시각화하여 사고를 빠르게 진단하고 변경 리스크를 낮춤</li>
+              <li>네트워크 자산을 자동 탐색하고 Jira 티켓에서 자동 업데이트</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🤖</span><div class="sol-card__title"><h3>AI 서비스 관리</h3><span class="sol-card__en">Rovo &amp; Virtual Agent</span></div></div>
+            <p class="sol-card__pain">일선이 반복 요청에 뒤덮이고, 긴 티켓 인계로 시간이 걸리며, 퇴근 후·심야·휴일에는 즉시 응답할 사람이 없습니다.</p>
+            <ul class="sol-ticks">
+              <li>가상 서비스 상담원이 24/7로 비밀번호 재설정 등 일반적인 요청을 자동 처리</li>
+              <li>AI가 티켓과 인시던트 타임라인을 요약하여 컨텍스트를 빠르게 파악</li>
+              <li>Rovo Agent가 신규 입사자 온보딩 같은 프로세스를 엔드투엔드로 자동 실행</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="sol-note">JSM의 인시던트, 경고, on-call, incident swarming은 모두 <strong>powered by Opsgenie이며, 모든 클라우드 플랜에 적용됩니다</strong>——Opsgenie에서 마이그레이션하면 이러한 핵심 역량을 하나도 잃지 않습니다.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Industries ===================== -->
+    <section class="section section--alt" id="industries">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">산업별 활용</span>
+          <h2>산업마다 JSM을 어떻게 활용할까요?</h2>
+          <p class="section__sub">여러분의 산업을 선택하여 JSM에 대응하는 "적용 제품 콘텐츠"와 실제 "활용 시나리오"를 확인하세요. 내용은 Atlassian 공식 산업별 페이지를 정리한 것입니다.</p>
+        </div>
+
+        <div class="ind-tabs reveal" role="tablist" aria-label="산업 분류">
+          <button class="ind-tab is-active" role="tab" aria-selected="true" data-ind="tech">💻 기술 및 통신</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="finance">🏦 금융 서비스</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="retail">🛒 소매 및 이커머스</button>
+          <button class="ind-tab" role="tab" aria-selected="false" data-ind="manufacturing">🏭 제조업</button>
+        </div>
+
+        <div class="ind-panel reveal" id="indPanel"></div>
+      </div>
+    </section>
+
+    <!-- ===================== Feature showcase ===================== -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Jira Service Management 주요 기능</h2>
+          <p class="section__sub">마이그레이션 후 사용할 수 있는 대표적인 기능으로, IT 운영, 고객 서비스, 개발 협업, 직원 경험을 아우릅니다. 아래는 Atlassian 제품의 실제 화면입니다.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-alerts.png" alt="Jira Service Management 경고 목록 화면" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">IT 운영</span>
+              <h3>경고 집중 관리</h3>
+              <p>JSM 안에서 직접 경고를 확인, 할당, 처리할 수 있어 별도 도구로 전환할 필요가 없습니다.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-ai-alert-grouping.png" alt="Atlassian Intelligence 자동 그룹화 경고 화면" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">AI · IT 운영</span>
+              <h3>AI 경고 그룹화</h3>
+              <p>Atlassian Intelligence가 유사한 경고를 자동으로 그룹화하여 노이즈를 줄이고 대응 우선순위를 정합니다.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-request-views.png" alt="JSM 보드 뷰로 서비스 요청 확인" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">고객 서비스</span>
+              <h3>다양한 요청 뷰</h3>
+              <p>Queues, Board 또는 Calendar로 조직의 요청을 확인하고 종속 관계와 일정을 파악합니다.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-ai-summary.png" alt="JSM 티켓의 AI 요약" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">AI · 고객 서비스</span>
+              <h3>AI 티켓 요약</h3>
+              <p>원클릭으로 긴 대화를 핵심 요약으로 압축하여 상담원의 적응과 응답을 가속화합니다.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-conversational-ticketing.png" alt="Slack／Teams 대화에서 대화형으로 티켓 생성" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">고객 서비스</span>
+              <h3>대화형 티켓 생성</h3>
+              <p>Slack 또는 Microsoft Teams에서 직접 일반적인 요청을 가로채 티켓을 자동으로 생성하고 할당합니다.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-card__img"><img src="../assets/img/jsm-self-service-portal.png" alt="JSM 셀프서비스 요청 입구" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">개발자 · 셀프서비스</span>
+              <h3>셀프서비스 입구</h3>
+              <p>사전 구축된 양식과 Help Center로 사용자가 직접 버그 신고와 서비스 요청을 제출할 수 있습니다.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal feature-card--wide">
+            <div class="feature-card__img"><img src="../assets/img/jsm-help-center.png" alt="브랜드화된 직원 Help Center" loading="lazy" /></div>
+            <div class="feature-card__body">
+              <span class="feature-card__tag">직원 경험</span>
+              <h3>개인화된 Help Center</h3>
+              <p>HR, 총무 등 팀을 위해 브랜드화·개인화된 직원 서비스 센터를 구축하여 셀프서비스 비율을 높입니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Plans (Standard / Premium / Enterprise) ===================== -->
+    <section class="section" id="plans">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Standard · Premium · Enterprise</span>
+          <h2>여러분에게 적합한 JSM 버전을 선택하세요</h2>
+          <p class="section__sub">Standard부터 Enterprise까지, 거버넌스, 컴플라이언스, 지원 요구에 따라 단계적으로 업그레이드하세요. Premium으로 업그레이드하면 24/7 지원, SLA 보장, 고급 ITSM／AIOps 역량을 누릴 수 있습니다.</p>
+        </div>
+
+        <div class="plans-hl reveal">
+          <div class="plans-hl__item">
+            <span class="plans-hl__art" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <path d="M30 30 H102 a10 10 0 0 1 10 10 V70 a10 10 0 0 1 -10 10 H66 l-15 15 V80 H30 a10 10 0 0 1 -10 -10 V40 a10 10 0 0 1 10 -10 Z" fill="#1868DB"/>
+                <path d="M12 14 H58 a8 8 0 0 1 8 8 V44 a8 8 0 0 1 -8 8 H38 l-11 11 V52 H12 a8 8 0 0 1 -8 -8 V22 a8 8 0 0 1 8 -8 Z" fill="#FFC716"/>
+                <rect x="14" y="26" width="36" height="3.2" rx="1.6" fill="#172B4D"/>
+                <rect x="14" y="35" width="26" height="3.2" rx="1.6" fill="#172B4D"/>
+                <rect x="46" y="46" width="42" height="3.2" rx="1.6" fill="#fff"/>
+                <rect x="46" y="56" width="32" height="3.2" rx="1.6" fill="#fff"/>
+                <rect x="46" y="66" width="20" height="3.2" rx="1.6" fill="#fff"/>
+              </svg>
+            </span>
+            <strong>24/7 중대 문제 지원</strong>
+          </div>
+          <div class="plans-hl__item">
+            <span class="plans-hl__art" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <rect x="42" y="22" width="64" height="52" rx="7" fill="#FFC716"/>
+                <rect x="14" y="34" width="36" height="52" rx="6" fill="#1868DB"/>
+                <circle cx="80" cy="44" r="10" fill="#091E42"/>
+                <rect x="76" y="48" width="8" height="15" rx="4" fill="#091E42"/>
+                <circle cx="24" cy="52" r="6.5" fill="#FFE380"/>
+                <rect x="27" y="50.2" width="17" height="3.6" rx="1.8" fill="#FFE380"/>
+                <path d="M50 56 H70" stroke="#091E42" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M66 51 l6 5 -6 5" fill="none" stroke="#091E42" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="68" y="74" width="12" height="10" fill="#0C66E4"/>
+                <rect x="56" y="84" width="36" height="6" rx="3" fill="#0C66E4"/>
+              </svg>
+            </span>
+            <strong>강화된 보안 방어</strong>
+          </div>
+          <div class="plans-hl__item">
+            <span class="plans-hl__art" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <path d="M16 88 A44 44 0 0 1 104 88" fill="none" stroke="#1868DB" stroke-width="13" stroke-linecap="round"/>
+                <path d="M88 54 A44 44 0 0 1 104 88" fill="none" stroke="#C9372C" stroke-width="13" stroke-linecap="round"/>
+                <path d="M60 88 L90 52 L68 82 Z" fill="#FFC716"/>
+                <circle cx="60" cy="88" r="8" fill="#172B4D"/>
+                <rect x="58" y="30" width="4" height="9" rx="2" fill="#091E42"/>
+                <rect x="24" y="44" width="9" height="4" rx="2" fill="#091E42"/>
+                <rect x="87" y="44" width="9" height="4" rx="2" fill="#091E42"/>
+              </svg>
+            </span>
+            <strong>99.9% 가동 시간 SLA</strong>
+          </div>
+        </div>
+
+        <p class="plans-hint reveal">👆 열 제목(Standard／Premium／Enterprise)을 클릭하면 중점 비교할 버전을 전환할 수 있습니다</p>
+        <div class="plans-table-wrap reveal">
+          <table class="plans-table sel-1">
+            <thead>
+              <tr>
+                <th class="plans-table__feat">기능 항목</th>
+                <th class="plans-col" data-plan="0" role="button" tabindex="0" aria-label="Standard 중점 비교">Standard<br><small>표준판</small></th>
+                <th class="plans-col" data-plan="1" role="button" tabindex="0" aria-label="Premium 중점 비교">Premium <span class="plans-rec">추천</span></th>
+                <th class="plans-col" data-plan="2" role="button" tabindex="0" aria-label="Enterprise 중점 비교">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">고객 지원</th><td>지역 업무 시간</td><td>24/7(중대 문제 &lt;1시간 응답)</td><td>24/7 ＋ 전담 시니어 지원 팀</td></tr>
+              <tr><th scope="row">가동 시간 SLA</th><td class="muted">—</td><td>99.9%</td><td>99.95%</td></tr>
+              <tr><th scope="row">저장 공간</th><td>250 GB</td><td>무제한</td><td>무제한</td></tr>
+              <tr><th scope="row">월간 중대 사건 수</th><td>100</td><td>무제한</td><td>무제한</td></tr>
+              <tr><th scope="row">사후 검토 보고서(PIR)</th><td>5</td><td>무제한</td><td>무제한</td></tr>
+              <tr><th scope="row">사건 생성 방식</th><td>수동만</td><td>수동／자동／API／템플릿</td><td>수동／자동／API／템플릿</td></tr>
+              <tr><th scope="row">경고 음성 알림</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">고급 변경 관리(CI/CD 배포 게이트)</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">문제 관리 큐</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">AIOps(경고 그룹화／유사 탐지)</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">AI 사건 생성／AI PIR／Slack 타임라인</th><td><span class="cr"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">자동화 규칙 상한</th><td>1,000／agent</td><td>1,000／agent</td><td>무제한</td></tr>
+              <tr><th scope="row">데이터 레지던시(Data residency)</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">릴리스 트랙(Release tracks)</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">샌드박스(Sandbox)</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">IP 허용 목록</th><td><span class="ck"></span></td><td><span class="ck"></span></td><td><span class="ck"></span></td></tr>
+              <tr><th scope="row">SSO／SCIM／AD 동기화</th><td>Atlassian Guard 추가 구매 필요</td><td>Atlassian Guard 추가 구매 필요</td><td>포함</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="plans-note">자료는 Atlassian 공식 Jira Service Management Premium(Admin controls 포함) 페이지를 정리한 것입니다. 일부 수치는 공식 플랜 비교표를 기준으로 하며, 실제는 Atlassian 공식 웹사이트 공지를 따릅니다.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Mobile app ===================== -->
+    <section class="section section--alt" id="mobile">
+      <div class="container mobile__inner reveal">
+        <div class="mobile__copy">
+          <span class="kicker">모바일 업무</span>
+          <h2>ITSM을 어디서나 휴대하세요</h2>
+          <p class="mobile__lead">Jira Service Management 모바일 App을 통해 어디에 있든 실시간으로 티켓을 제출, 승인, 해결할 수 있어, 자리를 떠나도 서비스가 중단되지 않습니다.</p>
+          <ul class="mobile__ticks">
+            <li>언제든지 요청을 제출·업데이트하고 고객에게 회신</li>
+            <li>관리자가 원클릭으로 변경과 요청을 승인</li>
+            <li>경고 푸시를 받아 즉시 사건을 처리</li>
+          </ul>
+          <div class="app-badges">
+            <a class="appbadge" href="https://apps.apple.com/app/jira-cloud-by-atlassian/id1006972087" target="_blank" rel="noopener" aria-label="App Store에서 다운로드">
+              <span class="appbadge__ic" aria-hidden="true">
+                <svg viewBox="0 0 384 512"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C61.4 141.6 10 184.8 10 273.3c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zM262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+              </span>
+              <span class="appbadge__txt"><small>Download on the</small><strong>App Store</strong></span>
+            </a>
+            <a class="appbadge" href="https://play.google.com/store/apps/details?id=com.atlassian.android.jira.core" target="_blank" rel="noopener" aria-label="Google Play에서 다운로드">
+              <span class="appbadge__ic" aria-hidden="true">
+                <svg viewBox="0 0 512 512"><path fill="#00C3FF" d="M48 30 296 256 48 482c-9-5-15-15-15-27V57c0-12 6-22 15-27z"/><path fill="#00E676" d="M48 30c4-2 9-2 14 1l309 178-66 66z"/><path fill="#FFD500" d="M371 209l66 38c20 12 20 30 0 42l-66 38-71-79z"/><path fill="#FF3D47" d="M48 482c4 2 9 2 14-1l309-178-66-66z" opacity=".95"/></svg>
+              </span>
+              <span class="appbadge__txt"><small>GET IT ON</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mobile__visual">
+          <img class="mobile__shot" src="../assets/img/jsm-mobile-app.png" alt="Jira Service Management 모바일 App: 알림 센터와 IT 서비스 데스크 티켓 목록 화면" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Steps ===================== -->
+    <section class="section section--dark" id="steps">
+      <div class="container">
+        <div class="section__head section__head--light reveal">
+          <h2>4단계로 Opsgenie 마이그레이션을 완료하세요</h2>
+          <p class="section__sub">데이터는 대상 플랫폼으로 "복사"되며, 기존 Opsgenie는 그대로 유지되어 두 사이트를 병행 운영할 수 있어 안심하고 검증할 수 있습니다.</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <div class="step__num">01</div>
+            <h3>새 플랜 선택</h3>
+            <ul>
+              <li>Opsgenie 내장 마이그레이션 안내 도구가 현재 사용 현황에 따라 적합한 JSM 플랜을 추천</li>
+              <li>대상 제품 확인</li>
+              <li>마이그레이션 날짜 지정</li>
+            </ul>
+          </li>
+          <li class="step reveal">
+            <div class="step__num">02</div>
+            <h3>마이그레이션 준비</h3>
+            <ul>
+              <li>마이그레이션 날짜를 billing admin에게 제출하여 승인</li>
+              <li>기간 중 먼저 팀의 전환을 준비</li>
+              <li>관련 인원에게 계정／권한 전환을 통지</li>
+            </ul>
+          </li>
+          <li class="step reveal">
+            <div class="step__num">03</div>
+            <h3>데이터 자동 이전</h3>
+            <ul>
+              <li>Atlassian이 지정한 날짜에 데이터와 구성을 자동으로 이전</li>
+              <li>과정 중 다운타임 없음</li>
+              <li>Opsgenie를 계속 사용해도 영향 없음</li>
+            </ul>
+          </li>
+          <li class="step reveal">
+            <div class="step__num">04</div>
+            <h3>마이그레이션 완료</h3>
+            <ul>
+              <li>Atlassian이 in-product 안내를 제공하여 JSM 내 최종 설정을 완료</li>
+              <li>alerting／on-call 프로세스가 정상인지 확인</li>
+              <li>검증 후 Opsgenie를 정식으로 종료</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="parallel-note reveal">
+          <span class="parallel-note__num">120<span>일</span></span>
+          <div>
+            <h4>마이그레이션 후 최대 120일간 Opsgenie와 JSM 병행 사용</h4>
+            <p>모든 설정이 올바르게 작동하는지 검증하고, 팀이 점진적으로 새 시스템에 적응하도록 하며, alerting／on-call 프로세스가 정상임을 확인한 후 Opsgenie를 정식으로 종료하기 위한 기간입니다.</p>
+          </div>
+        </div>
+
+        <div class="migrated reveal">
+          <div class="migrated__col">
+            <h4>자동화 도구로 이전(본사 담당)</h4>
+            <div class="chips">
+              <span>Teams 및 당직 일정</span><span>Escalation 에스컬레이션 전략</span><span>Alert routing 경고 라우팅 규칙</span>
+              <span>Notification 알림 전략</span><span>Integrations 통합</span>
+            </div>
+          </div>
+          <div class="migrated__col">
+            <h4>고객 확인 및 협조 필요</h4>
+            <div class="chips">
+              <span>billing admin을 지정하여 마이그레이션 날짜 승인</span><span>Integrations / Webhooks 등 외부 연결 검증</span>
+              <span>120일 이내에 UAT 검수 진행</span><span>팀에 계정／권한 전환 통지</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Timeline ===================== -->
+    <section class="section" id="timeline">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>절대 놓쳐서는 안 될 두 가지 날짜</h2>
+          <p class="section__sub">빨리 계획할수록 검증, 테스트, 사용자 교육을 완료할 여유가 생깁니다.</p>
+        </div>
+
+        <div class="tl reveal">
+          <div class="tl__line" aria-hidden="true"></div>
+          <div class="tl__item tl__item--warn">
+            <div class="tl__dot"></div>
+            <div class="tl__date">2025년 6월 4일</div>
+            <h3>End of sale ｜ 판매 종료</h3>
+            <ul>
+              <li>신규 구매, 업그레이드, 다운그레이드, 사이트 추가 불가</li>
+              <li>이 날 이후로는 갱신과 사용자 수 추가 구매만 가능</li>
+              <li>가까운 시일 내에 필요한 버전과 사이트 조정을 먼저 완료하세요</li>
+            </ul>
+          </div>
+          <div class="tl__item tl__item--danger">
+            <div class="tl__dot"></div>
+            <div class="tl__date">2027년 4월 5일</div>
+            <h3>End of support ｜ 지원 종료</h3>
+            <ul>
+              <li>Opsgenie에 더 이상 로그인하거나 사용할 수 없음</li>
+              <li>마이그레이션되지 않은 모든 데이터가 삭제됨</li>
+              <li>이 날 전에 반드시 마이그레이션을 완료하고 필요한 데이터를 다운로드하세요</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cd-banner reveal">
+          <span class="cd-banner__ic" aria-hidden="true">⏳</span>
+          <p class="cd-banner__text">Opsgenie 지원 종료(2027년 4월 5일)까지 남은 기간</p>
+          <span class="cd-banner__num" id="countdownDays2">—</span>
+          <span class="cd-banner__unit">일</span>
+        </div>
+
+        <div class="cta-band reveal">
+          <div>
+            <h3>어디서부터 시작해야 할지 모르겠나요?</h3>
+            <p>Titansoft가 현황을 평가하고 일정을 계획하여 안심하고 마이그레이션을 완료하도록 돕겠습니다.</p>
+          </div>
+          <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary btn--lg">문의하기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section section--alt" id="faq">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>자주 묻는 질문</h2>
+        </div>
+
+        <div class="faq-tabs reveal" role="tablist" aria-label="FAQ 분류">
+          <button class="faq-tab is-active" role="tab" aria-selected="true" data-cat="schedule">📅 일정 및 주요 날짜</button>
+          <button class="faq-tab" role="tab" aria-selected="false" data-cat="tech">⚙️ 기술 및 이전 절차</button>
+          <button class="faq-tab" role="tab" aria-selected="false" data-cat="billing">💰 청구 및 비용 전환</button>
+        </div>
+
+        <div class="faq-list reveal" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- ===================== Contact / CTA ===================== -->
+    <section class="section section--dark contact" id="contact">
+      <div class="container contact__inner reveal">
+        <div class="contact__copy">
+          <h2>Opsgenie 마이그레이션을 시작할 준비가 되셨나요?</h2>
+          <p>Titansoft는 Atlassian 골드 파트너로서 마이그레이션 평가, 방안 계획, 비용 전환, 기술 지원을 제공합니다. 언제든 문의해 주시면 여러분만의 마이그레이션 경로를 맞춤 설계해 드리겠습니다.</p>
+          <ul class="contact__points">
+            <li>마이그레이션 현황 평가 및 경로 제안</li>
+            <li>일정 계획 및 병행 검증 지원</li>
+            <li>특수 상황(조직 간 / Data Center) 처리</li>
+            <li>비용 및 계약 전환 상담</li>
+          </ul>
+        </div>
+        <div class="contact__card">
+          <h3>Titansoft에 문의하기</h3>
+          <a class="contact__line" href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener">
+            <span class="contact__ic">🎫</span>
+            <span><span class="contact__lbl">서비스 데스크 입구</span>마이그레이션 상담 요청 작성</span>
+          </a>
+          <a class="contact__line" href="https://support.atlassian.com/opsgenie/docs/what-to-expect-from-opsgenie-migration/" target="_blank" rel="noopener">
+            <span class="contact__ic">↗</span>
+            <span><span class="contact__lbl">Atlassian 공식 마이그레이션 문서</span>What to expect from Opsgenie migration</span>
+          </a>
+          <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary btn--block">문의하기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand">
+          <span class="brand__mark" aria-hidden="true"><img src="../assets/img/logos/jsm.svg" width="24" height="24" alt="" /></span>
+          <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
+        </span>
+      </div>
+      <nav class="footer__nav" aria-label="푸터 내비게이션">
+        <a href="#why">마이그레이션 이유</a>
+        <a href="#collection">Service Collection</a>
+        <a href="#paths">마이그레이션 경로</a>
+        <a href="#compare">기능 비교</a>
+        <a href="#features">주요 기능</a>
+        <a href="#steps">마이그레이션 절차</a>
+        <a href="#faq">자주 묻는 질문</a>
+        <a href="#contact">문의하기</a>
+        <a href="https://rovo.titansoft.com.sg/" target="_blank" rel="noopener">Titansoft Rovo ↗</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <span>© <span id="year"></span> Titansoft.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/i18n/ko.js"></script>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

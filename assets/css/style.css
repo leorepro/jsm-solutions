@@ -127,10 +127,10 @@ code {
 .brand__mark { display: inline-flex; }
 .brand__dot { color: var(--blue); }
 
-.nav__links { display: flex; gap: 2px; margin-left: auto; }
+.nav__links { display: flex; align-items: center; gap: 2px; margin-left: auto; }
 .nav__links a {
-  font-size: .94rem; font-weight: 600; color: var(--ink-2);
-  padding: .5em .8em; border-radius: 8px; transition: color .15s ease, background .15s ease;
+  font-size: .9rem; font-weight: 600; color: var(--ink-2); white-space: nowrap; text-align: center;
+  padding: .5em .6em; border-radius: 8px; transition: color .15s ease, background .15s ease;
 }
 .nav__links a:hover { color: var(--blue-700); background: var(--blue-soft); }
 .nav__cta { padding: .6em 1.2em; min-height: 40px; }
@@ -138,8 +138,9 @@ code {
 /* ---------- Language switcher ---------- */
 .lang { position: relative; }
 .lang__btn { list-style: none; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-size: .9rem; font-weight: 600; color: var(--ink-2); padding: .5em .75em; border-radius: 8px; border: 1px solid var(--line); transition: border-color .15s ease, color .15s ease; white-space: nowrap; }
+summary.lang__btn { list-style: none; }
 .lang__btn::-webkit-details-marker { display: none; }
-.lang__btn::marker { content: ""; }
+.lang__btn::marker { content: none; }
 .lang__btn:hover { border-color: var(--blue); color: var(--blue-700); }
 .lang__btn svg { width: 17px; height: 17px; flex-shrink: 0; }
 .lang[open] .lang__btn { border-color: var(--blue); color: var(--blue-700); }
