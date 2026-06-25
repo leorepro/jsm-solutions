@@ -636,7 +636,11 @@ summary.lang__btn { list-style: none; }
 .compare tbody tr:hover td, .compare tbody tr:hover th { background: var(--blue-soft); }
 .th-pill { display: inline-flex; align-items: center; gap: 8px; font-size: .92rem; font-weight: 800; color: #fff; }
 .th-pill__mark { width: 22px; height: 22px; border-radius: 6px; display: inline-grid; place-items: center; background: var(--purple); color: #fff; font-size: .8rem; flex-shrink: 0; }
-.compare .yes { color: var(--green-700); font-size: 1.3rem; font-weight: 800; }
+.compare .yes { font-size: 0; line-height: 0; }
+.compare .yes::before {
+  content: ""; display: inline-block; width: 26px; height: 26px; border-radius: 50%; vertical-align: middle;
+  background: var(--green-700) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5 12 10 17 19 7'/%3E%3C/svg%3E") center/15px no-repeat;
+}
 .compare .no { color: var(--ink-4); font-size: 1.15rem; }
 .compare__note { text-align: center; margin-top: 20px; font-size: .92rem; color: var(--ink-3); }
 .compare__note a { color: var(--blue-700); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
