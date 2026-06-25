@@ -358,6 +358,37 @@ code {
   .ind-panel { padding: 24px 20px; box-shadow: 5px 6px 0 rgba(23,43,77,.9); }
 }
 
+/* ---------- Plans (version comparison) ---------- */
+.plans-hl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 4px 0 34px; }
+.plans-hl__item {
+  display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center;
+  background: #fff; border: 2px solid var(--line); border-radius: var(--radius-lg); padding: 26px 18px;
+}
+.plans-hl__art { width: 92px; height: 92px; display: block; }
+.plans-hl__art svg { width: 100%; height: 100%; display: block; }
+.plans-hl__item strong { font-size: 1.04rem; color: var(--ink); font-weight: 800; }
+
+.plans-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius-lg); }
+.plans-table { width: 100%; border-collapse: collapse; min-width: 720px; font-size: .94rem; }
+.plans-table th, .plans-table td { padding: 13px 16px; border-bottom: 1px solid var(--line); text-align: center; vertical-align: middle; }
+.plans-table thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .98rem; border-bottom: 0; }
+.plans-table thead th:first-child { background: var(--navy); }
+.plans-table thead th small { font-weight: 500; opacity: .8; font-size: .76rem; }
+.plans-table thead th:first-child { border-top-left-radius: var(--radius); }
+.plans-table thead th:last-child { border-top-right-radius: var(--radius); }
+.plans-table tbody th[scope="row"], .plans-table__feat { text-align: left; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.plans-table tbody tr:nth-child(even) td, .plans-table tbody tr:nth-child(even) th { background: var(--bg-grey-2); }
+.plans-table td.muted { color: var(--ink-4); }
+.plans-table .is-rec { background: var(--blue-soft) !important; color: var(--ink); font-weight: 600; box-shadow: inset 2px 0 0 var(--blue), inset -2px 0 0 var(--blue); }
+.plans-table thead th.is-rec { background: var(--blue-700); color: #fff; box-shadow: none; }
+.plans-rec { display: inline-block; font-size: .62rem; font-weight: 800; background: var(--yellow); color: var(--ink); padding: .15em .5em; border-radius: 5px; margin-left: 4px; vertical-align: middle; }
+.plans-table .ck, .plans-table .cr { display: inline-block; width: 23px; height: 23px; border-radius: 50%; }
+.plans-table .ck { background: var(--green-700) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5 12 10 17 19 7'/%3E%3C/svg%3E") center/13px no-repeat; }
+.plans-table .cr { background: var(--line-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238590A2' stroke-width='3.4' stroke-linecap='round'%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3C/svg%3E") center/12px no-repeat; }
+.plans-note { margin-top: 16px; font-size: .82rem; color: var(--ink-3); text-align: center; }
+
+@media (max-width: 720px) { .plans-hl { grid-template-columns: 1fr; } }
+
 /* ---------- Mobile app section ---------- */
 .mobile__inner { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
 .mobile__lead { font-size: 1.12rem; color: var(--ink-2); margin-top: 18px; max-width: 520px; }
