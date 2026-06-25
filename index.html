@@ -44,9 +44,10 @@
       </a>
       <nav class="nav__links" aria-label="主要導覽">
         <a href="#why">為什麼遷移</a>
-        <a href="#collection">Service Collection</a>
+        <a href="#solutions">解決什麼</a>
+        <a href="#industries">適用產業</a>
         <a href="#paths">遷移路徑</a>
-        <a href="#features">功能亮點</a>
+        <a href="#plans">版本差異</a>
         <a href="#steps">遷移流程</a>
         <a href="#faq">常見問題</a>
       </nav>
@@ -309,6 +310,102 @@
           ｜
           <a href="https://support.atlassian.com/opsgenie/docs/what-to-expect-from-opsgenie-migration/" target="_blank" rel="noopener">What to expect from Opsgenie migration</a>
         </p>
+      </div>
+    </section>
+
+    <!-- ===================== Solutions / ITSM practices ===================== -->
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">完整 ITIL / ITSM 實踐</span>
+          <h2>買了 JSM，能幫你解決哪些問題？</h2>
+          <p class="section__sub">Jira Service Management 不只承接 Opsgenie 的告警與待命，更把完整的 ITIL／ITSM 實踐整合在同一平台。以下是各服務管理實踐對應的客戶痛點，以及 JSM 的解方。</p>
+        </div>
+
+        <div class="sol-grid">
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🎫</span><div class="sol-card__title"><h3>服務請求管理</h3><span class="sol-card__en">Request Management</span></div></div>
+            <p class="sol-card__pain">申請散落在 email 與私訊、重複的小請求淹沒 IT，員工也查不到自己的進度。</p>
+            <ul class="sol-ticks">
+              <li>單一入口集中所有請求，自動分流到佇列（Queues）</li>
+              <li>表單與請求類型結構化收集申請資訊</li>
+              <li>SLA 自動追蹤時限，逾期前主動示警</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🚨</span><div class="sol-card__title"><h3>事件管理</h3><span class="sol-card__en">Incident Management</span></div></div>
+            <p class="sol-card__pain">告警散落在各監控工具、不知道「現在誰該負責」，每次事件都像從頭來過。</p>
+            <ul class="sol-ticks">
+              <li>整合 200+ 監控與應用服務，集中同步告警</li>
+              <li>重大事件一鍵拉起戰情室，串接 Slack／Teams 協作</li>
+              <li>事件時間軸完整記錄，AI 協助撰寫事後檢討（PIR）</li>
+            </ul>
+          </article>
+
+          <article class="sol-card sol-card--accent reveal">
+            <span class="sol-card__badge">Opsgenie 完整承接</span>
+            <div class="sol-card__top"><span class="sol-card__icon">📟</span><div class="sol-card__title"><h3>告警與待命排班</h3><span class="sol-card__en">Alerting &amp; On-call</span></div></div>
+            <p class="sol-card__pain">告警噪音淹沒重要訊號、值班靠人工 Excel 排、第一線沒回應也沒有自動升級。</p>
+            <ul class="sol-ticks">
+              <li>告警去重與群組，降低噪音保留有效訊號</li>
+              <li>On-call 排班支援多時區輪替與請假代班</li>
+              <li>升級策略（Escalation）未回應自動往上升級</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🔍</span><div class="sol-card__title"><h3>問題管理</h3><span class="sol-card__en">Problem Management</span></div></div>
+            <p class="sol-card__pain">同類事件反覆發生、每次都在救火，可預防的事故卻因缺乏追蹤而錯失。</p>
+            <ul class="sol-ticks">
+              <li>多個事件歸群到單一問題，啟動根因分析</li>
+              <li>「已知錯誤」＋暫時對策，再觸發時大幅縮短停機</li>
+              <li>主動式問題偵測，在事件發生前先備好對策</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🔀</span><div class="sol-card__title"><h3>變更管理</h3><span class="sol-card__en">Change Management</span></div></div>
+            <p class="sol-card__pain">審批流程冗長拖慢交付、變更風險難事前掌握，開發與維運之間資訊斷層。</p>
+            <ul class="sol-ticks">
+              <li>標準／一般／緊急變更分級，依風險走不同流程</li>
+              <li>變更行事曆避免衝撞，自動計算風險等級</li>
+              <li>串接 CI/CD（Bitbucket、Jenkins…）自動建立稽核軌跡</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">📚</span><div class="sol-card__title"><h3>知識管理</h3><span class="sol-card__en">Knowledge Management</span></div></div>
+            <p class="sol-card__pain">同樣的問題天天被問十幾遍、文件過時又散落，關鍵知識卡在少數人腦中。</p>
+            <ul class="sol-ticks">
+              <li>以 Confluence 驅動的內建知識庫</li>
+              <li>AI 從常見工單自動生成知識文章草稿</li>
+              <li>自助分流（Deflection），填表時自動浮現相關文章</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🗂️</span><div class="sol-card__title"><h3>資產與配置管理</h3><span class="sol-card__en">Assets &amp; CMDB</span></div></div>
+            <p class="sol-card__pain">資產散落各種 Excel、盤點永遠對不準，出事故時不知道影響到哪些系統。</p>
+            <ul class="sol-ticks">
+              <li>彈性資產資料庫集中管理所有配置項目（CI）</li>
+              <li>相依關係視覺化，快速排查事故、降低變更風險</li>
+              <li>自動探索網路資產，並從 Jira 工單自動更新</li>
+            </ul>
+          </article>
+
+          <article class="sol-card reveal">
+            <div class="sol-card__top"><span class="sol-card__icon">🤖</span><div class="sol-card__title"><h3>AI 服務管理</h3><span class="sol-card__en">Rovo &amp; Virtual Agent</span></div></div>
+            <p class="sol-card__pain">第一線被重複請求淹沒、冗長工單交接費時，下班半夜假日沒人能即時回應。</p>
+            <ul class="sol-ticks">
+              <li>虛擬服務專員 24/7 自動處理密碼重設等常見請求</li>
+              <li>AI 摘要工單與事件時間軸，快速掌握脈絡</li>
+              <li>Rovo Agent 端到端自動執行如新人入職等流程</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="sol-note">JSM 的事件、告警、待命與 incident swarming 全部 <strong>powered by Opsgenie，且涵蓋所有雲端方案</strong>——從 Opsgenie 遷移過來，這些核心能力一個都不會少。</p>
       </div>
     </section>
 

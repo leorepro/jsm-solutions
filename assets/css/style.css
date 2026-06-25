@@ -154,9 +154,9 @@ code {
 }
 /* flat colour confetti shapes */
 .hero__bg::after {
-  content: ""; position: absolute; width: 120px; height: 120px; right: 6%; top: 14%;
-  background: var(--yellow); border-radius: 30px; transform: rotate(14deg); opacity: .9;
-  box-shadow: -240px 120px 0 -40px var(--teal-soft), -60px 300px 0 -30px var(--purple-soft);
+  content: ""; position: absolute; width: 104px; height: 104px; right: 4%; top: 30%;
+  background: var(--yellow); border-radius: 28px; transform: rotate(14deg); opacity: .9;
+  box-shadow: -230px -150px 0 -36px var(--teal-soft), -120px 240px 0 -30px var(--purple-soft);
 }
 .hero__inner { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; position: relative; }
 
@@ -263,6 +263,44 @@ code {
 .strip__item { color: rgba(255,255,255,.82); }
 .strip__item strong { color: var(--yellow); }
 .strip__sep { width: 1px; height: 16px; background: rgba(255,255,255,.22); }
+
+/* ---------- Solutions / ITSM practice cards ---------- */
+.sol-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 8px; }
+.sol-card {
+  position: relative; display: flex; flex-direction: column;
+  background: #fff; border: 2px solid var(--line); border-radius: var(--radius-lg);
+  padding: 22px 20px 20px;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.sol-card:hover { border-color: var(--ink); box-shadow: 6px 8px 0 var(--blue-soft-2); transform: translateY(-3px); }
+.sol-card--accent { border-color: var(--ink); box-shadow: 5px 6px 0 var(--yellow); }
+.sol-card--accent:hover { box-shadow: 7px 9px 0 var(--yellow); }
+.sol-card__badge {
+  position: absolute; top: -11px; left: 18px;
+  font-size: .68rem; font-weight: 800; letter-spacing: .01em;
+  background: var(--navy); color: #fff; padding: .32em .72em; border-radius: 6px;
+}
+.sol-card__top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.sol-card__icon { width: 46px; height: 46px; border-radius: 12px; background: var(--yellow-tile); display: grid; place-items: center; font-size: 1.4rem; flex-shrink: 0; }
+.sol-card__title h3 { font-size: 1.06rem; line-height: 1.2; }
+.sol-card__en { font-size: .72rem; font-weight: 700; color: var(--ink-4); letter-spacing: .02em; }
+.sol-card__pain { font-size: .9rem; color: var(--ink-2); margin-bottom: 16px; }
+.sol-ticks { display: flex; flex-direction: column; gap: 9px; margin-top: auto; }
+.sol-ticks li { position: relative; padding-left: 26px; font-size: .88rem; color: var(--ink); line-height: 1.45; }
+.sol-ticks li::before {
+  content: ""; position: absolute; left: 0; top: 2px; width: 17px; height: 17px; border-radius: 50%;
+  background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5 12 10 17 19 7'/%3E%3C/svg%3E") center/11px no-repeat;
+}
+.sol-card--accent .sol-ticks li::before { background-color: var(--green-700); }
+.sol-note {
+  margin-top: 30px; text-align: center; font-size: .98rem; color: var(--ink-2);
+  background: var(--blue-soft); border: 1px solid var(--blue-soft-2);
+  border-radius: var(--radius); padding: 16px 24px;
+}
+.sol-note strong { color: var(--blue-700); }
+
+@media (max-width: 1080px) { .sol-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .sol-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Section base ---------- */
 .section { padding: 100px 0; position: relative; }
