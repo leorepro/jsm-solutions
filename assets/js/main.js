@@ -430,4 +430,38 @@
 
   // initial
   render('schedule');
+
+  /* ---------- Lightbox：點擊功能截圖放大 ---------- */
+  (function () {
+    var imgs = document.querySelectorAll('.feature-card__img img');
+    if (!imgs.length) return;
+
+    var box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('aria-hidden', 'true');
+    box.innerHTML = '<button class="lightbox__close" aria-label="關閉放大檢視">&times;</button><img class="lightbox__img" alt="" />';
+    document.body.appendChild(box);
+    var boxImg = box.querySelector('.lightbox__img');
+
+    function open(src, alt) {
+      boxImg.src = src; boxImg.alt = alt || '';
+      box.classList.add('is-open'); box.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      box.classList.remove('is-open'); box.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    imgs.forEach(function (img) {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
+    });
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target.classList.contains('lightbox__close')) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && box.classList.contains('is-open')) close();
+    });
+  })();
 })();
