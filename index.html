@@ -64,12 +64,6 @@
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy reveal">
-          <div class="countdown" id="countdown" role="timer" aria-live="polite" aria-label="Opsgenie 終止支援倒數">
-            <span class="countdown__ic" aria-hidden="true">⏳</span>
-            <span class="countdown__label" id="countdownLabel">距 Opsgenie 終止支援還剩</span>
-            <span class="countdown__num" id="countdownDays">—</span>
-            <span class="countdown__unit" id="countdownUnit">天</span>
-          </div>
           <span class="eyebrow">停售 2025 年 6 月 4 日 · 終止支援 2027 年 4 月 5 日</span>
           <h1 class="hero__title">從 Opsgenie 升級到 <span class="grad">Jira Service Management</span><span class="hero__sc">（Atlassian Service Collection）</span></h1>
           <p class="hero__lead">
@@ -87,9 +81,15 @@
           </div>
         </div>
 
-        <div class="hero__visual reveal" aria-hidden="true">
+        <div class="hero__visual reveal">
+          <div class="countdown" id="countdown" role="timer" aria-live="polite" aria-label="Opsgenie 終止支援倒數">
+            <span class="countdown__ic" aria-hidden="true">⏳</span>
+            <span class="countdown__label" id="countdownLabel">距 Opsgenie 終止支援還剩</span>
+            <span class="countdown__num" id="countdownDays">—</span>
+            <span class="countdown__unit" id="countdownUnit">天</span>
+          </div>
           <!-- Atlassian 風格「分岔旅程」：Opsgenie 一個來源，分岔到兩條遷移路徑 -->
-          <div class="journey">
+          <div class="journey" aria-hidden="true">
             <span class="blob blob--yellow"></span>
             <span class="blob blob--teal"></span>
             <span class="blob blob--magenta"></span>
@@ -493,6 +493,57 @@
               <p>為 HR、總務等團隊打造品牌化、個人化的員工服務中心，提升自助比率。</p>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Mobile app ===================== -->
+    <section class="section section--alt" id="mobile">
+      <div class="container mobile__inner reveal">
+        <div class="mobile__copy">
+          <span class="kicker">行動辦公</span>
+          <h2>ITSM 隨身帶著走</h2>
+          <p class="mobile__lead">透過 Jira Service Management 行動 App，無論身在何處，都能即時提交、審核與解決工單，讓服務不因離開座位而中斷。</p>
+          <ul class="mobile__ticks">
+            <li>隨時提交與更新請求、回覆客戶</li>
+            <li>主管一鍵審核變更與請求</li>
+            <li>接收告警推播，第一時間處理事件</li>
+          </ul>
+          <div class="app-badges">
+            <a class="appbadge" href="https://apps.apple.com/app/jira-cloud-by-atlassian/id1006972087" target="_blank" rel="noopener" aria-label="從 App Store 下載">
+              <span class="appbadge__ic" aria-hidden="true">
+                <svg viewBox="0 0 384 512"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C61.4 141.6 10 184.8 10 273.3c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zM262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+              </span>
+              <span class="appbadge__txt"><small>Download on the</small><strong>App Store</strong></span>
+            </a>
+            <a class="appbadge" href="https://play.google.com/store/apps/details?id=com.atlassian.android.jira.core" target="_blank" rel="noopener" aria-label="從 Google Play 下載">
+              <span class="appbadge__ic" aria-hidden="true">
+                <svg viewBox="0 0 512 512"><path fill="#00C3FF" d="M48 30 296 256 48 482c-9-5-15-15-15-27V57c0-12 6-22 15-27z"/><path fill="#00E676" d="M48 30c4-2 9-2 14 1l309 178-66 66z"/><path fill="#FFD500" d="M371 209l66 38c20 12 20 30 0 42l-66 38-71-79z"/><path fill="#FF3D47" d="M48 482c4 2 9 2 14-1l309-178-66-66z" opacity=".95"/></svg>
+              </span>
+              <span class="appbadge__txt"><small>GET IT ON</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mobile__visual" aria-hidden="true">
+          <div class="phone">
+            <div class="phone__screen">
+              <div class="phone__status"><span>9:41</span><span class="phone__status-ic">●●● ▮</span></div>
+              <div class="phone__head">
+                <span class="phone__back">‹</span>
+                <span class="phone__title">IT 服務台<br><small>全部開啟中 ▾</small></span>
+                <span class="phone__more">⋯</span>
+              </div>
+              <ul class="phone__list">
+                <li class="ticket"><span class="ticket__ico ticket__ico--a">🖥️</span><span class="ticket__body"><span class="ticket__t">新進人員 MacBook 設定</span><span class="ticket__meta">KEY-123 <em class="pill pill--blue">等待支援</em></span></span></li>
+                <li class="ticket"><span class="ticket__ico ticket__ico--b">📈</span><span class="ticket__body"><span class="ticket__t">貸款系統升級</span><span class="ticket__meta">KEY-122 <em class="pill pill--yellow">等待客戶</em></span></span></li>
+                <li class="ticket"><span class="ticket__ico ticket__ico--c">⚠️</span><span class="ticket__body"><span class="ticket__t">帳務網站無法連線</span><span class="ticket__meta">KEY-121 <em class="pill pill--blue">等待支援</em></span></span></li>
+                <li class="ticket"><span class="ticket__ico ticket__ico--a">✉️</span><span class="ticket__body"><span class="ticket__t">無法寄送 Email</span><span class="ticket__meta">KEY-120 <em class="pill pill--blue">等待支援</em></span></span></li>
+                <li class="ticket"><span class="ticket__ico ticket__ico--c">💥</span><span class="ticket__body"><span class="ticket__t">帳務頁面藍白當機</span><span class="ticket__meta">KEY-119 <em class="pill pill--blue">等待支援</em></span></span></li>
+                <li class="ticket"><span class="ticket__ico ticket__ico--b">🔄</span><span class="ticket__body"><span class="ticket__t">電腦無法重新開機</span><span class="ticket__meta">KEY-118 <em class="pill pill--yellow">等待客戶</em></span></span></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
