@@ -402,7 +402,17 @@ code {
 .plans-table .cr { background: var(--line-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238590A2' stroke-width='3.4' stroke-linecap='round'%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3C/svg%3E") center/12px no-repeat; }
 .plans-note { margin-top: 16px; font-size: .82rem; color: var(--ink-3); text-align: center; }
 
-@media (max-width: 720px) { .plans-hl { grid-template-columns: 1fr; } }
+@media (max-width: 720px) {
+  .plans-hl { grid-template-columns: 1fr; gap: 14px; }
+  .plans-hl__item { flex-direction: row; justify-content: flex-start; gap: 16px; padding: 18px 20px; text-align: left; }
+  .plans-hl__art { width: 60px; height: 60px; flex-shrink: 0; }
+  .plans-hint { font-size: .82rem; }
+  .plans-table { min-width: 580px; font-size: .85rem; }
+  .plans-table th, .plans-table td { padding: 11px 11px; }
+  .plans-table thead th { font-size: .9rem; }
+  .plans-table tbody th[scope="row"], .plans-table thead th.plans-table__feat { white-space: normal; }
+  .plans-table td { text-wrap: pretty; }
+}
 
 /* ---------- Mobile app section ---------- */
 .mobile__inner { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
