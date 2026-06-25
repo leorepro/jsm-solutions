@@ -135,6 +135,19 @@ code {
 .nav__links a:hover { color: var(--blue-700); background: var(--blue-soft); }
 .nav__cta { padding: .6em 1.2em; min-height: 40px; }
 
+/* ---------- Language switcher ---------- */
+.lang { position: relative; }
+.lang__btn { list-style: none; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-size: .9rem; font-weight: 600; color: var(--ink-2); padding: .5em .75em; border-radius: 8px; border: 1px solid var(--line); transition: border-color .15s ease, color .15s ease; white-space: nowrap; }
+.lang__btn::-webkit-details-marker { display: none; }
+.lang__btn::marker { content: ""; }
+.lang__btn:hover { border-color: var(--blue); color: var(--blue-700); }
+.lang__btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+.lang[open] .lang__btn { border-color: var(--blue); color: var(--blue-700); }
+.lang__menu { position: absolute; right: 0; top: calc(100% + 8px); background: #fff; border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 6px; min-width: 150px; z-index: 120; }
+.lang__menu li a { display: block; padding: .55em .75em; border-radius: 7px; font-size: .9rem; font-weight: 600; color: var(--ink-2); }
+.lang__menu li a:hover { background: var(--blue-soft); color: var(--blue-700); }
+.lang__menu li a.is-current { color: var(--blue-700); background: var(--blue-soft); }
+
 .nav__toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; padding: 10px; cursor: pointer; margin-left: auto; }
 .nav__toggle span { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .25s ease, opacity .2s ease; }
 .nav__toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }

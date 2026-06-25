@@ -33,8 +33,13 @@
     }
   })();
 
+  /* ---------- i18n：依 <html lang> 載入對應語言資料
+     （中文為內建預設；其他語言由各頁的 assets/js/i18n/<lang>.js 提供 window.I18N_DATA） ---------- */
+  var LANG = document.documentElement.lang || 'zh-Hant';
+  var I18N = window.I18N_DATA || {};
+
   /* ---------- Industries (tabbed) ---------- */
-  var INDUSTRIES = {
+  var ZH_INDUSTRIES = {
     tech: {
       name: '科技與電信業', en: 'Technology & Telecom',
       intro: '科技與電信業身處競爭激烈、變化飛快的市場，「速度」就是致勝關鍵。團隊得在維運複雜基礎設施的同時，提供卓越客戶服務——任何一次中斷或回應延遲，都可能直接衝擊客戶體驗與營收。',
@@ -114,6 +119,7 @@
       clients: 'QAD、Lucid Motors、Saint-Gobain'
     }
   };
+  var INDUSTRIES = (LANG !== 'zh-Hant' && I18N[LANG] && I18N[LANG].industries) || ZH_INDUSTRIES;
 
   var indPanel = document.getElementById('indPanel');
   var indTabs = document.querySelectorAll('.ind-tab');
@@ -204,7 +210,7 @@
   }
 
   /* ---------- FAQ data ---------- */
-  var FAQ = {
+  var ZH_FAQ = {
     schedule: [
       {
         q: 'Opsgenie 發生了什麼事？何時影響用戶？',
@@ -370,6 +376,7 @@
       }
     ]
   };
+  var FAQ = (LANG !== 'zh-Hant' && I18N[LANG] && I18N[LANG].faq) || ZH_FAQ;
 
   /* ---------- Render FAQ ---------- */
   var list = document.getElementById('faqList');
