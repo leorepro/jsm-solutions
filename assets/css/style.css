@@ -695,26 +695,34 @@ summary.lang__btn { list-style: none; }
 .jtl-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 12px; }
 .jtl-step { position: relative; padding: 0 20px 0 0; }
 .jtl-step__num {
-  width: 44px; height: 44px; border-radius: 50%; background: var(--yellow); color: var(--navy);
-  font-weight: 800; font-size: 1.05rem; display: grid; place-items: center; position: relative; z-index: 2;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: radial-gradient(120% 120% at 32% 26%, #FFE684, var(--yellow));
+  color: var(--navy); font-weight: 800; font-size: 1.08rem; display: grid; place-items: center;
+  position: relative; z-index: 2;
+  box-shadow: 0 6px 18px -4px rgba(255,199,22,.5), inset 0 1px 1px rgba(255,255,255,.6);
 }
-.jtl-step:not(:last-child)::before { content: ""; position: absolute; top: 21px; left: 44px; right: 14px; height: 2px; background: rgba(255,255,255,.2); z-index: 0; }
-.jtl-step:not(:last-child)::after { content: "›"; position: absolute; top: 7px; right: 6px; color: rgba(255,255,255,.55); font-size: 1.6rem; font-weight: 700; line-height: 1; z-index: 1; }
+.jtl-step:not(:last-child)::before { content: ""; position: absolute; top: 22px; left: 50px; right: 12px; height: 2px; background: linear-gradient(90deg, rgba(255,199,22,.6), rgba(255,255,255,.1)); z-index: 0; }
+.jtl-step:not(:last-child)::after { content: "›"; position: absolute; top: 8px; right: 4px; color: rgba(255,199,22,.75); font-size: 1.6rem; font-weight: 700; line-height: 1; z-index: 1; }
 .jtl-step__phase { display: inline-block; margin: 13px 0 4px; font-size: .72rem; font-weight: 800; letter-spacing: .05em; color: var(--yellow); }
 .jtl-step h3 { color: #fff; font-size: 1.04rem; margin-bottom: 10px; }
 .jtl-step ul { display: flex; flex-direction: column; gap: 7px; }
 .jtl-step ul li { position: relative; padding-left: 14px; font-size: .86rem; color: rgba(255,255,255,.8); line-height: 1.5; }
 .jtl-step ul li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--yellow); }
 
-.jtl-parallel { margin-top: 40px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius-lg); padding: 24px 26px; }
+.jtl-parallel { margin-top: 46px; background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.13); border-radius: var(--radius-lg); padding: 26px 28px; box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 20px 50px -30px rgba(0,0,0,.7); }
 .jtl-parallel__head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
 .jtl-parallel__badge { background: var(--yellow); color: var(--navy); font-weight: 800; font-size: .74rem; padding: .35em .8em; border-radius: 6px; white-space: nowrap; }
 .jtl-parallel__head h4 { color: #fff; font-size: 1.05rem; }
-.jtl-pcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.jtl-pcard { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-top: 3px solid var(--yellow); border-radius: 12px; padding: 18px 18px 20px; }
+.jtl-pcards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.jtl-runbar { display: flex; align-items: center; gap: 14px; margin-top: 14px; background: rgba(75,206,151,.1); border: 1px solid rgba(75,206,151,.3); border-radius: 12px; padding: 15px 20px; }
+.jtl-runbar__ic { font-size: 1.35rem; line-height: 1; flex-shrink: 0; }
+.jtl-runbar p { font-size: .9rem; color: rgba(255,255,255,.88); line-height: 1.55; }
+.jtl-runbar strong { color: var(--lime); }
+.jtl-pcard { background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.025)); border: 1px solid rgba(255,255,255,.1); border-top: 3px solid var(--yellow); border-radius: 14px; padding: 20px 20px 22px; box-shadow: 0 12px 30px -18px rgba(0,0,0,.6); }
 .jtl-pcard--run { border-top-color: var(--lime); }
-.jtl-pcard h5 { color: #fff; font-size: .98rem; margin-bottom: 2px; }
-.jtl-pcard__by { display: block; font-size: .74rem; color: rgba(255,255,255,.5); margin-bottom: 12px; }
+.jtl-pcard h5 { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 1rem; margin-bottom: 3px; }
+.jtl-pcard__ic { width: 32px; height: 32px; border-radius: 9px; background: rgba(255,255,255,.1); display: grid; place-items: center; font-size: 1.05rem; flex-shrink: 0; }
+.jtl-pcard__by { display: block; font-size: .74rem; color: rgba(255,255,255,.5); margin-bottom: 14px; padding-left: 42px; }
 .jtl-pcard ul { display: flex; flex-direction: column; gap: 7px; }
 .jtl-pcard ul li { position: relative; padding-left: 14px; font-size: .84rem; color: rgba(255,255,255,.82); line-height: 1.45; }
 .jtl-pcard ul li::before { content: ""; position: absolute; left: 0; top: 8px; width: 4px; height: 4px; border-radius: 50%; background: var(--yellow); }
