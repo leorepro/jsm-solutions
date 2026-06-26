@@ -369,6 +369,7 @@ summary.lang__btn { list-style: none; }
 .fw-chain__node small { font-size: .68rem; opacity: .7; }
 .fw-chain__node--end { background: var(--yellow-soft); color: var(--ink); }
 .fw-chain__node--value { background: var(--blue); color: #fff; }
+.fw-chain__node--value strong { color: #fff; }
 .fw-chain__node--value small { opacity: .85; }
 .fw-chain__arrow { display: flex; align-items: center; color: var(--ink-3); font-size: 1.4rem; font-weight: 700; }
 .fw-chain__activities { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; min-width: 280px; }
