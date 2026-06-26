@@ -584,8 +584,8 @@ summary.lang__btn { list-style: none; }
   background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='5 12 10 17 19 7'/%3E%3C/svg%3E") center/12px no-repeat;
 }
 
-.mobile__note { display: flex; gap: 10px; margin-top: 24px; max-width: 520px; padding: 13px 16px; font-size: .92rem; line-height: 1.55; color: var(--ink-2); background: rgba(38,132,255,.07); border: 1px solid rgba(38,132,255,.18); border-radius: 12px; }
-.mobile__note strong { color: var(--blue-700); font-weight: 700; }
+.mobile__note { margin-top: 24px; max-width: 520px; padding: 13px 16px; font-size: .92rem; line-height: 1.6; color: var(--ink-2); background: rgba(38,132,255,.07); border: 1px solid rgba(38,132,255,.18); border-radius: 12px; }
+.mobile__note strong { color: var(--blue-700); font-weight: 700; white-space: nowrap; }
 
 .app-badges { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
 .appbadge { display: inline-flex; align-items: center; gap: 10px; background: #000; color: #fff; border-radius: 11px; padding: 8px 17px; min-height: 54px; transition: transform .15s ease, box-shadow .2s ease; }
