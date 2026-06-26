@@ -95,7 +95,7 @@
           </div>
           <div class="hero__stats">
             <div class="stat"><span class="stat__num">0</span><span class="stat__label">サービス停止</span></div>
-            <div class="stat"><span class="stat__num">120<span class="stat__unit">日</span></span><span class="stat__label">並行利用期間</span></div>
+            <div class="stat"><span class="stat__num">120<span class="stat__unit">日</span></span><span class="stat__label">並行検証期間</span></div>
             <div class="stat"><span class="stat__num">4</span><span class="stat__label">ステップで移行完了</span></div>
           </div>
         </div>
@@ -180,7 +180,7 @@
             <article class="info-card">
               <div class="info-card__icon">⏱️</div>
               <h3>ほぼゼロのダウンタイム</h3>
-              <p>ほとんどの移行は数分で完了します。Opsgenie と JSM／Compass は同じバックエンドアーキテクチャを共有しており、通知の配信や日常業務に影響しません。</p>
+              <p>ほとんどの移行は1時間以内に完了します。Opsgenie と JSM／Compass は同じバックエンドアーキテクチャを共有しており、通知の配信や日常業務に影響しません。</p>
             </article>
             <article class="info-card">
               <div class="info-card__icon">🤝</div>
@@ -814,6 +814,7 @@
             <li>マネージャーはワンタップで変更とリクエストを承認</li>
             <li>アラートのプッシュ通知を受け取り、いち早くインシデントに対応</li>
           </ul>
+          <p class="mobile__note">💡 移行後は Opsgenie アプリから <strong>Jira Cloud アプリ</strong>に切り替えてください。アラートのプッシュ通知や on-call 操作はこちらで引き継がれます。</p>
           <div class="app-badges">
             <a class="appbadge" href="https://apps.apple.com/app/jira-cloud-by-atlassian/id1006972087" target="_blank" rel="noopener" aria-label="App Store からダウンロード">
               <span class="appbadge__ic" aria-hidden="true">
@@ -853,6 +854,7 @@
             <ul>
               <li>Opsgenie 組み込みの移行ガイドツールが、現在の利用状況に応じて適切な JSM プランを推奨</li>
               <li>ターゲット製品を確認</li>
+              <li>移行先の JSM は Opsgenie と同じ Atlassian サイト上にある必要があります（移行は同一サイトのみ対応）</li>
               <li>移行日を設定</li>
             </ul>
           </li>

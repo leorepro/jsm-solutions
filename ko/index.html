@@ -95,7 +95,7 @@
           </div>
           <div class="hero__stats">
             <div class="stat"><span class="stat__num">0</span><span class="stat__label">서비스 중단</span></div>
-            <div class="stat"><span class="stat__num">120<span class="stat__unit">일</span></span><span class="stat__label">병행 사용 기간</span></div>
+            <div class="stat"><span class="stat__num">120<span class="stat__unit">일</span></span><span class="stat__label">병행 검증 기간</span></div>
             <div class="stat"><span class="stat__num">4</span><span class="stat__label">단계로 마이그레이션 완료</span></div>
           </div>
         </div>
@@ -180,7 +180,7 @@
             <article class="info-card">
               <div class="info-card__icon">⏱️</div>
               <h3>거의 무중단</h3>
-              <p>대부분의 마이그레이션은 단 몇 분이면 완료됩니다. Opsgenie와 JSM／Compass는 동일한 백엔드 아키텍처를 공유하므로, 과정 중 알림 전송이나 일상 작업에 영향을 주지 않습니다.</p>
+              <p>대부분의 마이그레이션은 한 시간 이내에 완료됩니다. Opsgenie와 JSM／Compass는 동일한 백엔드 아키텍처를 공유하므로, 과정 중 알림 전송이나 일상 작업에 영향을 주지 않습니다.</p>
             </article>
             <article class="info-card">
               <div class="info-card__icon">🤝</div>
@@ -814,6 +814,7 @@
             <li>관리자가 원클릭으로 변경과 요청 승인</li>
             <li>알림 푸시를 받아 사건을 즉시 처리</li>
           </ul>
+          <p class="mobile__note">💡 마이그레이션 후에는 Opsgenie 앱에서 <strong>Jira Cloud 앱</strong>으로 전환하세요. 알림 푸시와 on-call 작업이 여기에서 이어집니다.</p>
           <div class="app-badges">
             <a class="appbadge" href="https://apps.apple.com/app/jira-cloud-by-atlassian/id1006972087" target="_blank" rel="noopener" aria-label="App Store에서 다운로드">
               <span class="appbadge__ic" aria-hidden="true">
@@ -853,6 +854,7 @@
             <ul>
               <li>Opsgenie 내장 마이그레이션 가이드 도구가 현재 사용 현황에 따라 적합한 JSM 플랜 추천</li>
               <li>대상 제품 확인</li>
+              <li>대상 JSM은 Opsgenie와 동일한 Atlassian 사이트에 있어야 합니다 (마이그레이션은 동일 사이트만 지원)</li>
               <li>마이그레이션 날짜 지정</li>
             </ul>
           </li>

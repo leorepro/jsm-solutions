@@ -93,7 +93,7 @@ window.I18N_DATA['en'] = {
       },
       {
         q: 'How long does migration take? Will it affect usage?',
-        a: '<p>Most migrations take only a few minutes, and there\'s <span class="hl">no service disruption or downtime</span> during the process. That\'s because Opsgenie and Jira Service Management / Compass share the same backend architecture.</p>' +
+        a: '<p>Most migrations complete within an hour, and there\'s <span class="hl">no service disruption or downtime</span> during the process. That\'s because Opsgenie and Jira Service Management / Compass share the same backend architecture.</p>' +
            '<p>You can pick a migration date, and the system will automatically complete the data sync on that day. The entire migration is fast and stable, and won\'t affect notification delivery or user operations.</p>'
       },
       {

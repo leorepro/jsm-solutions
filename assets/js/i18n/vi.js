@@ -93,7 +93,7 @@ window.I18N_DATA['vi'] = {
       },
       {
         q: 'Di chuyển mất bao lâu? Có ảnh hưởng đến việc sử dụng không?',
-        a: '<p>Phần lớn quá trình di chuyển chỉ mất vài phút, trong quá trình đó <span class="hl">không có gián đoạn hay dừng dịch vụ</span>. Đó là vì Opsgenie và Jira Service Management / Compass dùng chung kiến trúc backend.</p>' +
+        a: '<p>Phần lớn quá trình di chuyển hoàn tất trong vòng một giờ, trong quá trình đó <span class="hl">không có gián đoạn hay dừng dịch vụ</span>. Đó là vì Opsgenie và Jira Service Management / Compass dùng chung kiến trúc backend.</p>' +
            '<p>Bạn có thể chọn một ngày di chuyển, hệ thống sẽ tự động hoàn tất đồng bộ dữ liệu vào ngày đó. Toàn bộ quá trình di chuyển nhanh, ổn định, không ảnh hưởng đến việc gửi thông báo hay thao tác của người dùng.</p>'
       },
       {

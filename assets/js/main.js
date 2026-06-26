@@ -227,7 +227,7 @@
       },
       {
         q: '遷移需要多久？會不會影響使用？',
-        a: '<p>大多數遷移只需要幾分鐘，過程中 <span class="hl">不會有服務中斷或停機</span>。這是因為 Opsgenie 與 Jira Service Management / Compass 共用相同的後端架構。</p>' +
+        a: '<p>大多數遷移可在一小時內完成，過程中 <span class="hl">不會有服務中斷或停機</span>。這是因為 Opsgenie 與 Jira Service Management / Compass 共用相同的後端架構。</p>' +
            '<p>你可以選定一個遷移日期，系統會在該日自動完成資料同步。整個遷移過程快速、穩定，不會影響通知傳送或使用者操作。</p>'
       },
       {

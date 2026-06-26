@@ -95,7 +95,7 @@
           </div>
           <div class="hero__stats">
             <div class="stat"><span class="stat__num">0</span><span class="stat__label">服務停機</span></div>
-            <div class="stat"><span class="stat__num">120<span class="stat__unit">天</span></span><span class="stat__label">並行使用期</span></div>
+            <div class="stat"><span class="stat__num">120<span class="stat__unit">天</span></span><span class="stat__label">並行驗證期</span></div>
             <div class="stat"><span class="stat__num">4</span><span class="stat__label">步驟完成遷移</span></div>
           </div>
         </div>
@@ -180,7 +180,7 @@
             <article class="info-card">
               <div class="info-card__icon">⏱️</div>
               <h3>幾乎零停機</h3>
-              <p>大多數遷移只需數分鐘。Opsgenie 與 JSM／Compass 共用相同後端架構，過程不影響通知傳送或日常操作。</p>
+              <p>大多數遷移可在一小時內完成。Opsgenie 與 JSM／Compass 共用相同後端架構，過程不影響通知傳送或日常操作。</p>
             </article>
             <article class="info-card">
               <div class="info-card__icon">🤝</div>
@@ -814,6 +814,7 @@
             <li>主管一鍵審核變更與請求</li>
             <li>接收告警推播，第一時間處理事件</li>
           </ul>
+          <p class="mobile__note">💡 遷移後請從 Opsgenie App 改用 <strong>Jira Cloud App</strong>，告警推播與 on-call 操作將在此延續。</p>
           <div class="app-badges">
             <a class="appbadge" href="https://apps.apple.com/app/jira-cloud-by-atlassian/id1006972087" target="_blank" rel="noopener" aria-label="從 App Store 下載">
               <span class="appbadge__ic" aria-hidden="true">
@@ -853,6 +854,7 @@
             <ul>
               <li>Opsgenie 內建遷移引導工具依現有使用狀況推薦合適的 JSM 方案</li>
               <li>確認目標產品</li>
+              <li>目標 JSM 須與 Opsgenie 位於同一個 Atlassian site（遷移僅支援同站）</li>
               <li>排定遷移日期</li>
             </ul>
           </li>

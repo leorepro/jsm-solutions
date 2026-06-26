@@ -95,7 +95,7 @@
           </div>
           <div class="hero__stats">
             <div class="stat"><span class="stat__num">0</span><span class="stat__label">Gián đoạn dịch vụ</span></div>
-            <div class="stat"><span class="stat__num">120<span class="stat__unit">ngày</span></span><span class="stat__label">Thời gian dùng song song</span></div>
+            <div class="stat"><span class="stat__num">120<span class="stat__unit">ngày</span></span><span class="stat__label">Thời gian xác minh song song</span></div>
             <div class="stat"><span class="stat__num">4</span><span class="stat__label">Bước hoàn tất di chuyển</span></div>
           </div>
         </div>
@@ -180,7 +180,7 @@
             <article class="info-card">
               <div class="info-card__icon">⏱️</div>
               <h3>Gần như không gián đoạn</h3>
-              <p>Phần lớn quá trình di chuyển chỉ mất vài phút. Opsgenie và JSM／Compass dùng chung kiến trúc backend, quá trình không ảnh hưởng đến việc gửi thông báo hay thao tác hàng ngày.</p>
+              <p>Phần lớn quá trình di chuyển hoàn tất trong vòng một giờ. Opsgenie và JSM／Compass dùng chung kiến trúc backend, quá trình không ảnh hưởng đến việc gửi thông báo hay thao tác hàng ngày.</p>
             </article>
             <article class="info-card">
               <div class="info-card__icon">🤝</div>
@@ -814,6 +814,7 @@
             <li>Quản lý phê duyệt thay đổi và yêu cầu chỉ với một chạm</li>
             <li>Nhận thông báo đẩy cảnh báo, xử lý sự cố ngay từ đầu</li>
           </ul>
+          <p class="mobile__note">💡 Sau khi di chuyển, hãy chuyển từ ứng dụng Opsgenie sang <strong>ứng dụng Jira Cloud</strong> — thông báo đẩy cảnh báo và thao tác on-call sẽ tiếp tục tại đây.</p>
           <div class="app-badges">
             <a class="appbadge" href="https://apps.apple.com/app/jira-cloud-by-atlassian/id1006972087" target="_blank" rel="noopener" aria-label="Tải về từ App Store">
               <span class="appbadge__ic" aria-hidden="true">
@@ -853,6 +854,7 @@
             <ul>
               <li>Công cụ hướng dẫn di chuyển tích hợp sẵn trong Opsgenie đề xuất phương án JSM phù hợp dựa trên tình hình sử dụng hiện tại</li>
               <li>Xác nhận sản phẩm đích</li>
+              <li>JSM đích phải nằm trên cùng một Atlassian site với Opsgenie (di chuyển chỉ hỗ trợ cùng site)</li>
               <li>Sắp lịch ngày di chuyển</li>
             </ul>
           </li>
