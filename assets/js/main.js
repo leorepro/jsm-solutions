@@ -493,4 +493,50 @@
       });
     });
   })();
+
+  /* ---------- GA4 自訂事件追蹤（分析訪客點擊與關注議題） ---------- */
+  (function () {
+    function track(name, params) {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+    }
+    var LANG = document.documentElement.lang || 'zh-Hant';
+    function sectionOf(el) {
+      var s = el.closest('section[id]');
+      if (s) return s.id;
+      if (el.closest('.nav, header')) return 'nav';
+      if (el.closest('.footer')) return 'footer';
+      return 'page';
+    }
+
+    // 點擊事件（事件委派）
+    document.addEventListener('click', function (e) {
+      var t = e.target, a, el;
+      if ((a = t.closest('.nav__links a'))) { track('nav_click', { link_text: a.textContent.trim(), section: a.getAttribute('href'), lang: LANG }); return; }
+      if ((a = t.closest('.footer__nav a'))) { track('footer_nav_click', { link_text: a.textContent.trim(), href: a.getAttribute('href'), lang: LANG }); return; }
+      if ((a = t.closest('.lang__menu a'))) { track('language_switch', { to: a.getAttribute('href'), label: a.textContent.trim(), from: LANG }); return; }
+      if ((el = t.closest('.appbadge'))) { track('app_badge_click', { store: el.getAttribute('aria-label') || '', lang: LANG }); return; }
+      if ((el = t.closest('.btn--primary, .nav__cta, .contact__line, .cta-band a'))) { track('cta_click', { cta_text: (el.textContent || '').trim().slice(0, 40), section: sectionOf(el), lang: LANG }); return; }
+      if ((el = t.closest('.faq-tab'))) { track('faq_tab', { category: el.getAttribute('data-cat'), lang: LANG }); return; }
+      if ((el = t.closest('.faq-q'))) { var q = el.querySelector('.faq-q__text'); track('faq_open', { question: q ? q.textContent.trim().slice(0, 80) : '', lang: LANG }); return; }
+      if ((el = t.closest('.ind-tab'))) { track('industry_select', { industry: el.getAttribute('data-ind'), label: el.textContent.trim(), lang: LANG }); return; }
+      if ((el = t.closest('.plans-col'))) { track('plan_focus', { plan: el.getAttribute('data-plan'), label: el.textContent.trim().slice(0, 24), lang: LANG }); return; }
+      if ((el = t.closest('.feature-card__img img'))) { track('feature_zoom', { feature: el.alt || '', lang: LANG }); return; }
+      if ((a = t.closest('a[target="_blank"]'))) { track('outbound_click', { url: a.href, text: (a.textContent || '').trim().slice(0, 40), section: sectionOf(a), lang: LANG }); return; }
+    });
+
+    // 區塊曝光（訪客關注的議題）：每個 section 首次進入視窗各觸發一次
+    if ('IntersectionObserver' in window) {
+      var seen = {};
+      var so = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && !seen[en.target.id]) {
+            seen[en.target.id] = true;
+            var h = en.target.querySelector('h2');
+            track('section_view', { section: en.target.id, title: h ? h.textContent.trim() : '', lang: LANG });
+          }
+        });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('section[id]').forEach(function (s) { so.observe(s); });
+    }
+  })();
 })();
