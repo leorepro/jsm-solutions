@@ -1,0 +1,17 @@
+{
+  "name": "jsm-solutions-i18n-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ERP-437 多國語系切換驗證 (zh-TW / en / ja / ko / vi) - Playwright automation with screenshots and video recording for upload to Jira comment.",
+  "scripts": {
+    "serve": "http-server .. -p 8000 -s",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report",
+    "postinstall": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "http-server": "^14.1.1"
+  }
+}
