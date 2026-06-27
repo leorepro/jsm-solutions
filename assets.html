@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlassian Assets：把資產變成策略優勢 ｜ 資產與組態管理（CMDB）</title>
+  <meta name="description" content="Atlassian Assets 是 Jira Service Management 內建的資產與組態管理（CMDB）。彈性物件資料庫，看清相依關係、加速事件排障、降低變更風險。鈦坦科技（Atlassian 黃金級合作夥伴）協助你導入。" />
+  <meta name="theme-color" content="#1868DB" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Atlassian Assets：把資產變成策略優勢 ｜ 資產與組態管理（CMDB）" />
+  <meta property="og:description" content="Jira Service Management 內建的資產與組態管理。看清相依關係、加速事件排障、降低變更風險。" />
+  <meta property="og:url" content="https://jsm.solutions/assets.html" />
+  <meta property="og:site_name" content="JSM.solutions" />
+
+  <link rel="canonical" href="https://jsm.solutions/assets.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css?v=20260706" />
+  <link rel="stylesheet" href="./assets/css/assets.css?v=20260706d" />
+  <link rel="icon" type="image/svg+xml" href="./assets/img/logos/assets.svg" />
+  <link rel="apple-touch-icon" href="./assets/img/logos/assets.svg" />
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KBN3JKX6YL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KBN3JKX6YL');
+  </script>
+</head>
+<body class="assets-page">
+  <!-- ===================== Nav ===================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="/" aria-label="JSM.solutions 首頁">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="./assets/img/logos/jsm.svg" width="28" height="28" alt="" />
+        </span>
+        <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
+      </a>
+      <nav class="nav__links" aria-label="主要導覽">
+        <a href="#why">為什麼</a>
+        <a href="#model">資料模型</a>
+        <a href="#integration">整合</a>
+        <a href="#shifts">三大轉變</a>
+        <a href="#capabilities">核心能力</a>
+        <a href="#adopt">導入路徑</a>
+        <a href="/" class="nav__back">← 遷移指南</a>
+      </nav>
+      <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary nav__cta">諮詢導入</a>
+      <button class="nav__toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ===================== Hero ===================== -->
+    <section class="hero hero--assets">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy reveal">
+          <span class="eyebrow"><img src="./assets/img/logos/assets.svg" width="18" height="18" alt="" />Atlassian Assets · 資產與組態管理</span>
+          <h1 class="hero__title">資產，從成本<br>到<span class="grad">策略優勢</span></h1>
+          <p class="hero__lead">看清相依關係，加速事件排障、降低變更風險，CMDB 就內建在 Jira。</p>
+          <div class="hero__actions">
+            <a href="#why" class="btn btn--primary btn--lg">為什麼需要 Assets</a>
+            <a href="#model" class="btn btn--ghost btn--lg">看資料怎麼長 →</a>
+          </div>
+          <div class="hero__stats">
+            <div class="stat"><span class="stat__num">75<span class="stat__unit">%</span></span><span class="stat__label">傳統 CMDB 專案以失敗收場</span></div>
+            <div class="stat"><span class="stat__num">76<span class="stat__unit">%</span></span><span class="stat__label">曾因資產失管而資安漏洞</span></div>
+            <div class="stat"><span class="stat__num">91<span class="stat__unit">%</span></span><span class="stat__label">認為 CMDB 對營運至關重要</span></div>
+          </div>
+        </div>
+        <div class="hero__visual reveal">
+          <figure class="shot">
+            <img src="./assets/img/screens/assets-dashboard.png" width="1781" height="1085" alt="Jira Service Management Assets 執行儀表板：資料來源平台分布、不在 CMDB 的風險電腦、防毒安裝版本與趨勢圖" />
+            <figcaption>真實畫面 · Assets 執行儀表板：一眼掌握資產風險、合規與分布</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 1. Why / Pain ===================== -->
+    <section class="section" id="why">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">為什麼需要</span>
+          <h2>答不出這些問題，麻煩就在後面</h2>
+          <p class="section__sub">「我們到底有哪些重要資產？服務之間怎麼相依？」當答案散落在試算表與不同人的腦袋裡，每一次事件與變更都在賭運氣。</p>
+        </div>
+        <ul class="pain-grid reveal">
+          <li class="pain-card"><span class="pain-card__ic">🗂️</span><h3>資料孤島</h3><p>資產散落各系統與負責人手中，沒有單一準確來源。</p></li>
+          <li class="pain-card"><span class="pain-card__ic">🐢</span><h3>回應太慢</h3><p>查一台設備規格、誰在用，得問過一輪人才有答案。</p></li>
+          <li class="pain-card pain-card--wide"><span class="pain-card__ic">💥</span><h3>意外中斷</h3><p>不知道改一個元件會牽動哪些系統，變更上線才發現連鎖故障。</p></li>
+          <li class="pain-card"><span class="pain-card__ic">💸</span><h3>成本浮現</h3><p>閒置設備、重複授權與多餘支援，帳單默默變大。</p></li>
+          <li class="pain-card"><span class="pain-card__ic">🗓️</span><h3>數月人工</h3><p>需求一變，要花好幾個月人工釐清「該動哪些系統」。</p></li>
+          <li class="pain-card"><span class="pain-card__ic">🔓</span><h3>資安破口</h3><p>零日漏洞公布時，答不出「哪些資產受影響」。</p></li>
+        </ul>
+        <p class="why-quote reveal">落實資產與組態管理，讓團隊專注於<strong>創新</strong>，而不是疲於<strong>應付混亂</strong>。</p>
+      </div>
+    </section>
+
+    <!-- ===================== 2. Myth-bust + data band ===================== -->
+    <section class="section section--alt" id="truth">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>75% 的 CMDB 專案失敗，問題不在 CMDB</h2>
+          <p class="section__sub">失敗的共通點是「一開始範圍鋪太大」：想一次收齊所有資料，最後維護不動、沒人信任。Assets 換一條路：從一兩個真實問題開始，小步把可信來源養大。</p>
+        </div>
+        <div class="stat-band reveal">
+          <div class="stat-band__item"><span class="stat-band__num">75%</span><span class="stat-band__lbl">CMDB 專案以失敗收場</span><span class="stat-band__src">Gartner, 2020</span></div>
+          <div class="stat-band__item"><span class="stat-band__num">$2B</span><span class="stat-band__lbl">2026 年將花在「用不到的功能」</span><span class="stat-band__src">Gartner</span></div>
+          <div class="stat-band__item"><span class="stat-band__num">67%</span><span class="stat-band__lbl">組織已導入 CMDB</span><span class="stat-band__src">Forrester, 2022</span></div>
+          <div class="stat-band__item stat-band__item--hl"><span class="stat-band__num">91%</span><span class="stat-band__lbl">其中認為它對營運至關重要</span><span class="stat-band__src">Forrester, 2022</span></div>
+        </div>
+        <p class="truth-quote reveal">「Decision making requires data. <em>Effective</em> decision making requires <em>reliable</em> data.」<span>決策需要資料；有效的決策，需要可信賴的資料。</span></p>
+      </div>
+    </section>
+
+    <!-- ===================== 3. Data model + asset table ===================== -->
+    <section class="section" id="model">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">Assets 是什麼</span>
+          <h2>一個彈性的物件資料庫</h2>
+          <p class="section__sub">Assets 用四層結構描述你的世界，再用「參照」把它們連起來。把它想成資料庫、資料夾、卡片與欄位。</p>
+        </div>
+        <div class="model-wrap reveal">
+          <ol class="model-stack">
+            <li class="model-row model-row--schema"><span class="model-row__tag">Object Schema</span><span class="model-row__zh">物件結構</span><span class="model-row__meta">一整個資料庫，就是你的 CMDB</span></li>
+            <li class="model-row model-row--type"><span class="model-row__tag">Object Type</span><span class="model-row__zh">物件類型</span><span class="model-row__meta">資料夾／分類：伺服器、筆電、軟體</span></li>
+            <li class="model-row model-row--object"><span class="model-row__tag">Object</span><span class="model-row__zh">物件</span><span class="model-row__meta">一張卡片：Jennifer 的 MacBook</span></li>
+            <li class="model-row model-row--attr"><span class="model-row__tag">Attribute</span><span class="model-row__zh">屬性</span><span class="model-row__meta">欄位：序號、狀態、負責人、地點</span></li>
+          </ol>
+          <aside class="model-ref">
+            <span class="model-ref__pill">Reference 參照</span>
+            <p>物件之間用「參照」相連，資料因此<strong>不必重複</strong>。辦公室從蒙特婁搬到多倫多，只要改「蒙特婁」這一個物件，所有連到它的筆電自動跟著更新。</p>
+          </aside>
+        </div>
+
+        <figure class="shot shot--wide reveal">
+          <img src="./assets/img/screens/assets-cloud-schema.png" width="1377" height="663" loading="lazy" alt="Jira Service Management Assets 建立 schema 畫面：IT 資產管理範本，左側為物件類型樹（Hardware、Phones、Laptops、Servers、Models）" />
+          <figcaption>真實畫面 · Assets 的「IT 資產管理」schema 範本：左側是物件類型（object type）樹，右側是物件與屬性</figcaption>
+        </figure>
+
+        <div class="asset-demo reveal">
+          <div class="asset-demo__head">
+            <span class="asset-demo__type">📁 物件類型：Laptops</span>
+            <span class="asset-demo__count">5 個物件</span>
+          </div>
+          <div class="asset-demo__scroll">
+          <table class="asset-table">
+            <thead>
+              <tr><th>Name</th><th>狀態</th><th>製造商</th><th>型號</th><th>價格</th><th>負責人</th><th>汰換日</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>AT-B022103</td><td><span class="pill pill--use">In use</span></td><td>Apple</td><td>MacBook Pro 13"</td><td>$1,399</td><td>Jennifer Fish</td><td>2024-09-13</td></tr>
+              <tr><td>AT-B042101</td><td><span class="pill pill--use">In use</span></td><td>Apple</td><td>MacBook Pro 13"</td><td>$1,399</td><td>Blythe Smithson</td><td>2024-12-10</td></tr>
+              <tr><td>ATM-B042103</td><td><span class="pill pill--use">In use</span></td><td>Apple</td><td>MacBook Pro M2</td><td>$1,259</td><td>Jeremy Coolman</td><td>2025-02-01</td></tr>
+              <tr><td>ATM-B111102</td><td><span class="pill pill--stock">In stock</span></td><td>Lenovo</td><td>ThinkPad E15 Gen 3</td><td>—</td><td>—</td><td>2025-07-14</td></tr>
+              <tr><td>AT-B022101</td><td><span class="pill pill--disposed">Disposed</span></td><td>Apple</td><td>MacBook Pro 13"</td><td>$1,399</td><td>—</td><td>—</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p class="asset-demo__note">每一列是一個 <strong>object</strong>，每一欄是一個 <strong>attribute</strong>。狀態、負責人、汰換日都能拿來查詢、自動化與稽核。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 4. Content x Context + lifecycle ===================== -->
+    <section class="section section--alt" id="cvc">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>同一批資產，兩種視角</h2>
+          <p class="section__sub">Assets 同時做到資產庫與 CMDB：一邊管「我們有什麼」，一邊管「它們如何牽動彼此」。</p>
+        </div>
+        <div class="cvc reveal">
+          <article class="cvc__card cvc__card--content">
+            <span class="cvc__tag">ITAM · 資產管理</span>
+            <h3>Content：我們擁有什麼</h3>
+            <p>追蹤資產的採購、財務與生命週期。重點是清楚、可盤點、可稽核。</p>
+          </article>
+          <span class="cvc__x" aria-hidden="true">×</span>
+          <article class="cvc__card cvc__card--context">
+            <span class="cvc__tag">服務組態管理</span>
+            <h3>Context：它們如何關聯</h3>
+            <p>描繪資產之間的相依關係，理解一次變更的「影響範圍」。</p>
+          </article>
+        </div>
+        <div class="lifecycle reveal" aria-label="IT 資產生命週期">
+          <span class="lifecycle__lbl">資產生命週期</span>
+          <ol class="lifecycle__steps">
+            <li>規劃<small>Plan</small></li>
+            <li>取得<small>Acquire</small></li>
+            <li>部署<small>Deploy</small></li>
+            <li>維運<small>Maintain</small></li>
+            <li>汰除<small>Retire</small></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 5. Key shifts ===================== -->
+    <section class="section" id="shifts">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">資產管理的演進</span>
+          <h2>三個正在發生的轉變</h2>
+          <p class="section__sub">資產管理正從被動的盤點清冊，演進成驅動成長與韌性的策略平台。</p>
+        </div>
+        <div class="shifts reveal">
+          <article class="shift-card">
+            <div class="shift-card__io"><span class="shift-card__from">孤島</span><span class="shift-card__arrow">→</span><span class="shift-card__to">連結</span></div>
+            <p>用統一平台取得全企業可視性，超越傳統 CMDB 的僵硬範式。</p>
+          </article>
+          <article class="shift-card shift-card--feature">
+            <div class="shift-card__io"><span class="shift-card__from">手動</span><span class="shift-card__arrow">→</span><span class="shift-card__to">自動</span></div>
+            <p>「手動資產管理，是準確性的敵人。」以自動探索與 AI 從被動救火轉為主動預警。</p>
+            <span class="shift-card__stat">73% 把自動化列為關鍵優先</span>
+          </article>
+          <article class="shift-card">
+            <div class="shift-card__io"><span class="shift-card__from">文件</span><span class="shift-card__arrow">→</span><span class="shift-card__to">資安防線</span></div>
+            <p>你的資產，只跟你對它們的了解一樣安全。從定期稽核走向持續驗證。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 6. Capabilities ===================== -->
+    <section class="section section--alt" id="capabilities">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>核心能力</h2>
+          <p class="section__sub">從探索、連結、查詢到稽核，覆蓋資產管理的每一步。</p>
+        </div>
+        <ul class="cap-grid reveal">
+          <li class="cap-card cap-card--lg">
+            <span class="cap-card__ic">🔗</span>
+            <h3>相依關係視覺化</h3>
+            <p>用服務地圖看清資產與服務怎麼牽動彼此，事件排障與變更評估前先看見影響範圍。</p>
+          </li>
+          <li class="cap-card">
+            <span class="cap-card__ic">🎫</span><h3>工單即時帶脈絡</h3>
+            <p>物件直接連到 Jira 工作項，事件一進來就帶著資產資訊。</p>
+          </li>
+          <li class="cap-card">
+            <span class="cap-card__ic">📱</span><h3>QR Code 盤點</h3>
+            <p>列印 QR 貼到實體資產，手機掃碼即開紀錄、直接掛上工單。</p>
+          </li>
+          <li class="cap-card">
+            <span class="cap-card__ic">🔎</span><h3>AQL 強大查詢</h3>
+            <p>用 Assets Query Language 做複雜條件查詢、稽核與成本盤點。</p>
+          </li>
+          <li class="cap-card">
+            <span class="cap-card__ic">🛰️</span><h3>Discovery 自動探索</h3>
+            <p>無代理掃描器找出 IP 連網裝置，揪出影子 IT、保持資料最新。</p>
+          </li>
+          <li class="cap-card">
+            <span class="cap-card__ic">🧾</span><h3>變更稽核軌跡</h3>
+            <p>每個物件的完整變更歷史，滿足合規與責任追蹤。</p>
+          </li>
+          <li class="cap-card cap-card--wide">
+            <span class="cap-card__ic">🔌</span><h3>30+ 整合與批次操作</h3>
+            <p>從 SQL、Lansweeper 到平面檔，30+ adapter 匯入資料；批次編輯、刪除、匯出 CSV，企業規模也輕鬆維護。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== Assets × JSM 整合 ===================== -->
+    <section class="section" id="integration">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Assets 長在 Jira Service Management 裡</h2>
+          <p class="section__sub">Assets 不是另一套要切換的系統。物件透過「Assets 自訂欄位」直接接到工單，事件、請求、變更與資產在同一個畫面連動。</p>
+        </div>
+        <div class="integ">
+          <figure class="shot reveal">
+            <img src="./assets/img/screens/assets-cloud-issue.png" width="1392" height="845" loading="lazy" alt="JSM 工單「Laptop screen is cracked」畫面，Affected laptop 欄位直接嵌入 Assets 物件：狀態 DAMAGED、擁有者 Dante Rodriguez、型號 MacBook Pro 16 吋、序號、保固到期日" />
+            <figcaption>真實畫面 · 工單「筆電螢幕破裂」直接帶出受影響的資產物件</figcaption>
+          </figure>
+          <ul class="integ-list reveal">
+            <li class="integ-item"><span class="integ-item__ic">🎫</span><div><h3>工單即時帶資產脈絡</h3><p>用 Assets 自訂欄位把物件接到請求／事件／變更。客服一開工單就看到受影響裝置的型號、序號、保固與擁有者，不必另開系統查。</p></div></li>
+            <li class="integ-item"><span class="integ-item__ic">⚙️</span><div><h3>以資產為條件觸發自動化</h3><p>用物件的狀態或屬性驅動 Jira 自動化：自動路由、更新狀態、到期通知、指派負責人。</p></div></li>
+            <li class="integ-item"><span class="integ-item__ic">🔎</span><div><h3>跨資產與工單查詢分析</h3><p>用 AQL 與報表把工單量、資產健康、成本與合規放在一起看，找出常壞的機型與熱門服務。</p></div></li>
+          </ul>
+        </div>
+        <div class="integ-eg reveal">
+          <span class="integ-eg__tag">舉例</span>
+          <p>員工送出「<strong>筆電螢幕破裂</strong>」請求，工單的 <strong>Affected laptop</strong> 欄位就帶出他的 MacBook Pro（狀態標為 <strong>DAMAGED</strong>，顯示序號與 2020/09/25 保固到期）。客服不必查就知道是誰、哪一台、保固狀態，直接依 SLA（5 分鐘回應、4 小時解決）處理換機，再由自動化把新舊機狀態同步更新。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 7. Scenario flow ===================== -->
+    <section class="section section--dark" id="scenario">
+      <div class="container">
+        <div class="section__head section__head--dark reveal">
+          <h2>運作起來是什麼樣子</h2>
+          <p class="section__sub">情境：一位員工的筆電壞了，需要更換。</p>
+        </div>
+        <ol class="flow reveal">
+          <li class="flow-step"><span class="flow-step__n">1</span><div><h3>偵測與標記</h3><p>JSM 查出受影響筆電，狀態自動改為「damaged」。</p></div></li>
+          <li class="flow-step"><span class="flow-step__n">2</span><div><h3>提供替換</h3><p>從服務目錄帶出可換機型清單，員工送出請求。</p></div></li>
+          <li class="flow-step"><span class="flow-step__n">3</span><div><h3>自動審批</h3><p>請求自動路由給該員工的主管核准。</p></div></li>
+          <li class="flow-step"><span class="flow-step__n">4</span><div><h3>圖形檢視</h3><p>客服用 graph 看該員工所有裝置與位置，依型號＋地點篩出庫存。</p></div></li>
+          <li class="flow-step"><span class="flow-step__n">5</span><div><h3>狀態同步</h3><p>自動把新機擁有者設為員工、狀態改「in service」，舊機標記「broken」。</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== 8. Proof / cases ===================== -->
+    <section class="section" id="proof">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>真實世界的代價與救援</h2>
+          <p class="section__sub">健全的資產與組態管理，不只是 IT 後勤，更是業務韌性與資安防線。</p>
+        </div>
+        <div class="case-grid reveal">
+          <article class="case-card">
+            <h3>NYSE 當機</h3>
+            <p>一次軟體故障讓紐約證交所近 90 分鐘無法交易。正因有健全的服務組態管理，團隊才能快速辨識並復原，把損害壓到最低。</p>
+          </article>
+          <article class="case-card">
+            <h3>ProxyNotShell 零日漏洞</h3>
+            <p>Exchange Server 零日漏洞遭串接攻擊時，Qualys 憑藉資產與組態管理能力，在威脅公布後數小時內就辨識出可能受影響的資產。</p>
+          </article>
+        </div>
+        <figure class="quote-band reveal">
+          <blockquote>「Assets 對於掌握軟體授權與成本的可預測性與規劃，非常重要。」</blockquote>
+          <figcaption>Damir Prusac · VP of Engineering, Infobip</figcaption>
+        </figure>
+        <div class="brands reveal">
+          <span class="brands__lbl">全球 30 萬+ 企業信任 Atlassian</span>
+          <ul class="brands__list">
+            <li>NASA</li><li>Audi</li><li>Deutsche Bank</li><li>Dropbox</li><li>Kiva</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 9. Roadmap + CTA ===================== -->
+    <section class="section section--alt" id="adopt">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>從小而聚焦開始，數月就能上線</h2>
+          <p class="section__sub">不必一次到位。鈦坦科技以 Atlassian 黃金級合作夥伴身分，陪你走完這五步。</p>
+        </div>
+        <ol class="roadmap reveal">
+          <li class="road-step"><span class="road-step__n">01</span><h3>評估</h3><p>盤點現有工具、流程與痛點，建立基準。</p></li>
+          <li class="road-step"><span class="road-step__n">02</span><h3>設計</h3><p>連結資產能力與商業成果，先做速贏。</p></li>
+          <li class="road-step"><span class="road-step__n">03</span><h3>建立</h3><p>集中單一可信來源，自動化探索與驗證。</p></li>
+          <li class="road-step"><span class="road-step__n">04</span><h3>連結</h3><p>打破孤島，整合服務管理、資安與採購。</p></li>
+          <li class="road-step"><span class="road-step__n">05</span><h3>優化</h3><p>持續改善、主動監控與告警。</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== Contact CTA ===================== -->
+    <section class="section section--dark contact" id="contact">
+      <div class="container contact__inner reveal">
+        <div class="contact__copy">
+          <h2>是時候告別試算表了</h2>
+          <p>鈦坦科技（Titansoft）為 Atlassian 黃金級合作夥伴，提供 Assets / CMDB 導入評估、schema 規劃、資料匯入與自動化設定。歡迎與我們聊聊你的資產管理現況。</p>
+          <ul class="contact__points">
+            <li>資產與組態管理現況評估</li>
+            <li>Object schema 規劃與資料匯入</li>
+            <li>與 JSM 工作流、自動化串接</li>
+            <li>Discovery 與整合 adapter 設定</li>
+          </ul>
+        </div>
+        <div class="contact__card">
+          <h3>聯絡鈦坦科技</h3>
+          <a class="contact__line" href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener">
+            <span class="contact__ic">🎫</span>
+            <span><span class="contact__lbl">服務台入口</span>填寫 Assets 導入諮詢</span>
+          </a>
+          <a class="contact__line" href="https://www.atlassian.com/software/jira/service-management/features/asset-and-configuration-management" target="_blank" rel="noopener">
+            <span class="contact__ic">↗</span>
+            <span><span class="contact__lbl">Atlassian 官方頁</span>Asset and Configuration Management</span>
+          </a>
+          <a href="https://tsgojira.atlassian.net/servicedesk/customer/portal/4/group/8/create/43" target="_blank" rel="noopener" class="btn btn--primary btn--block">諮詢導入</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand">
+          <span class="brand__mark" aria-hidden="true"><img src="./assets/img/logos/jsm.svg" width="24" height="24" alt="" /></span>
+          <span class="brand__text">JSM<span class="brand__dot">.</span>solutions</span>
+        </span>
+      </div>
+      <nav class="footer__nav" aria-label="頁尾導覽">
+        <a href="/">遷移指南首頁</a>
+        <a href="#why">為什麼需要</a>
+        <a href="#model">資料模型</a>
+        <a href="#integration">整合</a>
+        <a href="#shifts">三大轉變</a>
+        <a href="#capabilities">核心能力</a>
+        <a href="#adopt">導入路徑</a>
+        <a href="#contact">聯絡我們</a>
+        <a href="https://rovo.titansoft.com.sg/" target="_blank" rel="noopener">鈦坦科技 Rovo ↗</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <span>© <span id="year"></span> Titansoft. Assets 為 Atlassian 產品，相關商標屬 Atlassian 所有。</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // year
+      var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+      // nav scrolled state via sentinel
+      var nav = document.getElementById('nav');
+      var top = document.getElementById('top');
+      if (nav && top && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function (e) {
+          nav.classList.toggle('is-scrolled', !e[0].isIntersecting);
+        }, { rootMargin: '-72px 0px 0px 0px' }).observe(top);
+      }
+      // mobile nav toggle
+      var toggle = document.getElementById('navToggle');
+      if (toggle && nav) {
+        toggle.addEventListener('click', function () {
+          var open = nav.classList.toggle('is-open');
+          toggle.classList.toggle('is-open', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        nav.querySelectorAll('.nav__links a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            nav.classList.remove('is-open'); toggle.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      // scroll reveal (transform/opacity only)
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+          });
+        }, { threshold: 0.12 });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+      // lightweight GA4 events
+      if (typeof gtag === 'function') {
+        document.querySelectorAll('.nav__cta, .contact__card .btn, .hero__actions .btn').forEach(function (b) {
+          b.addEventListener('click', function () {
+            gtag('event', 'cta_click', { cta_text: (b.textContent || '').trim(), page: 'assets' });
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
