@@ -268,7 +268,9 @@
   .assets-page .section { padding: 60px 0; }
   .pain-grid { grid-template-columns: 1fr; }
   .cvc { grid-template-columns: 1fr; }
-  .cvc__x { transform: rotate(90deg); }
+  .cvc__x { display: none; }
+  .lifecycle__steps li::after { display: none; }
+  .lifecycle__steps li { min-width: calc(50% - 6px); }
   .case-grid { grid-template-columns: 1fr; }
   .cap-grid { grid-template-columns: 1fr; }
   .cap-card--wide { grid-column: span 1; }
