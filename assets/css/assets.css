@@ -34,7 +34,7 @@
   font-size: .82rem; color: var(--ink-2); font-weight: 600; text-align: center;
   padding: 11px 16px; background: var(--bg-grey-2); border-top: 1px solid var(--line-2);
 }
-.shot--wide { margin: 6px 0 0; }
+.shot--wide { max-width: 760px; margin: 18px auto 0; }
 
 /* ---------- Assets × JSM 整合 ---------- */
 .integ { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; margin-top: 8px; }
@@ -48,6 +48,32 @@
 .integ-eg p { font-size: 1rem; color: var(--ink-2); margin: 0; line-height: 1.7; }
 .integ-eg strong { color: var(--blue-700); }
 
+/* ---------- 圖文交錯（feat-row，圖中等尺寸避免模糊） ---------- */
+.feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 30px; }
+.feat-row:last-child { margin-bottom: 0; }
+.feat-row--rev .feat-row__text { order: -1; }
+.feat-row .shot { max-width: 560px; width: 100%; justify-self: center; }
+.feat-row__ic { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--yellow-tile); border-radius: var(--tile); font-size: 1.4rem; margin-bottom: 14px; }
+.feat-row__text h3 { font-size: 1.35rem; margin-bottom: 8px; }
+.feat-row__text p { font-size: 1rem; color: var(--ink-2); margin: 0; }
+
+/* ---------- Teamwork Graph（深色） ---------- */
+.tw-graph { display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: center; }
+.kicker--dark { color: var(--yellow); }
+.tw-graph__copy h2 { color: #fff; }
+.tw-graph__copy p { color: rgba(255,255,255,.85); font-size: 1.05rem; margin-top: 12px; }
+.tw-graph__img { margin: 0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); max-width: 600px; justify-self: center; }
+.tw-graph__img { align-self: center; }
+.tw-graph__img img { display: block; width: 100%; height: auto; aspect-ratio: 1120 / 632; object-fit: contain; }
+
+/* ---------- Use cases（橫向卡，避免等寬三欄） ---------- */
+.uc-list { display: flex; flex-direction: column; gap: 14px; max-width: 860px; margin: 8px auto 0; }
+.uc-item { display: flex; gap: 22px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px 26px; transition: transform .18s ease, box-shadow .2s ease; }
+.uc-item:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.uc-item__img { width: 92px; height: auto; flex-shrink: 0; }
+.uc-item h3 { font-size: 1.18rem; margin-bottom: 4px; }
+.uc-item p { font-size: .96rem; color: var(--ink-2); margin: 0; }
+
 /* ---------- 共用：本頁區塊內距收斂 ---------- */
 .assets-page .section { padding: 84px 0; }
 
@@ -56,7 +82,7 @@
   display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;
 }
 .pain-card {
-  display: flex; gap: 16px; align-items: flex-start;
+  display: flex; gap: 16px; align-items: center;
   background: var(--bg-grey-2); border: 1px solid var(--line-2); border-radius: var(--radius-lg);
   padding: 22px 24px; transition: transform .18s ease, box-shadow .2s ease, border-color .18s ease;
 }
@@ -66,7 +92,7 @@
   display: inline-flex; align-items: center; justify-content: center;
   width: 46px; height: 46px; background: #fff; border: 1px solid var(--line-2); border-radius: var(--tile);
 }
-.pain-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+.pain-card h3 { font-size: 1.1rem; margin-bottom: 0; white-space: nowrap; flex-shrink: 0; }
 .pain-card p { font-size: .94rem; color: var(--ink-2); margin: 0; }
 .why-quote {
   margin: 36px auto 0; max-width: 720px; text-align: center;
@@ -213,7 +239,8 @@
 .roadmap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 8px; }
 .road-step { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px 20px; position: relative; transition: transform .18s ease, box-shadow .2s ease; }
 .road-step:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.road-step__n { display: block; font-size: 1.5rem; font-weight: 800; color: var(--blue-soft-2); letter-spacing: -.03em; margin-bottom: 8px; }
+.road-step { border-top: 3px solid var(--blue); }
+.road-step__n { display: block; font-size: 1.9rem; font-weight: 800; color: var(--navy); letter-spacing: -.02em; margin-bottom: 10px; font-variant-numeric: tabular-nums; }
 .road-step h3 { font-size: 1.1rem; margin-bottom: 6px; }
 .road-step p { font-size: .9rem; color: var(--ink-2); margin: 0; }
 
@@ -223,6 +250,11 @@
 @media (max-width: 940px) {
   .hero--assets .hero__inner { grid-template-columns: 1fr; gap: 32px; }
   .integ { grid-template-columns: 1fr; gap: 24px; }
+  .feat-row { grid-template-columns: 1fr; gap: 20px; margin-bottom: 36px; }
+  .feat-row--rev .feat-row__text { order: 0; }
+  .feat-row .shot { max-width: 100%; }
+  .tw-graph { grid-template-columns: 1fr; gap: 28px; }
+  .uc-item { flex-direction: column; text-align: center; gap: 12px; }
   .model-wrap { grid-template-columns: 1fr; }
   .shifts { grid-template-columns: 1fr; }
   .flow { grid-template-columns: repeat(2, 1fr); }
